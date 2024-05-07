@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Link css-->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Link iconos-->
+	<link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <title>Login y Registro</title>
+	<link rel="shortcut icon" href="img/logosrc.png" type="">
+
+	<!-- font awesome style -->
+	  <link href="css/font-awesome.min.css" rel="stylesheet" />
+
+	<!-- bootstrap core css -->
+ 	 <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+
+</head>
+<body>
+
+	<div class="bg-box">
+		<img src="img/fondo2.png" alt="">
+	</div>
+    <header class="header">
+        <nav class="nav">
+            <a href="#" class="nav_logo">
+				<img src="img/logo.png" alt="LogoTipo" class="logo_img">
+			</a>
+            <ul class="nav_items">
+                <li class="nav_item">
+                    <a href=".home" class="nav_link">Inicio</a>
+                    <a href="#service" class="nav_link">Productos</a>
+                    <a href="#" class="nav_link">Cita</a>
+                    <a href="#" class="nav_link">Contacto</a>
+                </li>
+            </ul>
+            <button class="button" id="form-open">Iniciar Sesión</button>
+        </nav>
+    </header>
+    <section class="home"> <!--Formularios para usuarios-->
+        <div class="form_container">
+			<i class='bx bx-x form_close' ></i>
+
+            <!-- Login -->
+            <div class="form login_form">
+                <form action="#">
+                    <h2>Inicio de Sesión</h2>
+
+                    <div class="input_box">
+                        <input type="email" placeholder="Ingresa tu correo" required>
+                        <i class='bx bx-envelope email' ></i>
+                    </div>
+
+                    <div class="input_box">
+                        <input type="password" placeholder="Ingresa tu contraseña" required>
+						<i class='bx bx-lock-alt password'></i>
+						<i class="bx bx-show pw_hide"></i>
+                    </div>
+
+                    <div class="option_field">
+                        <span class="checkbox">
+                            <input type="checkbox" id="check">
+                            <label for="check">Recordarme</label>
+                        </span>
+
+                        <a href="#" class="forgot_pw">¿Olvidaste tu contraseña</a>
+                    </div>
+
+                    <button class="button">Ingresar</button>
+                    <div class="login_signup">¿No tienes una cuenta? <a href="#" id="signup">Registrarme</a></div>
+                </form>
+            </div>
+            <!--  Fin Login -->
+
+            <!-- Registro -->
+            <div class="form signup_form">
+                <form action="#">
+                    <h2>Registro</h2>
+
+                    <div class="input_box">
+                        <input type="email" placeholder="Ingresa tu correo" required>
+                        <i class='bx bx-envelope email' ></i>
+                    </div>
+					
+					<div class="input_box">
+                        <input type="text" placeholder="Ingresa tu nombre" required>
+                        <i class='bx bx-user-circle user_first_name' ></i>
+                    </div>
+
+					<div class="input_box">
+                        <input type="test" placeholder="Ingresa tu apellido" required>
+                        <i class='bx bx-user user_last_name' ></i>
+                    </div>
+
+					<div class="input_box">
+                        <input type="text" placeholder="Ingresa tu teléfono" required>
+                        <i class='bx bx-phone phone' ></i>
+                    </div>
+
+					<div class="input_box">
+                        <input type="text" placeholder="Ingresa tu dirección" required>
+						<i class='bx bx-map direction'></i>
+                    </div>
+
+                    <div class="input_box">
+                        <input type="password" placeholder="Ingresa tu contraseña" required>
+                        <i class='bx bx-lock-alt password'></i>
+						<i class="bx bx-show pw_hide"></i>
+                    </div>
+
+                    <div class="input_box">
+                        <input type="password" placeholder="Confirmar contraseña" required>
+                        <i class='bx bx-lock-alt password'></i>
+						<i class="bx bx-show pw_hide"></i>
+                    </div>
+                    
+                    <button class="button">Registrarme</button>
+                    <div class="login_signup">¿Tienes una cuenta? <a href="#" id="login">Iniciar Sesión</a></div>
+                </form>
+            </div>
+            <!-- Fin Registro -->
+
+        </div>
+    </section>
+
+    <!--Inicio de parte Productos -->
+
+		<section id="gps-list" class="gps-list">
+			<div class="container">
+				<div class="section-header">
+					<h2>Nuestros Productos</h2>
+				</div><!--/.section-header-->
+				<div class="gps-list-content">
+					<div class="owl-carousel owl-theme" id="gps-list-carousel">
+						<div class="gps-list-item">
+							<div class="single-gps-list-item">
+								<div class="row">
+									<div class="col-md-7 col-sm-12">
+										<div class="gps-list-img">
+											<img src="img/S06A.jpg" alt="img"/>
+										</div><!--/.gps-list-img-->
+									</div>
+									<div class="col-md-5 col-sm-12">
+										<div class="gps-list-txt">
+											<h2><a href="#">GPS 3G <span> Marca Seeworld</span></a></h2>
+											<p>
+												gps perfecto para ti. 
+											</p>
+											<p class="gps-list-para2">
+												gps perfecto para ti. 
+											</p>
+											<button class="welcome-btn gps-list-btn" onclick="window.location.href='#'">
+												Ver detalles
+											</button>
+										</div><!--/.gps-list-txt-->	
+									</div><!--/.col-->
+								</div><!--/.row-->
+							</div><!--/.single-gps-list-item-->
+						</div><!--/.gps-list-item-->
+						<div class="gps-list-item">
+							<div class="single-gps-list-item">
+								<div class="row">
+									<div class="col-md-7 col-sm-12">
+										<div class="gps-list-img">
+											<img src="img/s5l.jpg" alt="img"/>
+										</div><!--/.gps-list-img-->
+									</div>
+									<div class="col-md-5 col-sm-12">
+										<div class="gps-list-txt">
+											<h2><a href="#">GPS 4G <span> Marca Seeworld</span></a></h2>
+											<p>
+												gps perfecto para ti.											</p>
+											<p class="gps-list-para2">
+												gps perfecto para ti.											</p>
+											<button class="welcome-btn gps-list-btn" onclick="window.location.href='#'">
+												Ver detalles											
+											</button>
+										</div><!--/.gps-list-txt-->	
+									</div><!--/.col-->
+								</div><!--/.row-->	
+							</div><!--/.single-gps-list-item-->
+						</div><!--/.gps-list-item-->
+						<div class="gps-list-item">
+							<div class="single-gps-list-item">
+								<div class="row">
+									<div class="col-md-7 col-sm-12">
+										<div class="gps-list-img">
+											<img src="img/r12l.jpg" alt="img"/>
+										</div><!--/.gps-list-img-->
+									</div>
+									<div class="col-md-5 col-sm-12">
+										<div class="gps-list-txt">
+											<h2><a href="#">GPS 4G Para Moto <span> Marca Seeworld</span></a></h2>
+											<p> xDDD.											</p>
+											<p class="gps-list-para2"> gps amazingss para ti.											</p>
+											<button class="welcome-btn gps-list-btn" onclick="window.location.href='#'">
+												Ver detalles
+											</button>
+										</div><!--/.gps-list-txt-->	
+									</div><!--/.col-->
+								</div><!--/.row-->
+							</div><!--/.single-gps-list-item-->
+						</div><!--/.gps-list-item-->
+					</div><!--/#gps-list-carousel-->
+				</div><!--/.gps-list-content-->
+			</div><!--/.container-->
+
+		</section><!--/.gps-list-->
+   <!--Fin de la parte Productos -->
+
+  <!-- Inicio de la Seccion de Citas PEDIENTE -->
+  <!-- Inicio de la Seccion de Citas PEDIENTE -->
+  <!-- Inicio de la Seccion de Citas PEDIENTE -->
+  <!-- Inicio de la Seccion de Citas PEDIENTE -->
+  <!-- Inicio de la Seccion de Citas PEDIENTE -->
+  <!-- Inicio de la Seccion de Citas PEDIENTE -->
+  <!-- Inicio de la Seccion de Citas PEDIENTE -->
+  <!-- Inicio de la Seccion de Citas PEDIENTE -->
+  <!-- Inicio de la Seccion de Citas PEDIENTE -->
+  <!-- Inicio de la Seccion de Citas PEDIENTE -->
+  <!-- Inicio de la Seccion de Citas PEDIENTE -->
+  <!-- Inicio de la Seccion de Citas PEDIENTE -->
+  <!-- Inicio de la Seccion de Citas PEDIENTE -->
+  <!-- Inicio de la Seccion de Citas PEDIENTE -->
+  <!-- Inicio de la Seccion de Citas PEDIENTE -->
+  <!-- Inicio de la Seccion de Citas PEDIENTE -->
+  <!-- Inicio de la Seccion de Citas PEDIENTE -->
+  
+	<section class="book_section layout_padding">
+		<div class="container">
+		<div class="heading_container">
+			<h2>
+			Agendar una Cita
+			</h2>
+		</div>
+		<div class="row">
+			<div class="col-md-6">
+			<div class="form_container">
+				<form action="">
+				<div>
+					<input type="text" class="form-control" placeholder="Ingrese su Nombre" />
+				</div>
+				<div>
+					<input type="text" class="form-control" placeholder="Phone Number" />
+				</div>
+				<div>
+					<input type="email" class="form-control" placeholder="Your Email" />
+				</div>
+				<div>
+					<select class="form-control nice-select wide">
+					<option value="" disabled selected>
+						How many persons?
+					</option>
+					<option value="">
+						2
+					</option>
+					<option value="">
+						3
+					</option>
+					<option value="">
+						4
+					</option>
+					<option value="">
+						5
+					</option>
+					</select>
+				</div>
+				<div>
+					<input type="date" class="form-control">
+				</div>
+				<div class="btn_box">
+					<button>
+					Book Now
+					</button>
+				</div>
+				</form>
+			</div>
+			</div>
+			<div class="col-md-6">
+			<div class="map_container ">
+				<div id="googleMap"></div>
+			</div>
+			</div>
+		</div>
+		</div>
+	</section>
+
+  <!-- Fin de la Seccion de Citas -->
+
+
+		<!--Inicio de pie de pagina o footer -->>
+
+		<footer class="footer_section">
+			<div class="container">
+			  <div class="row">
+				<div class="col-md-4 footer-col">
+				  <div class="footer_contact">
+					<h4>
+					  Contactanos
+					</h4>
+					<div class="contact_link_box">
+					  <a href="">
+						<i class="fa fa-map-marker" aria-hidden="true"></i>
+						<span>
+						  1ra Avenida D 1-69
+						</span>
+					  </a>
+					  <a href="">
+						<i class="fa fa-phone" aria-hidden="true"></i>
+						<span>
+						  Numero de Contacto 4149-9466
+						</span>
+					  </a>
+					  <a href="">
+						<i class="fa fa-envelope" aria-hidden="true"></i>
+						<span>
+						  henryestuardo115@gmail.com
+						</span>
+					  </a>
+					</div>
+				  </div>
+				</div>
+				<div class="col-md-4 footer-col">
+				  <div class="footer_detail">
+					<a href="" class="footer-logo">
+					  GPS GT
+					</a>
+					<p>
+					  Protegiendo tu vehiculo
+					</p>
+					<div class="footer_social">
+					  <a href="">
+						<i class="fa fa-facebook" aria-hidden="true"></i>
+					  </a>
+					  <a href="">
+						<i class="fa fa-twitter" aria-hidden="true"></i>
+					  </a>
+					  <a href="">
+						<i class="fa fa-linkedin" aria-hidden="true"></i>
+					  </a>
+					  <a href="">
+						<i class="fa fa-instagram" aria-hidden="true"></i>
+					  </a>
+					  <a href="">
+						<i class="fa fa-pinterest" aria-hidden="true"></i>
+					  </a>
+					</div>
+				  </div>
+				</div>
+				<div class="col-md-4 footer-col">
+				  <h4>
+					Horario de Atencion
+				  </h4>
+				  <p>
+					Lunes a Domingo
+				  </p>
+				  <p>
+					10:00 Am - 5:00 Pm
+				  </p>
+				</div>
+			  </div>
+			  <div class="footer-info">
+				<p>
+				  &copy; <span id="displayYear"></span> Copyright 2024 GPS GT
+				  <a href="https://html.design/">Todos los Derechos Reservados</a><br><br>
+				</p>
+			  </div>
+			</div>
+		  </footer>
+
+		
+    <script src="app.js"></script>
+</body>
+</html>

@@ -8,28 +8,31 @@ La clase Core mapea la url ingresada en el navegador:
     Ejemplo: /articulos/actualizar/4
 */
 Class Core{
-    protected $controller = "Home";
-    protected $method = "Home";
+    protected $controller = "HomeController";
+    protected $method = "index";
     protected $parameters = [];
 
     public function __construct(){
-        $url = $this->getUrl();
         
+        $url = $this->getUrl();
+
         // Verificar si $url está definido
-        if(isset($url)){
-            $url[0] = $url[0]."Controller";
+        if(isset($url) && isset(ROUTE_MAP[strtolower($url[0])])){
+            $url[0] = ROUTE_MAP[strtolower($url[0])];
+
+            
             //Buscar en controllers si el controlador existe
-            if(file_exists("../App/Controllers/".ucwords($url[0]).".php")){
+            if(file_exists("../App/Controllers/".$url[0].".php")){
                 //Si existe se setea como controlador por defecto
-                $this->controller = ucwords($url[0]);
+                $this->controller = $url[0];
 
                 //Desasigna el método en la varible url
                 unset($url[0]);
             }
         } else{
-            $this->controller = $this->controller."Controller";
+            unset($url);
         }
-
+        
         //Se requiere el controlador
         require_once("../App/Controllers/".$this->controller.".php");
         $this->controller = new $this->controller;
@@ -45,7 +48,7 @@ Class Core{
         }
         
         //Obtener los parámetros de la url
-        $this->parameters = $url ? array_values($url) : [];
+        $this->parameters = isset($url) ? array_values($url) : [];
 
         //Llamamos a la función callback con los parámetros de la url
         call_user_func_array([$this->controller, $this->method], $this->parameters);

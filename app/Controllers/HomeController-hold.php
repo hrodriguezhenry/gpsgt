@@ -5,14 +5,14 @@ class HomeController extends Controllers{
         parent::__construct();
     }
 
-    public function index(){
+    public function home(){
         //Obtener los usuarios
         $users = $this->model->getUsers();
         $data = [
             "users" => $users
         ];
         
-        $this->view("Home/HomeView", $data);
+        $this->view("Home/Home", $data);
     }
 
     public function insert(){

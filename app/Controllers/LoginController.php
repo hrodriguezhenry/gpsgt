@@ -1,18 +1,18 @@
 <?php
-class HomeController extends Controllers{
+class LoginController extends Controllers{
     
     public function __construct(){
         parent::__construct();
     }
 
-    public function index(){
+    public function login(){
         //Obtener los usuarios
         $users = $this->model->getUsers();
         $data = [
             "users" => $users
         ];
         
-        $this->view("Home/HomeView", $data);
+        $this->view("Home/Home", $data);
     }
 
     public function insert(){

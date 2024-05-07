@@ -2,7 +2,7 @@
 <a href="<?php echo URL_ROUTE; ?>"class="btn btn-light"><i class="fa fa-backward"></i> Volver</a>
 <div class="card card-body btn-light mt-5">
     <h2>Borrar usuarios</h2>
-    <form action="<?php echo URL_ROUTE; ?>/home/delete/<?php echo $data["id"]; ?>" method="POST">
+    <form action="<?php echo URL_ROUTE; ?>/inicio/delete/<?php echo $data["id"]; ?>" method="POST">
         <div class="form-group">
             <label for="name">Nombre: <sup>*</sup></label>
             <input type="text" name="name" class="form-control form-control-lg" value="<?php echo $data["name"]; ?>">

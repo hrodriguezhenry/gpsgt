@@ -3,7 +3,6 @@
 //Se encarga de poder cargar los módelos y las vistas
 class Controllers{
     protected $model;
-    public $test;
 
     public function __construct(){
         $this->model();
