@@ -4,7 +4,7 @@
 
             <!-- Login -->
             <div class="form login_form">
-                <form action="#">
+                <form action="<?php echo URL_ROUTE; ?>/inicio/ingresar" method="POST">
                     <h2>Inicio de Sesión</h2>
 
                     <div class="input_box">
@@ -35,7 +35,7 @@
 
             <!-- Registro -->
             <div class="form signup_form">
-                <form action="#">
+                <form action="<?php echo URL_ROUTE; ?>/inicio/registrar" method="POST">
                     <h2>Registro</h2>
 
                     <div class="input_box">

@@ -23,4 +23,9 @@ const ROUTE_MAP = [
     "inicio" => "HomeController",
     "ingresar" => "LoginController"
 ];
+
+const ROUTE_METHOD_MAP = [
+    "ingresar" => "login",
+    "registrar" => "register"
+];
 ?>

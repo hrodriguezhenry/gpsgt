@@ -19,7 +19,6 @@ Class Core{
         // Verificar si $url está definido
         if(isset($url) && isset(ROUTE_MAP[strtolower($url[0])])){
             $url[0] = ROUTE_MAP[strtolower($url[0])];
-            
             //Buscar en controllers si el controlador existe
             if(file_exists("../App/Controllers/".$url[0].".php")){
                 //Si existe se setea como controlador por defecto
@@ -37,7 +36,8 @@ Class Core{
         $this->controller = new $this->controller;
         
         //Validar si se ha seteado el método
-        if(isset($url[1])){
+        if(isset($url[1]) && isset(ROUTE_METHOD_MAP[strtolower($url[1])])){
+            $url[1] = ROUTE_METHOD_MAP[strtolower($url[1])];
             
             //Validar si existe el método de la url en el controlador
             if(method_exists($this->controller, $url[1])){

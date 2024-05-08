@@ -15,6 +15,14 @@ class HomeController extends Controllers{
         $this->view("Home/HomeView", $data);
     }
 
+    public function login(){
+        $this->view("Home/HomeView", $data);
+    }
+
+    public function register(){
+        
+    }
+
     public function insert(){
         if($_SERVER["REQUEST_METHOD"] == "POST"){
             $data = [
