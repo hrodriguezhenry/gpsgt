@@ -19,7 +19,6 @@ Class Core{
         // Verificar si $url está definido
         if(isset($url) && isset(ROUTE_MAP[strtolower($url[0])])){
             $url[0] = ROUTE_MAP[strtolower($url[0])];
-
             
             //Buscar en controllers si el controlador existe
             if(file_exists("../App/Controllers/".$url[0].".php")){

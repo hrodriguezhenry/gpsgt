@@ -10,7 +10,7 @@
 								<div class="row">
 									<div class="col-md-7 col-sm-12">
 										<div class="gps-list-img">
-											<img src="img/S06A.jpg" alt="img"/>
+											<img src="<?= URL_ROUTE; ?>/img/S06A.jpg" alt="img"/>
 										</div><!--/.gps-list-img-->
 									</div>
 									<div class="col-md-5 col-sm-12">
@@ -35,7 +35,7 @@
 								<div class="row">
 									<div class="col-md-7 col-sm-12">
 										<div class="gps-list-img">
-											<img src="img/s5l.jpg" alt="img"/>
+											<img src="<?= URL_ROUTE; ?>/img/s5l.jpg" alt="img"/>
 										</div><!--/.gps-list-img-->
 									</div>
 									<div class="col-md-5 col-sm-12">
@@ -58,7 +58,7 @@
 								<div class="row">
 									<div class="col-md-7 col-sm-12">
 										<div class="gps-list-img">
-											<img src="img/r12l.jpg" alt="img"/>
+											<img src="<?= URL_ROUTE; ?>/img/r12l.jpg" alt="img"/>
 										</div><!--/.gps-list-img-->
 									</div>
 									<div class="col-md-5 col-sm-12">

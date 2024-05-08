@@ -1,4 +1,4 @@
-    <section id="home" class="home"> <!--Formularios para usuarios-->
+<section id="home" class="home"> <!--Formularios para usuarios-->
         <div class="form_container">
 			<i class='bx bx-x form_close' ></i>
 

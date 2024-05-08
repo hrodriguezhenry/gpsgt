@@ -77,6 +77,6 @@
 			  </div>
 			</div>
         </footer>
-    <script type="text/javascript" src="js/site.js"></script>
+    <script type="text/javascript" src="<?= URL_ROUTE; ?>/js/site.js"></script>
 </body>
 </html>

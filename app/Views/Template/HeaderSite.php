@@ -5,28 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Ruta de archivo styleSite css -->
-    <link rel="stylesheet" href="css/styleSite.css" />
+    <link rel="stylesheet" href="<?= URL_ROUTE; ?>/css/styleSite.css" />
 
     <!-- Link de iconos-->
 	<link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
 
 	<!-- Ruta de archivo boostrap css -->
-    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="<?= URL_ROUTE; ?>/css/bootstrap.css" />
 
     <!-- Ruta del icono de GPSgt -->
-    <link rel="shortcut icon" href="img/favicon.ico" />
+    <link rel="shortcut icon" href="<?= URL_ROUTE; ?>/img/favicon.ico" />
 
     <title><?= SITE_NAME; ?></title>
 </head>
 <body>
 
 	<div class="bg-box">
-		<img src="img/fondo2.png" alt="">
+		<img src="<?= URL_ROUTE; ?>/img/fondo2.png" alt="">
 	</div>
     <header class="header">
         <nav class="nav">
             <a href="#" class="nav_logo">
-				<img src="img/logo.png" alt="LogoTipo" class="logo_img">
+				<img src="<?= URL_ROUTE; ?>/img/logo.png" alt="LogoTipo" class="logo_img">
 			</a>
             <ul class="nav_items">
                 <li class="nav_item">
