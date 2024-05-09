@@ -404,8 +404,10 @@ nav.close ~ .admin-section .top{
     }
     nav.close .menu-items li a .link-name{
         opacity: 1;
-        pointer-events: auto;
         transition: var(--tran-10);
+    }
+    nav.close .menu-items .mode a{
+        pointer-events: none;
     }
     nav ~ .admin-section{
         left: 73px;
@@ -449,7 +451,6 @@ nav.close ~ .admin-section .top{
         position: fixed;
         padding: 10px 14px;
         transition: var(--tran-05);
-        /* z-index: 12; */
     }
     nav .logo-image img{
         opacity: 0;
