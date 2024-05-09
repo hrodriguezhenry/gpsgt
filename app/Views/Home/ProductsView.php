@@ -1,4 +1,4 @@
-<section id="gps-list" class="gps-list">
+		<section id="gps-list" class="gps-list">
 			<div class="container">
 				<div class="section-header">
 					<h2>Nuestros Productos</h2>

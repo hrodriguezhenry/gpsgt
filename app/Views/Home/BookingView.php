@@ -1,4 +1,4 @@
-<section id="booking" class="book_section layout_padding">
+	<section id="booking" class="book_section layout_padding">
 		<div class="container">
 		<div class="heading_container">
 			<h2>

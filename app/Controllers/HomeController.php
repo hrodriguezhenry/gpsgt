@@ -16,7 +16,7 @@ class HomeController extends Controllers{
     }
 
     public function login(){
-        $this->view("Home/HomeView", $data);
+        $this->view("Admin/DashboardView");
     }
 
     public function register(){
