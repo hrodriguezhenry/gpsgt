@@ -1,6 +1,6 @@
 		<!--Inicio de pie de pagina o footer -->>
 
-		<footer class="footer_section">
+		<footer id="footer" class="footer_section">
 			<div class="container">
 			  <div class="row">
 				<div class="col-md-4 footer-col">

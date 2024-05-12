@@ -1,6 +1,10 @@
-		<section id="gps-list" class="gps-list">
+<section id="gps-list" class="gps-list">
 			<div class="container">
 				<div class="section-header">
+					<br>
+					<br>
+					<br>
+					<br>
 					<h2>Nuestros Productos</h2>
 				</div><!--/.section-header-->
 				<div class="gps-list-content">
@@ -15,15 +19,17 @@
 									</div>
 									<div class="col-md-5 col-sm-12">
 										<div class="gps-list-txt">
-											<h2><a href="#">GPS 3G <span> Marca Seeworld</span></a></h2>
+											<center>
+											<h2><a href="#">GPS 3G </a></h2>
+											</center>
 											<p>
-												gps perfecto para ti. 
+												Placeholder para texto pendiente del gps.  
 											</p>
 											<p class="gps-list-para2">
-												gps perfecto para ti. 
+												Placeholder para texto pendiente del gps.  
 											</p>
-											<button class="welcome-btn gps-list-btn" onclick="window.location.href='#'">
-												Ver detalles
+											<button class="welcome-btn gps-list-btn" onclick="window.location.href='#booking'">
+												Ir a Agendar
 											</button>
 										</div><!--/.gps-list-txt-->	
 									</div><!--/.col-->
@@ -40,13 +46,15 @@
 									</div>
 									<div class="col-md-5 col-sm-12">
 										<div class="gps-list-txt">
-											<h2><a href="#">GPS 4G <span> Marca Seeworld</span></a></h2>
+											<center>
+											<h2><a href="#">GPS 4G </a></h2>
+											</center>
 											<p>
-												gps perfecto para ti.											</p>
+												Placeholder para texto pendiente del gps.  
 											<p class="gps-list-para2">
-												gps perfecto para ti.											</p>
-											<button class="welcome-btn gps-list-btn" onclick="window.location.href='#'">
-												Ver detalles											
+												Placeholder para texto pendiente del gps.  
+											<button class="welcome-btn gps-list-btn" onclick="window.location.href='#booking'">
+												Ir a Agendar											
 											</button>
 										</div><!--/.gps-list-txt-->	
 									</div><!--/.col-->
@@ -63,11 +71,17 @@
 									</div>
 									<div class="col-md-5 col-sm-12">
 										<div class="gps-list-txt">
-											<h2><a href="#">GPS 4G Para Moto <span> Marca Seeworld</span></a></h2>
-											<p> xDDD.											</p>
-											<p class="gps-list-para2"> gps amazingss para ti.											</p>
-											<button class="welcome-btn gps-list-btn" onclick="window.location.href='#'">
-												Ver detalles
+											<center>
+											<h2><a href="#">GPS 4G Para Moto</a></h2>
+											</center>
+											<p>
+												Placeholder para texto pendiente del gps. 
+											</p> 
+											<p class="gps-list-para2">
+												Placeholder para texto pendiente del gps.											
+											</p>
+											<button class="welcome-btn gps-list-btn" onclick="window.location.href='#booking'">
+												Ir a Agendar
 											</button>
 										</div><!--/.gps-list-txt-->	
 									</div><!--/.col-->
@@ -77,5 +91,4 @@
 					</div><!--/#gps-list-carousel-->
 				</div><!--/.gps-list-content-->
 			</div><!--/.container-->
-
 		</section><!--/.gps-list-->
