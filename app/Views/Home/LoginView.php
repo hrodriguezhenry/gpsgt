@@ -5,26 +5,34 @@
             <!-- Login -->
             <div class="form login_form">
                 <form action="<?php echo URL_ROUTE; ?>/inicio/ingresar" method="POST">
+                
                     <h2>Inicio de Sesión</h2>
-
+                    
                     <div class="input_box">
-                        <input type="email" placeholder="Ingresa tu correo" required>
-                        <i class='bx bx-envelope email' ></i>
+                        <input type="email" name="email" placeholder="Ingresa tu correo" required>
+                        <i class='bx bx-envelope email'></i>
                     </div>
 
                     <div class="input_box">
-                        <input type="password" placeholder="Ingresa tu contraseña" required>
+                        <input type="password" name="password" placeholder="Ingresa tu contraseña" required>
 						<i class='bx bx-lock-alt password'></i>
 						<i class="bx bx-show pw_hide"></i>
                     </div>
 
-                    <div class="option_field">
-                        <span class="checkbox">
-                            <input type="checkbox" id="check">
-                            <label for="check">Recordarme</label>
+                    <div class="messaje_error">
+                        <span>
+                        <?php
+                            session_start();
+                            if(isset($_SESSION["loggedin_error"])){
+                                echo '<script>document.addEventListener("DOMContentLoaded", function() {
+                                    document.querySelector(".home").classList.add("show");});</script>';
+                                
+                                echo 'Contraseña o usuario incorrecto';
+                                session_unset();
+                                session_destroy();
+                            }
+                            ?>
                         </span>
-
-                        <a href="#" class="forgot_pw">¿Olvidaste tu contraseña</a>
                     </div>
 
                     <button class="button">Ingresar</button>

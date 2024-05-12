@@ -2,8 +2,6 @@
 class Database {
     private $dbh;
     private $stmt;
-    // private $strQuery;
-    // private $arrValues;
 
     public function __construct(){
         $dbh = "mysql:host=".DB_HOST.";dbname=".DB_NAME.";".DB_CHARSET;
@@ -71,54 +69,5 @@ class Database {
     public function rowCount(){
         return $this->stmt->rowCount();
     }
-
-    // public function insert(string $strQuery, array $arrValues){
-    //     $this->strQuery = $strQuery;
-    //     $this->arrValues = $arrValues;
-
-    //     $insert = $this->getConnect()->prepare($this->strQuery);
-    //     $resInsert = $insert->execute($this->arrValues);
-
-    //     if($resInsert){
-    //         $lastInsert = $this->getConnect()->lastInsertId();
-    //     } else{
-    //         $lastInsert = 0;
-    //     }
-
-    //     return $lastInsert;
-    // }
-
-    // public function select(string $strQuery, array $arrValues){
-    //     $this->strQuery = $strQuery;
-    //     $this->arrValues = $arrValues;
-    //     $result = $this->getConnect()->prepare($this->strQuery);
-    //     $result->execute($arrValues);
-    //     $data = $result->fetch(PDO::FETCH_ASSOC);
-    //     return $data;
-    // }
-
-    // public function selectAll(string $strQuery){
-    //     $this->strQuery = $strQuery;
-    //     $result = $this->getConnect()->prepare($this->strQuery);
-    //     $result->execute();
-    //     $data = $result->fetchAll(PDO::FETCH_ASSOC);
-    //     return $data;
-    // }
-
-    // public function update(string $strQuery, array $arrValues){
-    //     $this->strQuery = $strQuery;
-    //     $this->arrValues = $arrValues;
-    //     $update = $this->getConnect()->prepare($this->strQuery);
-    //     $resUpdate = $update->execute($this->arrValues);
-    //     return $resUpdate;
-    // }
-
-    // public function delete(string $strQuery, array $arrValues){
-    //     $this->strQuery = $strQuery;
-    //     $this->arrValues = $arrValues;
-    //     $delete = $this->getConnect()->prepare($this->strQuery);
-    //     $resDelete = $delete->execute($this->arrValues);
-    //     return $resDelete;
-    // }
 }
 ?>

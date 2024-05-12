@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- font awesome style -->
+    <link href="css/font-awesome.min.css" rel="stylesheet" />
+
     <!-- Ruta de archivo styleSite css -->
     <link rel="stylesheet" href="<?= URL_ROUTE; ?>/css/styleSite.css" />
 
@@ -33,7 +36,7 @@
                     <a href="#home" class="nav_link">Inicio</a>
                     <a href="#gps-list" class="nav_link">Productos</a>
                     <a href="#booking" class="nav_link">Cita</a>
-                    <a href="#" class="nav_link">Contacto</a>
+                    <a href="#footer" class="nav_link">Contacto</a>
                 </li>
             </ul>
             <button class="button" id="form-open">Iniciar Sesión</button>

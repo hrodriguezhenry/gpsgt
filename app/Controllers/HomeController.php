@@ -6,17 +6,28 @@ class HomeController extends Controllers{
     }
 
     public function index(){
-        //Obtener los usuarios
-        $users = $this->model->getUsers();
-        $data = [
-            "users" => $users
-        ];
-        
-        $this->view("Home/HomeView", $data);
+        $this->view("Home/HomeView");
     }
 
     public function login(){
-        $this->view("Admin/DashboardView");
+
+        if($_SERVER["REQUEST_METHOD"] == "POST"){
+            session_start();
+            $data = [
+                "email" => trim($_POST["email"]),
+                "password" => trim($_POST["password"])
+            ];
+
+            if($this->model->getUser($data)){
+                $_SESSION['loggedin'] = true;
+                redirect("/dashboard");
+            } else{
+                $_SESSION['loggedin_error'] = true;
+                redirect("");
+            }
+        }
+        
+        // $this->view("Admin/DashboardView");
     }
 
     public function register(){
