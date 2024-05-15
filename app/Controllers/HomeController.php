@@ -1,12 +1,24 @@
 <?php
 class HomeController extends Controllers{
-    
     public function __construct(){
         parent::__construct();
     }
 
     public function index(){
-        $this->view("Home/HomeView");
+        session_start();
+        $data = [
+            "email" => "",
+            "lastname" => "",
+            "phone" => "",
+            "location" => "",
+            "password" => "",
+            "cpassword" => ""
+        ];
+        if(isset($_SESSION['form_data'])) {
+            $data = $_SESSION['form_data'];
+            unset($_SESSION['form_data']);
+        }
+        $this->view("Home/HomeView", $data);
     }
 
     public function login(){
@@ -23,15 +35,36 @@ class HomeController extends Controllers{
                 redirect("/dashboard");
             } else{
                 $_SESSION['loggedin_error'] = true;
-                redirect("");
+                $_SESSION['form_data'] = $data;
+                redirect("", $data);
             }
         }
-        
-        // $this->view("Admin/DashboardView");
+
     }
 
     public function register(){
-        
+
+        if($_SERVER["REQUEST_METHOD"] == "POST"){
+            session_start();
+            $data = [
+                "email" => trim($_POST["email"]),
+                "lastname" => trim($_POST["lastname"]),
+                "phone" => trim($_POST["phone"]),
+                "location" => trim($_POST["location"]),
+                "password" => trim($_POST["password"]),
+                "cpassword" => trim($_POST["cpassword"]),
+            ];
+
+            if($this->model->getUser($data)){
+                $_SESSION['loggedin'] = true;
+                redirect("");
+            } else{
+                $_SESSION['register_error'] = true;
+                $_SESSION['form_data'] = $data;
+                redirect("", $data);
+            }
+        }
+
     }
 
     public function insert(){

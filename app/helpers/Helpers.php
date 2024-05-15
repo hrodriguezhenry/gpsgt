@@ -1,8 +1,11 @@
 <?php
 
 //Redireccionar página
-function redirect($page){
+function redirect($page, $data1=[]){
     header("location: ".URL_ROUTE.$page);
+}
+function ec(){
+    echo "hola";
 }
 
 function arrayDebug($data){
