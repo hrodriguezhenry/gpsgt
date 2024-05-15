@@ -18,7 +18,7 @@ const DB_USER = "root";
 const DB_PASSWORD = "admin";
 const DB_CHARSET = "chartset=utf8";
 
-//Rutas de español a ingles
+//Rutas de controladores de español a inglés
 const ROUTE_MAP = [
     "inicio" => "HomeController",
     "ingresar" => "LoginController",
@@ -27,6 +27,7 @@ const ROUTE_MAP = [
     "clientes" => "CustomerController"
 ];
 
+//Rutas de métodos de español a inglés
 const ROUTE_METHOD_MAP = [
     "ingresar" => "login",
     "registrar" => "register"

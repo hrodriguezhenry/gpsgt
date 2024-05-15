@@ -5,19 +5,19 @@ class HomeModel{
     public function __construct(){
         $this->db = new Database;
     }
-
-    public function getUsers(){
-        $this->db->query("SELECT * FROM users");
-        $results = $this->db->records();
-        return $results;
-    }
+    
     public function getUser($data){
-        
         $this->db->query("SELECT * FROM users WHERE email = :email AND password = :password");
         $this->db->bind(":email", $data["email"]);
         $this->db->bind(":password", $data["password"]);
         $row = $this->db->record();
         return $row;
+    }
+
+    public function getUsers(){
+        $this->db->query("SELECT * FROM users");
+        $results = $this->db->records();
+        return $results;
     }
 
     public function getUserId($id){

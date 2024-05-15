@@ -6,6 +6,7 @@ class HomeController extends Controllers{
 
     public function index(){
         session_start();
+
         $data = [
             "email" => "",
             "lastname" => "",
@@ -14,6 +15,7 @@ class HomeController extends Controllers{
             "password" => "",
             "cpassword" => ""
         ];
+
         if(isset($_SESSION['form_data'])) {
             $data = $_SESSION['form_data'];
             unset($_SESSION['form_data']);
@@ -22,7 +24,6 @@ class HomeController extends Controllers{
     }
 
     public function login(){
-
         if($_SERVER["REQUEST_METHOD"] == "POST"){
             session_start();
             $data = [
@@ -36,16 +37,15 @@ class HomeController extends Controllers{
             } else{
                 $_SESSION['loggedin_error'] = true;
                 $_SESSION['form_data'] = $data;
-                redirect("", $data);
+                redirect("");
             }
         }
-
     }
 
     public function register(){
-
         if($_SERVER["REQUEST_METHOD"] == "POST"){
             session_start();
+            
             $data = [
                 "email" => trim($_POST["email"]),
                 "lastname" => trim($_POST["lastname"]),
@@ -61,10 +61,9 @@ class HomeController extends Controllers{
             } else{
                 $_SESSION['register_error'] = true;
                 $_SESSION['form_data'] = $data;
-                redirect("", $data);
+                redirect("");
             }
         }
-
     }
 
     public function insert(){

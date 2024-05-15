@@ -3,6 +3,7 @@ class Database {
     private $dbh;
     private $stmt;
 
+    //Se creea la instancia a PDO
     public function __construct(){
         $dbh = "mysql:host=".DB_HOST.";dbname=".DB_NAME.";".DB_CHARSET;
         $options = array(
@@ -10,7 +11,6 @@ class Database {
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
         );
 
-        //Crear instancia de PDO
         try {
             $this->dbh = new PDO($dbh, DB_USER, DB_PASSWORD, $options);
         } catch (PDOException $e){
@@ -18,12 +18,12 @@ class Database {
         }
     }
 
-    //Preparamos la consulta
+    //Se prepara la consulta
     public function query($sql){
         $this->stmt = $this->dbh->prepare($sql);
     }
 
-    //Vinculamos la consulta con el método bind
+    //Se le asigna el tipo de dato al valor ingresado
     public function bind($parameter, $value, $type = null){
         if(is_null($type)){
             switch(true){
@@ -48,24 +48,24 @@ class Database {
         $this->stmt->bindValue($parameter, $value, $type);
     }
 
-    //Ejecuta la consulta
+    //Se ejecuta la consulta
     public function execute(){
         return $this->stmt->execute();
     }
 
-    //Obtener los registros
-    public function records(){
-        $this->execute();
-        return $this->stmt->fetchAll(PDO::FETCH_OBJ);
-    }
-
-    //Obtener un solo registro
+    //Se obtiene un solo registro
     public function record(){
         $this->execute();
         return $this->stmt->fetch(PDO::FETCH_OBJ);
     }
 
-    //Obtener la cantidad de filas
+    //Se obtienen varios registros
+    public function records(){
+        $this->execute();
+        return $this->stmt->fetchAll(PDO::FETCH_OBJ);
+    }
+
+    //Se obtiene la cantidad de filas
     public function rowCount(){
         return $this->stmt->rowCount();
     }

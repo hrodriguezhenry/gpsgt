@@ -1,13 +1,10 @@
 <?php
-
-//Redireccionar página
-function redirect($page, $data1=[]){
+//Función para redirijir a una pagina
+function redirect($page){
     header("location: ".URL_ROUTE.$page);
 }
-function ec(){
-    echo "hola";
-}
 
+//Función que imprime arreglos
 function arrayDebug($data){
     $format = print_r("<pre>");
     $format .= print_r($data);
@@ -15,6 +12,7 @@ function arrayDebug($data){
     return $format;
 }
 
+//Función para evitar Inyección SQL
 function srtClean($strCadena){
     $string = preg_replace(['/\s+/','/^\s|\s$/'], [' ', ''], $strCadena);
     $string = trim($string);

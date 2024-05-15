@@ -13,18 +13,14 @@ Class Core{
     protected $parameters = [];
 
     public function __construct(){
-        
         $url = $this->getUrl();
 
-        // Verificar si $url está definido
+        //Valida si en la url se ha llamado a un método
         if(isset($url) && isset(ROUTE_MAP[strtolower($url[0])])){
             $url[0] = ROUTE_MAP[strtolower($url[0])];
-            //Buscar en controllers si el controlador existe
-            if(file_exists("../App/Controllers/".$url[0].".php")){
-                //Si existe se setea como controlador por defecto
-                $this->controller = $url[0];
 
-                //Desasigna el método en la varible url
+            if(file_exists("../App/Controllers/".$url[0].".php")){
+                $this->controller = $url[0];
                 unset($url[0]);
             }
         } else{
@@ -35,11 +31,11 @@ Class Core{
         require_once("../App/Controllers/".$this->controller.".php");
         $this->controller = new $this->controller;
         
-        //Validar si se ha seteado el método
+        //Validar si en la url se ha llamado a un método
         if(isset($url[1]) && isset(ROUTE_METHOD_MAP[strtolower($url[1])])){
             $url[1] = ROUTE_METHOD_MAP[strtolower($url[1])];
             
-            //Validar si existe el método de la url en el controlador
+
             if(method_exists($this->controller, $url[1])){
                 $this->method = $url[1];
                 unset($url[1]);
@@ -49,11 +45,11 @@ Class Core{
         //Obtener los parámetros de la url
         $this->parameters = isset($url) ? array_values($url) : [];
 
-        //Llamamos a la función callback con los parámetros de la url
+        //Se llama al controlador, metodo y parametros encontrodados en la url
         call_user_func_array([$this->controller, $this->method], $this->parameters);
-        
     }
     
+    //Función para capturar la url
     public function getUrl(){
         if(isset($_GET["url"])){
             $url = rtrim($_GET["url"], "/");
