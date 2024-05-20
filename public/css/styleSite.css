@@ -9,6 +9,9 @@
     font-size:16px;
     margin:0;
 }
+/* ------------------------------------------------ */
+/* Cabecera de los enlaces e inicio de sesión */
+/* ------------------------------------------------ */
 .header{
     position: fixed;
     height: 80px;
@@ -16,6 +19,7 @@
     z-index: 100;
     background-color: #007bff;
 }
+/* Imagen de fondo de la sección home */
 .background{
     position: absolute;
     top: 0;
@@ -44,7 +48,7 @@
     height: 75%;
 }
 .nav_items{
-    margin-bottom: 0;
+    margin-bottom: 0; /* Se aplica debido al espacio que agrega boostrap */
     display: flex;
     list-style: none;
     margin-right: 100px;
@@ -66,8 +70,12 @@
     font-weight: 500;
 }
 .nav_link{
-    text-decoration: double !important;
+    text-decoration: double !important; /* Se quita estilos a links que agrega boostrap */
     font-size: 18px;
+}
+.nav_link:hover{
+    color: #fff;
+    transform: scale(1.1);
 }
 .button{
     padding: 8px 10px;
@@ -79,17 +87,14 @@
 .button:active{
     transform: scale(0.95);
 }
+/* ------------------------------------------------ */
+/* Seccción home */
+/* ------------------------------------------------ */
 .home{
     position: relative;
-    height: 100vh;
+    min-height: 100vh;
     width: 100%;
 }
-
-.nav_link:hover{
-    color: #fff;
-    transform: scale(1.1);
-}
-
 .home::before{
     content: "";
     position: absolute;
