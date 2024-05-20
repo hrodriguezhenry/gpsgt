@@ -6,8 +6,8 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Fuente awesome -->
     <link href="css/font-awesome.min.css" rel="stylesheet" />
@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="<?= URL_ROUTE; ?>/css/styleSite.css" />
 
     <!-- Link de iconos-->
-	<link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+	<link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css" />
 
 	<!-- Ruta de archivo boostrap css -->
     <link rel="stylesheet" href="<?= URL_ROUTE; ?>/css/bootstrap.css" />
@@ -27,13 +27,13 @@
     <title><?= SITE_NAME; ?></title>
 </head>
 <body>
-	<div class="bg-box">
-		<img src="<?= URL_ROUTE; ?>/img/fondo2.png" alt="">
+	<div class="background">
+		<img src="<?= URL_ROUTE; ?>/img/background.png" />
 	</div>
     <header class="header">
-        <nav class="nav">
-            <a href="<?= URL_ROUTE; ?>" class="nav_logo">
-				<img src="<?= URL_ROUTE; ?>/img/logo.png" alt="LogoTipo" class="logo_img">
+        <nav class="navigation">
+            <a href="<?= URL_ROUTE; ?>" class="logo">
+				<img src="<?= URL_ROUTE; ?>/img/logo.png" class="logo_img" />
 			</a>
             <ul class="nav_items">
                 <li class="nav_item">

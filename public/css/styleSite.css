@@ -1,81 +1,76 @@
-/* Google font - Poppins */
+/* Fuente de Google - Poppins */
 @import url("https:fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
 
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Jetbrains Mono", sans-serif;
+    font-family: "Poppins", sans-serif;
     font-size:16px;
     margin:0;
-}
-
-a{
-    text-decoration: double;
 }
 .header{
     position: fixed;
     height: 80px;
     width: 100%;
     z-index: 100;
-    padding: 0 20px;
     background-color: #007bff;
 }
-
-.bg-box {
+.background{
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-  }
-.bg-box img {
-  width: 100%;
-  height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
 }
-.nav{
-    max-width: 1400px;
+.background img{
     width: 100%;
-    margin: 0 auto;
-}
-
-.nav_logo{
-    display: flex;
     height: 100%;
-    align-items: top;
-    justify-content: space-between;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
-.nav,
+.navigation{
+    max-width: calc(100% - 200px);
+    margin: 0 auto;
+    align-items: center;
+}
+.logo{
+    flex: 1;
+    height: 100%;
+}
+.logo_img{
+    width: auto;
+    height: 75%;
+}
+.nav_items{
+    margin-bottom: 0;
+    display: flex;
+    list-style: none;
+    margin-right: 100px;
+}
+.navigation,
 .nav_item{
     display: flex;
-    height: 110%;
-    align-items: center;
+    height: 100%;
     justify-content: space-between;
+}
+.nav_item{
+    column-gap: 35px;
 }
 .nav_link,
 .button{
     color: #fff;
+    max-height: 100%;
+    margin: auto 5px;
+    font-weight: 500;
 }
-.home{
-    position: relative;
-    height: 100vh;
-    width: 100%;
-}
-.logo_img{
-    width: auto;
-    height: 80%;
-}
-.nav_item{
-    column-gap: 25px;
-}
-.nav_link:hover{
-    color: #fff;
-    transform: scale(1.1);
+.nav_link{
+    text-decoration: double !important;
+    font-size: 18px;
 }
 .button{
-    padding: 6px 6px;
+    padding: 8px 10px;
     border: 2px solid #fff;
     background: transparent;
     border-radius: 6px;
@@ -84,6 +79,17 @@ a{
 .button:active{
     transform: scale(0.95);
 }
+.home{
+    position: relative;
+    height: 100vh;
+    width: 100%;
+}
+
+.nav_link:hover{
+    color: #fff;
+    transform: scale(1.1);
+}
+
 .home::before{
     content: "";
     position: absolute;
@@ -114,7 +120,7 @@ a{
   opacity: 0;
   pointer-events: none;
   transition: all 0.4s ease-out;
-}
+} 
 .home.show .form_container{
   opacity: 1;
   pointer-events: auto;
