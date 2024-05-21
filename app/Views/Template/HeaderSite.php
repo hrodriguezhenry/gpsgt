@@ -32,11 +32,13 @@
 	</div>
     <header class="header">
         <nav class="navigation">
+
             <!-- Logotipo -->
             <a href="<?= URL_ROUTE; ?>" class="logo">
 				<img src="<?= URL_ROUTE; ?>/img/logo.png" class="logo_img" />
 			</a>
             <ul class="nav_items">
+
                 <!-- Menú de navegacion -->
                 <li class="nav_item">
                     <a href="#home" class="nav_link">Inicio</a>
@@ -45,7 +47,8 @@
                     <a href="#footer" class="nav_link">Contacto</a>
                 </li>
             </ul>
+
             <!-- Botón de inicio de sesión -->
-            <button class="button" id="form-open">Iniciar Sesión</button>
+            <button class="button" id="form_open">Iniciar Sesión</button>
         </nav>
     </header>

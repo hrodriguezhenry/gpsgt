@@ -1,6 +1,6 @@
-const formOpenBtn = document.querySelector("#form-open"),
+const formOpenBtn = document.querySelector("#form_open"),
     home = document.querySelector(".home"),
-    formContainer = document.querySelector(".form_container"),
+    loginForm = document.querySelector(".login_form"),
     formCloseBtn = document.querySelector(".form_close"),
     signupBtn = document.querySelector("#signup"),
     loginBtn = document.querySelector("#login"),
@@ -25,12 +25,12 @@ pwShowHide.forEach((icon) => {
 
 signupBtn.addEventListener("click", (e) =>{
     e.preventDefault();
-    formContainer.classList.add("active");
+    loginForm.classList.add("active");
 });
 
 loginBtn.addEventListener("click", (e) =>{
     e.preventDefault();
-    formContainer.classList.remove("active");
+    loginForm.classList.remove("active");
 });
 
 // Agrega un event listener a todos los enlaces de la navegación
