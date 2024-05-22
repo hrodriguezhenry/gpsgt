@@ -111,54 +111,54 @@
     pointer-events: auto;
 }
 .login_form_container{
-  position: fixed;
-  max-width: 350px;
-  width: 100%;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(1.2);
-  z-index: 101;
-  background: #fff;
-  padding: 35px;
-  border-radius: 12px;
-  box-shadow: rgba(0, 0, 0, 0.1);
-  opacity: 0;
-  pointer-events: none;
-  transition: all 0.4s ease-out;
+    position: fixed;
+    max-width: 350px;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1.2);
+    z-index: 101;
+    background: #fff;
+    padding: 35px;
+    border-radius: 12px;
+    box-shadow: rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.4s ease-out;
 } 
 .home.show .login_form_container{
-  opacity: 1;
-  pointer-events: auto;
-  transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%, -50%) scale(1);
 }
 .signup_form{
-  display: none;
+    display: none;
 }
 .login_form_container.active .signup_form{
-  display: block;
+    display: block;
 }
 .login_form_container.active .login_form{
-  display: none;
+    display: none;
 }
 .form_close{
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  color: #0b0217;
-  opacity: 0.7;
-  cursor: pointer;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    color: #0b0217;
+    opacity: 0.7;
+    cursor: pointer;
 }
 .login_form_container h2{
-  font-size: 22px;
-  color: #0b0217;
-  text-align: center;
+    font-size: 22px;
+    color: #0b0217;
+    text-align: center;
 }
 .input_box{
-  position: relative;
-  margin-top: 30px;
-  width: 100%;
-  height: 40px;
-  text-align: center;
+    position: relative;
+    margin-top: 30px;
+    width: 100%;
+    height: 40px;
+    text-align: center;
 }
 .input_box input{
     height: 100%;
@@ -216,15 +216,15 @@
     color: red;
     width: 100%;
 }
-.login_form a{
+.login_form_container a{
     color: #007bff;
     font-size: 12px;
 }
-.login_form a:hover{
+.login_form_container a:hover{
     text-decoration: underline;
 }
 
-.login_form .button{
+.login_form_container .button{
     background-color: #007bff;
     margin-top: 30px;
     width: 100%;

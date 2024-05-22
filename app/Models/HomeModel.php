@@ -8,8 +8,8 @@ class HomeModel{
     
     public function getUser($data){
         $this->db->query("SELECT * FROM users WHERE email = :email AND password = :password");
-        $this->db->bind(":email", $data["email"]);
-        $this->db->bind(":password", $data["password"]);
+        $this->db->bind(":email", $data["login_email"]);
+        $this->db->bind(":password", $data["login_password"]);
         $row = $this->db->record();
         return $row;
     }

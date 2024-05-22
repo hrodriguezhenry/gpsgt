@@ -21,7 +21,6 @@ const DB_CHARSET = "chartset=utf8";
 //Rutas de controladores de español a inglés
 const ROUTE_MAP = [
     "inicio" => "HomeController",
-    "ingresar" => "LoginController",
     "dashboard" => "DashboardController",
     "calendario" => "CalendarController",
     "clientes" => "CustomerController"

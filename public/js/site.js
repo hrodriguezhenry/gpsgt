@@ -1,6 +1,6 @@
 const formOpenBtn = document.querySelector("#form_open"),
     home = document.querySelector(".home"),
-    loginForm = document.querySelector(".login_form"),
+    loginForm = document.querySelector(".login_form_container"),
     formCloseBtn = document.querySelector(".form_close"),
     signupBtn = document.querySelector("#signup"),
     loginBtn = document.querySelector("#login"),

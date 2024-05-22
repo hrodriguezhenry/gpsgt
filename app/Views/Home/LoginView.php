@@ -9,11 +9,25 @@
                 <form action="<?php echo URL_ROUTE; ?>/inicio/ingresar" method="POST">
                     <h2>Inicio de Sesión</h2>
                     <div class="input_box">
-                        <input type="email" name="email" placeholder="Ingresa tu correo" required autocomplete="email" value="<?=$data["email"]; ?>">
+                        <input
+                            type="email"
+                            name="login_email"
+                            placeholder="Ingresa tu correo"
+                            required
+                            autocomplete="email"
+                            value="<?=$data["login_email"]; ?>"
+                        >
                         <i class='bx bx-envelope email'></i>
                     </div>
                     <div class="input_box">
-                        <input type="password" name="password" placeholder="Ingresa tu contraseña" required autocomplete="current-password" value="<?=$data["password"]; ?>">
+                        <input
+                            type="password"
+                            name="login_password"
+                            placeholder="Ingresa tu contraseña"
+                            required
+                            autocomplete="current-password"
+                            value="<?=$data["login_password"]; ?>"
+                        >
 						<i class='bx bx-lock-alt password'></i>
 						<i class="bx bx-show pw_hide"></i>
                     </div>
@@ -43,14 +57,14 @@
                 <form action="<?php echo URL_ROUTE; ?>/inicio/registrar" method="POST">
                     <h2>Registro</h2>
                     <div class="input_box duplicate_email">
-                        <input type="email" name="email" placeholder="Ingresa tu correo" required value="<?php echo $data["email"]; ?>">
+                        <input type="email" name="register_email" placeholder="Ingresa tu correo" required value="<?php echo $data["register_email"]; ?>">
                         <i class='bx bx-envelope email'></i>
                         <span>
                         <?php
                         if(isset($_SESSION["register_error"])){
                             echo '<script>document.addEventListener("DOMContentLoaded", function() {
                                     document.querySelector(".home").classList.add("show");
-                                    document.querySelector(".form_container").classList.add("active");});
+                                    document.querySelector(".login_form_container").classList.add("active");});
                                 </script>';
                             
                             echo 'Este usuario ya está registrado';
@@ -61,28 +75,44 @@
                         </span>
                     </div>
 					<div class="input_box">
-                        <input type="text" name="name" placeholder="Ingresa tu nombre" required value="<?php echo $data["email"]; ?>">
+                        <input type="text" name="register_first_name" placeholder="Ingresa tu nombre" required value="<?php echo $data["register_first_name"]; ?>">
                         <i class='bx bx-user-circle user_first_name'></i>
                     </div>
 					<div class="input_box">
-                        <input type="test" name="lastname" placeholder="Ingresa tu apellido" required value="<?php echo $data["lastname"]; ?>">
+                        <input type="test" name="register_last_name" placeholder="Ingresa tu apellido" required value="<?php echo $data["register_last_name"]; ?>">
                         <i class='bx bx-user user_last_name'></i>
                     </div>
 					<div class="input_box">
-                        <input type="text" name="phone" placeholder="Ingresa tu teléfono" required value="<?php echo $data["phone"]; ?>">
+                        <input type="text" name="register_phone" placeholder="Ingresa tu teléfono" required value="<?php echo $data["register_phone"]; ?>">
                         <i class='bx bx-phone phone'></i>
                     </div>
 					<div class="input_box">
-                        <input type="text" name="location" placeholder="Ingresa tu dirección" required value="<?php echo $data["location"]; ?>">
+                        <input type="text" name="register_address" placeholder="Ingresa tu dirección" required value="<?php echo $data["register_address"]; ?>">
 						<i class='bx bx-map direction'></i>
                     </div>
                     <div class="input_box">
-                        <input type="password" name="password" placeholder="Ingresa tu contraseña" required value="<?php echo $data["password"]; ?>">
+                        <input
+                            type="password"
+                            name="register_password"
+                            placeholder="Ingresa tu contraseña"
+                            minlength="8"
+                            pattern="(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                            title="Debe contener al menos un número, un carácter especial, una letra mayúscula, una letra minúscula y al menos 8 caracteres en total."
+                            required
+                            value="<?php echo $data["register_password"]; ?>">
                         <i class='bx bx-lock-alt password'></i>
 						<i class="bx bx-show pw_hide"></i>
                     </div>
                     <div class="input_box">
-                        <input type="password" name="cpassword" placeholder="Confirmar contraseña" required value="<?php echo $data["cpassword"]; ?>">
+                        <input
+                            type="password"
+                            name="register_confirm_password"
+                            placeholder="Confirmar contraseña"
+                            minlength="8"
+                            pattern="(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                            title="Debe contener al menos un número, un carácter especial, una letra mayúscula, una letra minúscula y al menos 8 caracteres en total."
+                            required
+                            value="<?php echo $data["register_confirm_password"]; ?>">
                         <i class='bx bx-lock-alt password'></i>
 						<i class="bx bx-show pw_hide"></i>
                     </div>

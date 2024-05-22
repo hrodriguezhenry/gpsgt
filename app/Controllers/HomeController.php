@@ -8,16 +8,24 @@ class HomeController extends Controllers{
         session_start();
 
         $data = [
-            "email" => "",
-            "lastname" => "",
-            "phone" => "",
-            "location" => "",
-            "password" => "",
-            "cpassword" => ""
+            "login_email" => "",
+            "login_password" => "",
+            "register_email" => "",
+            "register_first_name" => "",
+            "register_last_name" => "",
+            "register_phone" => "",
+            "register_address" => "",
+            "register_password" => "",
+            "register_confirm_password" => ""
         ];
 
         if(isset($_SESSION['form_data'])) {
-            $data = $_SESSION['form_data'];
+            foreach ($_SESSION['form_data'] as $key => $value) {
+                if (!empty($value)) {
+                    $data[$key] = $value;
+                }
+            }
+
             unset($_SESSION['form_data']);
         }
         $this->view("Home/HomeView", $data);
@@ -27,8 +35,8 @@ class HomeController extends Controllers{
         if($_SERVER["REQUEST_METHOD"] == "POST"){
             session_start();
             $data = [
-                "email" => trim($_POST["email"]),
-                "password" => trim($_POST["password"])
+                "login_email" => trim($_POST["login_email"]),
+                "login_password" => trim($_POST["login_password"])
             ];
 
             if($this->model->getUser($data)){
@@ -47,12 +55,13 @@ class HomeController extends Controllers{
             session_start();
             
             $data = [
-                "email" => trim($_POST["email"]),
-                "lastname" => trim($_POST["lastname"]),
-                "phone" => trim($_POST["phone"]),
-                "location" => trim($_POST["location"]),
-                "password" => trim($_POST["password"]),
-                "cpassword" => trim($_POST["cpassword"]),
+                "register_email" => trim($_POST["register_email"]),
+                "register_first_name" => trim($_POST["register_first_name"]),
+                "register_last_name" => trim($_POST["register_last_name"]),
+                "register_phone" => trim($_POST["register_phone"]),
+                "register_address" => trim($_POST["register_address"]),
+                "register_password" => trim($_POST["register_password"]),
+                "register_confirm_password" => trim($_POST["register_confirm_password"]),
             ];
 
             if($this->model->getUser($data)){
