@@ -39,9 +39,10 @@ class HomeController extends Controllers{
                 "login_password" => trim($_POST["login_password"])
             ];
 
-            if($this->model->getUser($data)){
+            if($this->model->getLoginUser($data)){
                 $_SESSION['loggedin'] = true;
-                redirect("/dashboard");
+                $view = $this->model->getLoginView($data);
+                redirect("/".$view->view);
             } else{
                 $_SESSION['loggedin_error'] = true;
                 $_SESSION['form_data'] = $data;
@@ -61,96 +62,29 @@ class HomeController extends Controllers{
                 "register_phone" => trim($_POST["register_phone"]),
                 "register_address" => trim($_POST["register_address"]),
                 "register_password" => trim($_POST["register_password"]),
-                "register_confirm_password" => trim($_POST["register_confirm_password"]),
+                "register_confirm_password" => trim($_POST["register_confirm_password"])
             ];
+            
+            $registerEmail = $this->model->getRegisterUser($data);
 
-            if($this->model->getUser($data)){
-                $_SESSION['loggedin'] = true;
-                redirect("");
-            } else{
-                $_SESSION['register_error'] = true;
+            if($registerEmail->email == $data["register_email"]){
+                $_SESSION['duplicate_email'] = true;
                 $_SESSION['form_data'] = $data;
                 redirect("");
-            }
-        }
-    }
-
-    public function insert(){
-        if($_SERVER["REQUEST_METHOD"] == "POST"){
-            $data = [
-                "name" => trim($_POST["name"]),
-                "email" => trim($_POST["email"]),
-                "phone" => trim($_POST["phone"]),
-            ];
-
-            if($this->model->insertUser($data)){
+            } else if($data["register_password"] != $data["register_confirm_password"]){
+                $_SESSION['distinct_password'] = true;
+                $_SESSION['form_data'] = $data;
                 redirect("");
             } else{
-                die("Algo salió mal");
-            }
-        } else {
-            $data = [
-                "name" => "",
-                "email" => "",
-                "telefono" => ""
-            ];
-
-            $this->view("Home/Insert", $data);
-        }
-    }
-
-    public function update($id){
-        if($_SERVER["REQUEST_METHOD"] == "POST"){
-            $data = [
-                "id" => $id,
-                "name" => trim($_POST["name"]),
-                "email" => trim($_POST["email"]),
-                "phone" => trim($_POST["phone"]),
-            ];
-
-            if($this->model->updateUser($data)){
-                redirect("");
-            } else{
-                die("Algo salió mal");
-            }
-        } else {
-            //Obtener informacion de usuario desde el modelo
-            $user = $this->model->getUserId($id);
-
-            $data = [
-                "id" => $user->id,
-                "name" => $user->name,
-                "email" => $user->email,
-                "phone" => $user->phone
-            ];
-
-            $this->view("Home/Update", $data);
-        }
-    }
-
-    public function delete($id){
-        $user = $this->model->getUserId($id);
-
-        $data = [
-            "id" => $user->id,
-            "name" => $user->name,
-            "email" => $user->email,
-            "phone" => $user->phone
-        ];
-
-        if($_SERVER["REQUEST_METHOD"] == "POST"){
-            $data = [
-                "id" => $id
-            ];
-
-            if($this->model->deleteUser($data)){
-                redirect("");
-            } else{
-                die("Algo salió mal");
+                if($this->model->insertUser($data)){
+                    $_SESSION['loggedin'] = true;
+                    $view = $this->model->getRegisterView($data);
+                    redirect("/".$view->view);
+                } else{
+                    die("Algo salió mal");
+                }
             }
         }
-
-        $this->view("Home/Delete", $data);
     }
 }
 ?>

@@ -57,11 +57,17 @@
                 <form action="<?php echo URL_ROUTE; ?>/inicio/registrar" method="POST">
                     <h2>Registro</h2>
                     <div class="input_box duplicate_email">
-                        <input type="email" name="register_email" placeholder="Ingresa tu correo" required value="<?php echo $data["register_email"]; ?>">
+                        <input
+                            type="email"
+                            name="register_email"
+                            placeholder="Ingresa tu correo"
+                            required
+                            value="<?php echo $data["register_email"]; ?>"
+                        >
                         <i class='bx bx-envelope email'></i>
                         <span>
                         <?php
-                        if(isset($_SESSION["register_error"])){
+                        if(isset($_SESSION["duplicate_email"])){
                             echo '<script>document.addEventListener("DOMContentLoaded", function() {
                                     document.querySelector(".home").classList.add("show");
                                     document.querySelector(".login_form_container").classList.add("active");});
@@ -75,19 +81,42 @@
                         </span>
                     </div>
 					<div class="input_box">
-                        <input type="text" name="register_first_name" placeholder="Ingresa tu nombre" required value="<?php echo $data["register_first_name"]; ?>">
+                        <input
+                            type="text"
+                            name="register_first_name"
+                            placeholder="Ingresa tu nombre"
+                            required
+                            value="<?php echo $data["register_first_name"]; ?>"
+                        >
                         <i class='bx bx-user-circle user_first_name'></i>
                     </div>
 					<div class="input_box">
-                        <input type="test" name="register_last_name" placeholder="Ingresa tu apellido" required value="<?php echo $data["register_last_name"]; ?>">
+                        <input
+                            type="test"
+                            name="register_last_name"
+                            placeholder="Ingresa tu apellido"
+                            required
+                            value="<?php echo $data["register_last_name"]; ?>"
+                        >
                         <i class='bx bx-user user_last_name'></i>
                     </div>
 					<div class="input_box">
-                        <input type="text" name="register_phone" placeholder="Ingresa tu teléfono" required value="<?php echo $data["register_phone"]; ?>">
+                        <input
+                            type="number"
+                            name="register_phone"
+                            placeholder="Ingresa tu teléfono"
+                            required
+                            value="<?php echo $data["register_phone"]; ?>"
+                        >
                         <i class='bx bx-phone phone'></i>
                     </div>
 					<div class="input_box">
-                        <input type="text" name="register_address" placeholder="Ingresa tu dirección" required value="<?php echo $data["register_address"]; ?>">
+                        <input
+                            type="text"
+                            name="register_address"
+                            placeholder="Ingresa tu dirección"
+                            required value="<?php echo $data["register_address"]; ?>"
+                        >
 						<i class='bx bx-map direction'></i>
                     </div>
                     <div class="input_box">
@@ -97,7 +126,7 @@
                             placeholder="Ingresa tu contraseña"
                             minlength="8"
                             pattern="(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}"
-                            title="Debe contener al menos un número, un carácter especial, una letra mayúscula, una letra minúscula y al menos 8 caracteres en total."
+                            title="Debe contener al menos un número, un carácter especial [!@#$%^&*], una letra mayúscula, una letra minúscula y al menos 8 caracteres en total."
                             required
                             value="<?php echo $data["register_password"]; ?>">
                         <i class='bx bx-lock-alt password'></i>
@@ -110,11 +139,27 @@
                             placeholder="Confirmar contraseña"
                             minlength="8"
                             pattern="(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}"
-                            title="Debe contener al menos un número, un carácter especial, una letra mayúscula, una letra minúscula y al menos 8 caracteres en total."
+                            title="Debe contener al menos un número, un carácter especial [!@#$%^&*], una letra mayúscula, una letra minúscula y al menos 8 caracteres en total."
                             required
                             value="<?php echo $data["register_confirm_password"]; ?>">
                         <i class='bx bx-lock-alt password'></i>
 						<i class="bx bx-show pw_hide"></i>
+                    </div>
+                    <div class="distinct_password">
+                        <span>
+                        <?php
+                        if(isset($_SESSION["distinct_password"])){
+                            echo '<script>document.addEventListener("DOMContentLoaded", function() {
+                                    document.querySelector(".home").classList.add("show");
+                                    document.querySelector(".login_form_container").classList.add("active");});
+                                </script>';
+
+                            echo 'Las contraseñas no coinciden';
+                            session_unset();
+                            session_destroy();
+                        }
+                        ?>
+                        </span>
                     </div>
                     <button class="button">Registrarme</button>
                     <div class="login_signup">¿Tienes una cuenta? <a href="#" id="login">Iniciar Sesión</a></div>

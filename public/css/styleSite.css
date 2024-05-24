@@ -216,6 +216,16 @@
     color: red;
     width: 100%;
 }
+.distinct_password{
+  margin-top: 14px;
+  display: flex;
+  text-align: center;
+}
+.distinct_password span{
+    font-size: 12px;
+    color: red;
+    width: 100%;
+}
 .login_form_container a{
     color: #007bff;
     font-size: 12px;

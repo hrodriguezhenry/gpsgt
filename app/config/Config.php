@@ -13,7 +13,7 @@ date_default_timezone_set('America/Guatemala');
 
 //Datos de conexión a la base de datos
 const DB_HOST = "localhost";
-const DB_NAME = "crud";
+const DB_NAME = "gpsgt";
 const DB_USER = "root";
 const DB_PASSWORD = "admin";
 const DB_CHARSET = "chartset=utf8";
