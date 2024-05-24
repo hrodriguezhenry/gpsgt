@@ -1,5 +1,5 @@
 	<section id="products" class="products">
-		<div class="container">
+		<div class="product_container">
 			<div class="section-header">
 				<h2>Nuestros Productos</h2>
 			</div>
