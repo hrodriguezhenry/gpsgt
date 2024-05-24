@@ -42,7 +42,7 @@
                 <!-- Menú de navegacion -->
                 <li class="nav_item">
                     <a href="#home" class="nav_link">Inicio</a>
-                    <a href="#gps-list" class="nav_link">Productos</a>
+                    <a href="#products" class="nav_link">Productos</a>
                     <a href="#booking" class="nav_link">Cita</a>
                     <a href="#footer" class="nav_link">Contacto</a>
                 </li>

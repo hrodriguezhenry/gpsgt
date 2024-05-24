@@ -249,6 +249,25 @@
 
 /* Inicio de Productos */
 
+
+.products{
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+}
+.products::before{
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 11;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.5s ease-in-out;
+}
+
+/* 
 .gps-list .single-gps-list-item .gps-list-img {
     background: #f1f2f3;
     display: -webkit-box;
@@ -299,7 +318,7 @@
   
   .gps-list .single-gps-list-item .gps-list-txt a:hover {
     background-color: #131a7f;
-  }
+  } */
 
   /* Boton de ver detalles */
   .gps-list .single-gps-list-item .welcome-btn {
