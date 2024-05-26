@@ -37,7 +37,7 @@
                         if(isset($_SESSION["loggedin_error"])){
                             echo '<script>
                                     document.addEventListener("DOMContentLoaded", function() {
-                                    document.querySelector(".home").classList.add("show");});
+                                    document.querySelector(".page").classList.add("show");});
                                 </script>';
                             
                             echo 'Contraseña o usuario incorrecto';
@@ -69,7 +69,7 @@
                         <?php
                         if(isset($_SESSION["duplicate_email"])){
                             echo '<script>document.addEventListener("DOMContentLoaded", function() {
-                                    document.querySelector(".home").classList.add("show");
+                                    document.querySelector(".page").classList.add("show");
                                     document.querySelector(".login_form_container").classList.add("active");});
                                 </script>';
                             

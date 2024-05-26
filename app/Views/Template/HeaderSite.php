@@ -28,7 +28,7 @@
 </head>
 <body>
 	<div class="background">
-		<img src="<?= URL_ROUTE; ?>/img/background.png" />
+		<img src="<?= URL_ROUTE; ?>/img/fondo.jpg" />
 	</div>
     <header class="header">
         <nav class="navigation">
@@ -52,3 +52,4 @@
             <button class="button" id="form_open">Iniciar Sesión</button>
         </nav>
     </header>
+    <div class="page">

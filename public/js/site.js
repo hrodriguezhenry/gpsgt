@@ -1,13 +1,20 @@
 const formOpenBtn = document.querySelector("#form_open"),
-    home = document.querySelector(".home"),
+    page = document.querySelector(".page"),
     loginForm = document.querySelector(".login_form_container"),
     formCloseBtn = document.querySelector(".form_close"),
     signupBtn = document.querySelector("#signup"),
     loginBtn = document.querySelector("#login"),
     pwShowHide = document.querySelectorAll(".pw_hide");
 
-formOpenBtn.addEventListener("click", () => home.classList.add("show"));
-formCloseBtn.addEventListener("click", () => home.classList.remove("show"));
+formOpenBtn.addEventListener("click", () => {
+    page.classList.add("show");
+    document.body.style.overflow = 'hidden'; // Desactivar el scroll
+});
+
+formCloseBtn.addEventListener("click", () => {
+    page.classList.remove("show");
+    document.body.style.overflow = 'auto'; // Reactivar el scroll
+});
 
 pwShowHide.forEach((icon) => {
     icon.addEventListener("click", () =>{
