@@ -108,8 +108,6 @@ html{
 /* Espacio de desplazamiento en la parte superior de las secciones */
 section {
 	scroll-margin-top: 80px; 
-}
-section{
     min-height: 100vh;
     padding: 0px 5%;
 }
@@ -308,7 +306,7 @@ section{
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: #feeee7;
+    background: #ffffff;
     padding: 20px;
     border-radius: 0.5rem;
 }
@@ -319,20 +317,22 @@ section{
 .product_content_img img{
     width: 100%;
     height: 100%;
+	transform: rotate(270deg);
 }
-.product_content h2{
-    font-size: 1.4rem;
-    color: var(--colorFondo);
+.product_content h1{
+    font-size: 1.5rem;
+	font-weight: 600;
+    color: #000000;
 }
-.product_content h3{
+.product_content ul{
     color: var(--colorFondo);
     font-size: 1rem;
     font-weight: 400;
     margin: 4px 0 10px;
 }
 .product_content span{
-    font-size: var(--fuente-p);
-    color: var(--colorPrincipal);
+    font-size: 1rem;
+    color:#007bff;
     font-weight: bold;
 }
 
