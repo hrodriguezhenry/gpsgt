@@ -1,4 +1,17 @@
     <section id="home" class="home">
+        
+        <div class="home_text">
+            <h1>GPSgt Protegiendo tu Vehículo</h1>
+            <p>Nos especializamos en la instalación de dispositivos GPS en vehículos terrestres y marinos, 
+                garantizando una instalación precisa y confiable, brindando a 
+                nuestros clientes tranquilidad y control sobre sus activos en cualquier entorno.
+            </p>
+        </div>
+
+        <div class="background">
+            <img src="<?= URL_ROUTE; ?>/img/b.svg" />
+        </div>
+
         <div class="login_form_container">
 			<i class='bx bx-x form_close'></i>
 

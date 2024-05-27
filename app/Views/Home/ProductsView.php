@@ -1,3 +1,41 @@
+	<section class="products" id="products">
+        <div class="products_title">
+            <h1>Nuestros Productos</h1>
+        </div>
+
+        <div class="products_content">
+            <div class="product_content">
+                <div class="product_content_img">
+                    <img src="<?= URL_ROUTE; ?>/img/S06A.jpg">
+                </div>
+
+                <h2>Hamburguesa de pollo</h2>
+                <h3>Comida Sabrosa</h3>
+                <span>$14.00</span>
+            </div>
+
+            <div class="product_content">
+                <div class="product_content_img">
+                    <img src="<?= URL_ROUTE; ?>/img/s5l.jpg">
+                </div>
+
+                <h2>Hamburguesa Especial</h2>
+                <h3>Comida Sabrosa</h3>
+                <span>$11.00</span>
+            </div>
+
+            <div class="product_content">
+                <div class="product_content_img">
+                    <img src="<?= URL_ROUTE; ?>/img/r12l.jpg">
+                </div>
+
+                <h2>Pollo Frito</h2>
+                <h3>Comida Sabrosa</h3>
+                <span>$18.00</span>
+            </div>
+        </div>
+    </section>
+
 	<section id="products" class="products">
 		<div class="product_container">
 			<div class="products_header">

@@ -27,9 +27,6 @@
     <title><?= SITE_NAME; ?></title>
 </head>
 <body>
-	<div class="background">
-		<img src="<?= URL_ROUTE; ?>/img/fondo.jpg" />
-	</div>
     <header class="header">
         <nav class="navigation">
 
