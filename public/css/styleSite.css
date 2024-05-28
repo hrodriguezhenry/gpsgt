@@ -9,10 +9,6 @@
 	font-size:16px;
 	margin:0;
 }
-/* Bloqueo de scroll x en html */
-html{
-    overflow-x: hidden;
-}
 /* Tamaño de la barra de scroll */
 ::-webkit-scrollbar{
     width: 0px;
@@ -291,6 +287,7 @@ section {
 	padding-top: 20px;
 	font-size: 40px;
     color:#007bff;
+	font-weight: 700;
 }
 .products_content{
     display: grid;
@@ -300,129 +297,42 @@ section {
 }
 .product_content{
     position: relative;
-    margin-top: 4rem;
-    height: auto;
+    margin-top: 2rem;
+    min-height: 680px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     background: #ffffff;
-    padding: 20px;
+    padding: 8px;
     border-radius: 0.5rem;
 }
+.product_content:hover{
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+	transition: all 0.8s ease;
+	transform: scale(1.05);
+}
 .product_content_img{
-    width: 400px;
-    height: 400px;
+    max-width: 400px;
+    height: 200px;
 }
 .product_content_img img{
     width: 100%;
     height: 100%;
-	transform: rotate(270deg);
 }
 .product_content h1{
     font-size: 1.5rem;
 	font-weight: 600;
     color: #000000;
 }
-.product_content ul{
-    color: var(--colorFondo);
-    font-size: 1rem;
-    font-weight: 400;
-    margin: 4px 0 10px;
+.product_content li{
+    font-size: 0.9rem;
+	color:#818998;
 }
 .product_content span{
-    font-size: 1rem;
+    font-size: 1.5rem;
     color:#007bff;
     font-weight: bold;
 }
-
-/* Inicio de Productos */
-
-.products{
-	position: relative;
-	min-height: 100vh;
-	width: 100%;
-}
-.products_header{
-	padding-top: 80px;
-	text-align: center;
-}
-
-
-.products .single-gps-list-item .gps-list-img {
-background: #f1f2f3;
-display: -webkit-box;
-display: -ms-flexbox;
-display: flex;
--webkit-box-pack: center;
--ms-flex-pack: center;
-justify-content: center;
--webkit-box-align: center;
--ms-flex-align: center;
-align-items: center;
-}
-
-.products .single-gps-list-item .gps-list-img img{
-width: 100%;
--webkit-transition: all .2s;
-transition: all .2s;
-}
-
-.products .single-gps-list-item .gps-list-txt h2 {
-color: #ffffff;
-margin-bottom: 50px;
-}
-
-.products .single-gps-list-item .gps-list-txt h1 {
-font-size: 3.5rem;
-font-weight: bold;
-margin-bottom: 15px;
-}
-
-.products .single-gps-list-item .gps-list-txt p {
-font-size: 20px;
-font-weight: bold;
-text-align: center;
-}
-
-.products .single-gps-list-item .gps-list-txt a {
-display: inline-block;
-padding: 10px 25px;
-background-color: #007bff;
-color: #ffffff;
-border-radius: 45px;
--webkit-transition: all 0.3s;
-transition: all 0.3s;
-border: none;
-margin-top: 10px;
-}
-
-.products .single-gps-list-item .gps-list-txt a:hover {
-background-color: #131a7f;
-}
-
-/* Boton de ver detalles */
-.products .single-gps-list-item .welcome-btn {
-display: flex;
-margin: 0 auto;
-justify-content: center;
-padding: 8px 30px;
-background-color: #131a7f;
-color: #ffffff;
-border-radius: 45px;
--webkit-transition: all 0.3s;
-transition: all 0.3s;
-border: none;
-margin-top: 50px
-}
-
-.products .single-gps-list-item .welcome-btn:hover {
-background-color: #3d4a5a;
-}
-/* Fin de Boton de ver detalles */
-
-/* Fin de productos */
-
 
 /* Inicio de agenda de citas */
 
