@@ -334,7 +334,23 @@ section {
     font-weight: bold;
 }
 
+/* ------------------------------------------------ */
+/* Seccción Cita */
+/* ------------------------------------------------ */
+.booking{
+    text-align: center;
+}
+.booking_title h1{
+	padding-top: 20px;
+	font-size: 40px;
+    color:#007bff;
+	font-weight: 700;
+}
+
 /* Inicio de agenda de citas */
+
+
+
 
 .book_section {
 position: relative;
