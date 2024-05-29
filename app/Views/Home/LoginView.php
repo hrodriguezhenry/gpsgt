@@ -9,7 +9,7 @@
         </div>
 
         <div class="background">
-            <img src="<?= URL_ROUTE; ?>/img/b.svg" />
+            <img src="<?= URL_ROUTE; ?>/img/h.png" />
         </div>
 
         <div class="login_form_container">

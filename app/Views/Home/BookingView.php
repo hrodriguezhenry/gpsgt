@@ -1,113 +1,69 @@
-<section class="booking" id="booking">
+	<section class="booking" id="booking">
         <div class="booking_title">
             <h1>Agendar Cita</h1>
         </div>
 
-        <div class="products_content">
-            <div class="product_content">
-                <div class="product_content_img">
-                    <img src="<?= URL_ROUTE; ?>/img/S06A.jpg">
-                </div>
+		<div class="booking_form_container">
+			<form action="#" class="booking_form">
+				<div class="booking_form_column">
+					<div class="booking_form_input_box">
+						<label>Nombre</label>
+						<input type="text" placeholder="Ingresa tu nombre" required>
+					</div>
 
-                <h1>GPS 3G</h1>
-				<ul>
-					<li>Rastreo en tiempo Real</li>
-					<li>Apagado remoto</li>
-					<li>Monitoreo de velocidad </li>
-					<li>Monitoreo de rutas</li>
-					<li>Alarma ACC on/off</li>
-					<li>Alarma de exceso de velocidad</li>
-					<li>Alarma de batería baja</li>
-					<li>Micrófono espía</li>
-					<li>Geo cercas</li>
-					<li>Botón de pánico</li>
-					<li>Batería de Respaldo Interna (5 Horas)</li>
-					<li>Control de mantenimiento del Vehículo<br> por kilometraje</li>
-					<li>Voltaje de Batería del Vehículo</li>
-				</ul>
-                <span>Q650.00</span>
-            </div>
-        </div>
-    </section>
-
-	<section id="booking1" class="book_section layout_padding">
-		<div class="container">
-		<div class="heading_container">
-			<br>
-			<br>
-			<br>
-			<br>
-			<h2>
-			Agendar una Cita
-			</h2>
-		</div>
-		<div class="row">
-			<div class="col-md-6">
-				<div class="form_container_cita">
-				<form action="">
-					<div>
-						<input type="text" class="form-control" placeholder="Nombre y Apellido" />
+					<div class="booking_form_input_box">
+						<label>Apellido</label>
+						<input type="text" placeholder="Ingresa tu apellido" required>
 					</div>
-					<div>
-						<input type="text" class="form-control" placeholder="Numero Telefonico" />
-					</div>
-					<div>
-						<input type="email" class="form-control" placeholder="Correo Electronico" />
-					</div>
-					<div>
-						<select class="form-control nice-select wide">
-						<option value="" disabled selected>
-							¿Que dispositivo Desea Adquirir?
-						</option>
-						<option value="">
-							GPS 3G
-						</option>
-						<option value="">
-							GPS 4G
-						</option>
-						<option value="">
-							GPS 4G Para Motocicleta
-						</option>
-						</select>
-					</div>
-					<div>
-						<select class="form-control nice-select wide">
-						<option value="" disabled selected>
-							¿Cuantos Dipositivos Desea Adquirir?
-						</option>
-						<option value="">
-							1
-						</option>
-						<option value="">
-							2
-						</option>
-						<option value="">
-							3
-						</option>
-						<option value="">
-							4
-						</option>
-						<option value="">
-							5
-						</option>
-						</select>
-					</div>
-					<div>
-						<input type="date" class="form-control">
-					</div>
-					<div class="btn_box">
-						<button>
-						Agendar
-						</button>
-					</div>
-				</form>
-			</div>
 				</div>
-			</div>
+					
+				<div class="booking_form_column">
+					<div class="booking_form_input_box">
+						<label>Correo Electrónico</label>
+						<input type="email" placeholder="Ingresa tu correo electrónico" required>
+					</div>
+
+					<div class="booking_form_input_box">
+						<label>Número de Teléfono</label>
+						<input type="number" placeholder="Ingresa tu número de teléfono" required>
+					</div>
+				</div>
+				<div class="booking_form_column">
+					<div class="booking_form_input_box">
+						<label>Dispositivo</label>
+						<div class="booking_form_select_box">
+							<select>
+								<option hidden>Escoge el dispositivo a adquirir</option>
+								<option>GPS3G</option>
+								<option>GPS4G</option>
+								<option>GPS4G Motocicleta</option>
+							</select>
+						</div>
+					</div>
+
+					<div class="booking_form_input_box">
+						<label>Cantidad</label>
+						<input type="number" placeholder="Ingresa la cantidad de dispositivos" required>
+					</div>
+				</div>
+
+				<div class="booking_form_input_box">
+					<label>Dirección</label>
+					<input type="text" placeholder="Ingresa la dirección de instalación">
+				</div>
+
+				<div class="booking_form_column">
+					<div class="booking_form_input_box">
+						<label>Fecha a Reservar</label>
+						<input type="date" required>
+					</div>
+				</div>
+
+				<div class="booking_form_button">
+					<button type="submit">Enviar</button>
+				</div>
+			</form>
 		</div>
-		<br>
-		<br>
-		<br>
 	</section>
 
 	<section>
