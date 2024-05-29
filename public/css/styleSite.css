@@ -354,13 +354,13 @@ section {
 }
 .booking_content{
 	display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, auto));
+    grid-template-columns: 1fr 1fr;
     gap: 2rem;
     align-items: center;
 }
 .booking_form_container{
 	padding-top: 2rem;
-    min-height: 750px;
+    max-height: 700px;
     width: 100%;
     border-radius: 8px;
     background: #fff;
