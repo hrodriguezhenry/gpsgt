@@ -9,7 +9,7 @@
         </div>
 
         <div class="background">
-            <img src="<?= URL_ROUTE; ?>/img/h.png" />
+            <img src="<?= URL_ROUTE; ?>/img/background.png" />
         </div>
 
         <div class="login_form_container">
@@ -69,11 +69,34 @@
             <div class="form signup_form">
                 <form action="<?php echo URL_ROUTE; ?>/inicio/registrar" method="POST">
                     <h2>Registro</h2>
+                    <div class="input_box">
+                        <input
+                            type="text"
+                            name="register_first_name"
+                            placeholder="Ingresa tu nombre"
+                            maxlength="50"
+                            required
+                            value="<?php echo $data["register_first_name"]; ?>"
+                        >
+                        <i class='bx bx-user-circle user_first_name'></i>
+                    </div>
+                    <div class="input_box">
+                        <input
+                            type="test"
+                            name="register_last_name"
+                            placeholder="Ingresa tu apellido"
+                            maxlength="50"
+                            required
+                            value="<?php echo $data["register_last_name"]; ?>"
+                        >
+                        <i class='bx bx-user user_last_name'></i>
+                    </div>
                     <div class="input_box duplicate_email">
                         <input
                             type="email"
                             name="register_email"
                             placeholder="Ingresa tu correo"
+                            maxlength="100"
                             required
                             value="<?php echo $data["register_email"]; ?>"
                         >
@@ -95,29 +118,11 @@
                     </div>
 					<div class="input_box">
                         <input
-                            type="text"
-                            name="register_first_name"
-                            placeholder="Ingresa tu nombre"
-                            required
-                            value="<?php echo $data["register_first_name"]; ?>"
-                        >
-                        <i class='bx bx-user-circle user_first_name'></i>
-                    </div>
-					<div class="input_box">
-                        <input
-                            type="test"
-                            name="register_last_name"
-                            placeholder="Ingresa tu apellido"
-                            required
-                            value="<?php echo $data["register_last_name"]; ?>"
-                        >
-                        <i class='bx bx-user user_last_name'></i>
-                    </div>
-					<div class="input_box">
-                        <input
                             type="number"
                             name="register_phone"
                             placeholder="Ingresa tu teléfono"
+                            min="00000000"
+                            max="99999999"
                             required
                             value="<?php echo $data["register_phone"]; ?>"
                         >
@@ -128,6 +133,7 @@
                             type="text"
                             name="register_address"
                             placeholder="Ingresa tu dirección"
+                            maxlength="100"
                             required value="<?php echo $data["register_address"]; ?>"
                         >
 						<i class='bx bx-map direction'></i>

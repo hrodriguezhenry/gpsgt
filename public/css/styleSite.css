@@ -341,10 +341,10 @@ section {
 /* ------------------------------------------------ */
 /* Seccción Cita */
 /* ------------------------------------------------ */
-.booking{
+.reservation{
     justify-content: center;
 }
-.booking_title h1{
+.reservation_title h1{
 	padding-top: 20px;
 	font-size: 40px;
     color:#007bff;
@@ -352,13 +352,13 @@ section {
 	padding-bottom: 2rem;
 	text-align: center;
 }
-.booking_content{
+.reservation_content{
 	display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
     align-items: center;
 }
-.booking_form_container{
+.reservation_form_container{
 	padding-top: 2rem;
     max-height: 700px;
     width: 100%;
@@ -367,15 +367,15 @@ section {
 	padding: 25px;
 	margin: 0 auto;
 }
-.booking_form_input_box{
+.reservation_form_input_box{
     width: 100%;
     margin-top: 20px;
 }
-.booking_form_input_box label{
+.reservation_form_input_box label{
     color: #333;
 	text-align: left;
 }
-.booking_form :where(.booking_form_input_box input, .booking_form_select_box){
+.reservation_form :where(.reservation_form_input_box input, .reservation_form_select_box){
     position: relative;
     height: 50px;
     width: 100%;
@@ -387,14 +387,14 @@ section {
     border-radius: 6px;
     padding: 0 15px;
 }
-.booking_form_input_box input:focus{
+.reservation_form_input_box input:focus{
 	border-color: #007bff;
 }
-.booking_form_column{
+.reservation_form_column{
     display: flex;
     column-gap: 15px;
 }
-.booking_form_select_box select{
+.reservation_form_select_box select{
     height: 100%;
     width: 100%;
     outline: none;
@@ -402,10 +402,10 @@ section {
     color: #000;
     font-size: 1rem;
 }
-.booking_form_button{
+.reservation_form_button{
     text-align: center;
 }
-.booking_form_button button{
+.reservation_form_button button{
 	background-color: #007bff;
 	margin-top: 30px;
     height: 55px;
@@ -417,11 +417,11 @@ section {
     color: #fff;
     font-size: 19px;
 }
-.booking_map{
+.reservation_map{
 	border: none;
 }
 
-.booking_map iframe {
+.reservation_map iframe {
 	width: 100%; /* Ancho del iframe */
 	height: 700px; /* Altura del iframe */
 	border: 2px solid #ccc; /* Borde del iframe */
