@@ -352,9 +352,15 @@ section {
 	padding-bottom: 2rem;
 	text-align: center;
 }
+.booking_content{
+	display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, auto));
+    gap: 2rem;
+    align-items: center;
+}
 .booking_form_container{
 	padding-top: 2rem;
-    max-width: 750px;
+    min-height: 750px;
     width: 100%;
     border-radius: 8px;
     background: #fff;
@@ -411,20 +417,18 @@ section {
     color: #fff;
     font-size: 19px;
 }
+.booking_map{
+	border: none;
+}
+
+.booking_map iframe {
+	width: 100%; /* Ancho del iframe */
+	height: 700px; /* Altura del iframe */
+	border: 2px solid #ccc; /* Borde del iframe */
+	border-radius: 8px; /* Radio del borde */
+}
 
 /*Fin de agenda de citas*/
-
-/* Inicio de Mapa*/
-
-.map {
-position: relative;
-}
-
-.map{
-filter: drop-shadow(100%);
-}
-
-/* Fin de Mapa*/
 
 
 /* inicio del pie de la pagina */
