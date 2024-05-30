@@ -106,6 +106,7 @@ section {
 	scroll-margin-top: 80px; 
     min-height: 100vh;
     padding: 0px 5%;
+	margin-bottom: 50px;
 }
 
 /* ------------------------------------------------ */
@@ -113,8 +114,6 @@ section {
 /* ------------------------------------------------ */
 .home{
 	position: relative;
-	min-height: 100vh;
-	width: 100%;
     display: grid;
     grid-template-columns: 2fr 4fr;
     gap: 1.5rem;
@@ -243,7 +242,6 @@ section {
 .login_form_container a:hover{
 	text-decoration: underline;
 }
-
 .login_form_container .button{
 	background-color: #007bff;
 	margin-top: 30px;
@@ -256,18 +254,18 @@ section {
 	text-align: center;
 	margin-top: 15px;
 }
-.home_text{
+.home_title{
 	padding: 40px;
 }
-.home_text h1{
-	font-size: 52px;
+.home_title h1{
+	font-size: 56px;
     color:#007bff;
-	font-weight: 700;
+	font-weight: 600;
 }
-.home_text p{
+.home_title p{
     font-size: 1.30rem;
 	color:#818998;
-    margin: 1rem 0 2rem;
+    margin: 16px 0;
 }
 .background{
 	text-align: center;
@@ -290,18 +288,17 @@ section {
 	padding-top: 20px;
 	font-size: 40px;
     color:#007bff;
-	font-weight: 700;
+	font-weight: 600;
+	padding-bottom: 2rem;
 	text-align: center;
 }
 .products_content{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(400px, auto));
     gap: 2rem;
-    align-items: center;
 }
 .product_content{
     position: relative;
-    margin-top: 2rem;
     min-height: 680px;
     display: flex;
     flex-direction: column;
@@ -335,7 +332,7 @@ section {
 .product_content span{
     font-size: 1.5rem;
     color:#007bff;
-    font-weight: bold;
+    font-weight: 600;
 }
 
 /* ------------------------------------------------ */
@@ -348,20 +345,20 @@ section {
 	padding-top: 20px;
 	font-size: 40px;
     color:#007bff;
-	font-weight: 700;
+	font-weight: 600;
 	padding-bottom: 2rem;
 	text-align: center;
 }
 .reservation_content{
 	display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(650px, auto));
     gap: 2rem;
     align-items: center;
 }
 .reservation_form_container{
-	padding-top: 2rem;
-    max-height: 700px;
+    min-height: 700px;
     width: 100%;
+	max-width: 850px;
     border-radius: 8px;
     background: #fff;
 	padding: 25px;
@@ -419,36 +416,143 @@ section {
 }
 .reservation_map{
 	border: none;
-}
+	max-height: 700px;
+	padding: 25px;
+	background-color: #fff;
+	border-radius: 8px;
+	width: 100%;
+	max-width: 850px;
+	margin: 0 auto;
+	text-align: center;
 
+}
 .reservation_map iframe {
 	width: 100%; /* Ancho del iframe */
-	height: 700px; /* Altura del iframe */
-	border: 2px solid #ccc; /* Borde del iframe */
-	border-radius: 8px; /* Radio del borde */
+	max-width: 800px;
+	height: 650px; /* Altura del iframe */
+	border: 2px solid #707070; /* Borde del iframe */
+	
 }
 
-/*Fin de agenda de citas*/
-
-
-/* inicio del pie de la pagina */
-
-.footer_section {
-background-color: #007bff;
-color: #ffffff;
-padding: 75px 0 40px 0;
-text-align: center;
+/* ------------------------------------------------ */
+/* Seccción Contacto */
+/* ------------------------------------------------ */
+.contact{
+    justify-content: center;
+	min-height: auto;
+}
+.contact_title h1{
+	padding-top: 20px;
+	font-size: 40px;
+    color:#007bff;
+	font-weight: 600;
+	padding-bottom: 2rem;
+	text-align: center;
+}
+.contact_map{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	border: none;
+	height: 350px;
+	padding: 25px;
+	background-color: #fff;
+	border-radius: 8px;
+	width: 90%;
+	margin: 0 auto;
+	text-align: center;
+	/* justify-content: center; */
+}
+.contact_map h2{
+	margin-bottom: 0; /*Efecto de Boostrap*/
+    font-size: 24px;
+	font-weight: 600;
+    color: #000000;
+	margin-bottom: 10px;
+}
+.contact_map iframe {
+	width: 100%; /* Ancho del iframe */
+	height: calc(100% - 40px); /* Altura del iframe */
+	border: 2px solid #707070; /* Borde del iframe */
 }
 
-.footer_section h4 {
+.footer_section, .footer{
+	background-color: #007bff;
+	color: #ffffff;
+	padding: 45px;
+}
+
+
+
+.contenidoFinal{
+    display: flex;
+    flex-wrap: wrap;
+}
+.links{
+    width: 25%;
+}
+.links h4{
+    font-size: 1.2rem;
+    color: var(--colorPrincipal);
+    margin-bottom: 25px;
+    position: relative;
+}
+.links h4::before{
+    content: " ";
+    position: absolute;
+    font-size: 1.2rem;
+    color: var(--colorTexto);
+    height: 2px;
+    width: 50px;
+    left: 0;
+    bottom: -8px;
+    background-color: var(--colorPrincipal);
+}
+.links ul li:not(:last-child){
+    margin-bottom: 15px;
+}
+.links ul li a{
+    color: #fff;
+    font-size: 1.1rem;
+    display: block;
+    transition: 0.4s;
+    font-weight: 600;
+}
+.links ul li a:hover{
+    color: var(--colorTexto);
+    transform: translateX(-10px);
+}
+.links .redes{
+    width: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.links .redes a{
+    height: 40px;
+    width: 40px;
+    background-color: var(--colorPrincipal);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    border-radius: 50%;
+    transition: 0.4s;
+}
+.links .redes a:hover{
+    transform: scale(1.2);
+    color: var(--colorFondo);
+    background: var(--colorTexto);
+}
+
+
+/* 
+
+.footer_section h2,
+.footer_logo {
 font-size: 28px;
-}
-
-.footer_section h4,
-.footer_section .footer-logo {
 font-weight: 600;
-margin-bottom: 20px;
-font-family: 'Dancing Script', cursive;
+padding-bottom: 20px;
 }
 
 .footer_section p {
@@ -480,14 +584,6 @@ margin-right: 5px;
 
 .footer_section .footer_contact .contact_link_box a:hover {
 color: #ffbe33;
-}
-
-.footer_section .footer-logo {
-display: block;
-font-weight: bold;
-font-size: 38px;
-line-height: 1;
-color: #ffffff;
 }
 
 .footer_section .footer_social {
@@ -537,4 +633,4 @@ margin: 0;
 
 .footer_section .footer-info p a {
 color: inherit;
-}
+} */

@@ -8,12 +8,13 @@ const formOpenBtn = document.querySelector("#form_open"),
 
 formOpenBtn.addEventListener("click", () => {
     page.classList.add("show");
-    document.body.style.overflow = 'hidden'; // Desactivar el scroll
+    document.body.style.overflow = 'hidden'; // Activar el scroll
 });
 
 formCloseBtn.addEventListener("click", () => {
     page.classList.remove("show");
-    document.body.style.overflow = 'auto'; // Reactivar el scroll
+    loginForm.classList.remove("active");
+    document.body.style.overflow = 'auto'; // Desactivar el scroll
 });
 
 pwShowHide.forEach((icon) => {

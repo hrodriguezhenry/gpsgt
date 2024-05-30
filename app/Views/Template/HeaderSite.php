@@ -19,7 +19,7 @@
 	<link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css" />
 
 	<!-- Ruta de archivo boostrap css -->
-    <link rel="stylesheet" href="<?= URL_ROUTE; ?>/css/bootstrap.css" />
+    <!-- <link rel="stylesheet" href="<?= URL_ROUTE; ?>/css/bootstrap.css" /> -->
 
     <!-- Ruta del icono de GPSgt -->
     <link rel="shortcut icon" href="<?= URL_ROUTE; ?>/img/favicon.ico" />
@@ -41,7 +41,7 @@
                     <a href="#home" class="nav_link">Inicio</a>
                     <a href="#products" class="nav_link">Productos</a>
                     <a href="#reservation" class="nav_link">Cita</a>
-                    <a href="#footer" class="nav_link">Contacto</a>
+                    <a href="#contact" class="nav_link">Contacto</a>
                 </li>
             </ul>
 

@@ -1,6 +1,6 @@
     <section id="home" class="home">
         
-        <div class="home_text">
+        <div class="home_title">
             <h1>GPSgt Protegiendo tu Vehículo</h1>
             <p>Nos especializamos en la instalación de dispositivos GPS en vehículos terrestres y marinos, 
                 garantizando una instalación precisa y confiable, brindando a 
@@ -49,8 +49,10 @@
                         <?php
                         if(isset($_SESSION["loggedin_error"])){
                             echo '<script>
-                                    document.addEventListener("DOMContentLoaded", function() {
-                                    document.querySelector(".page").classList.add("show");});
+                                        document.addEventListener("DOMContentLoaded", function() {
+                                        document.querySelector(".page").classList.add("show");
+                                        document.body.style.overflow = "hidden";
+                                    });
                                 </script>';
                             
                             echo 'Contraseña o usuario incorrecto';
@@ -105,8 +107,10 @@
                         <?php
                         if(isset($_SESSION["duplicate_email"])){
                             echo '<script>document.addEventListener("DOMContentLoaded", function() {
-                                    document.querySelector(".page").classList.add("show");
-                                    document.querySelector(".login_form_container").classList.add("active");});
+                                        document.querySelector(".page").classList.add("show");
+                                        document.querySelector(".login_form_container").classList.add("active");
+                                        document.body.style.overflow = "hidden";
+                                    });
                                 </script>';
                             
                             echo 'Este usuario ya está registrado';
@@ -168,9 +172,11 @@
                         <span>
                         <?php
                         if(isset($_SESSION["distinct_password"])){
-                            echo '<script>document.addEventListener("DOMContentLoaded", function() {
-                                    document.querySelector(".home").classList.add("show");
-                                    document.querySelector(".login_form_container").classList.add("active");});
+                                echo '<script>document.addEventListener("DOMContentLoaded", function() {
+                                        document.querySelector(".home").classList.add("show");
+                                        document.querySelector(".login_form_container").classList.add("active");
+                                        document.body.style.overflow = "hidden";
+                                    });
                                 </script>';
 
                             echo 'Las contraseñas no coinciden';
