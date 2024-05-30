@@ -9,60 +9,51 @@
 		</div>
 	</section>
 	
-	<footer id="footer" class="footer_section footer">
-		<div class="container">
-			<div class="contenidoFinal">
-                <div class="links">
-                    <h4>Contáctanos</h4>
+	<footer id="footer" class="footer">
+		<div class="footer_container">
+			<div class="footer_links">
+				<h2>Contáctanos</h2>
 
-                    <ul>
-                        <li>
-							<a href="">
-								<i class="fa fa-map-marker" aria-hidden="true"></i>
-								<span>1ra Avenida D 1-69</span>
-							</a>
-						</li>
-                        <li>
-							<a href="">
-								<i class="fa fa-phone" aria-hidden="true"></i>
-								<span>+502 4149-9466</span>
-					  		</a>
-						</li>
-                        <li>
-							<a href="">
-								<i class="fa fa-envelope" aria-hidden="true"></i>
-								<span>henryestuardo115@gmail.com</span>
-					  		</a>
-						</li>
-                    </ul>
-                </div>
+				<ul>
+					<li>
+						<i class="fa fa-map-marker contact_icon" aria-hidden="true"></i>
+						<span>1ra Avenida D 1-69</span>
+					</li>
+					<li>
+						<a href="https://wa.link/n3d0b0">
+							<i class="fa fa-phone contact_icon" aria-hidden="true"></i>
+							<span>+502 4149-9466</span>
+						</a>
+					</li>
+					<li>
+						<a href="mailto:henryestuardo115@gmail.com">
+							<i class="fa fa-envelope contact_icon" aria-hidden="true"></i>
+							<span>henryestuardo115@gmail.com</span>
+						</a>
+					</li>
+				</ul>
+			</div>
 
-                <div class="links">
-					<a href="" class="footer_logo">GPSgt</a>
-                    <p>Protegiendo tu Vehículo</p>
-					<div class="footer_social">
-					  	<a href=""><i class="fa fa-facebook" aria-hidden="true"></i></a>
-					  	<a href=""><i class="fa fa-twitter" aria-hidden="true"></i></a>
-					  	<a href=""><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-					  	<a href=""><i class="fa fa-instagram" aria-hidden="true"></i></a>
-					  	<a href=""><i class="fa fa-pinterest" aria-hidden="true"></i></a>
-					</div>
-                </div>
+			<div class="footer_links">
+				<h2>Nuestras Redes</h2>
+				<div class="social_network">
+					<a href="https://www.facebook.com/profile.php?id=100083505482965"><i class="fa fa-facebook"></i></a>
+					<a href=""><i class="fa fa-twitter"></i></a>
+					<a href=""><i class="fa fa-linkedin"></i></a>
+					<a href=""><i class="fa fa-instagram"></i></a>
+					<a href=""><i class="fa fa-pinterest" ></i></a>
+				</div>
+			</div>
 
-                <div class="links">
-					<h4>Horario de Atención</h4>
-					<p>Lunes a Domingo</p>
-					<p>10:00am - 4:00pm</p>
-                </div>
-                
-            </div>
+			<div class="footer_links">
+				<h2>Horario de Atención</h2>
+				<p>Lunes a Domingo</p>
+				<p>10:00am - 4:00pm</p>
+			</div>
 		</div>
 
-		<div class="footer-info">
-			<p>
-				<span id="displayYear"></span>© Copyright 2024 GPS GT
-				<a href="https://html.design/">Todos los Derechos Reservados</a>
-			</p>
+		<div class="footer_copyright">
+			<p>© Copyright 2024 GPSgt<br>Todos los Derechos Reservados</p>
 		</div>
 	</footer>
     <script type="text/javascript" src="<?= URL_ROUTE; ?>/js/site.js"></script>
