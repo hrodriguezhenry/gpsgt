@@ -116,9 +116,9 @@ class HomeController extends Controllers{
         }
     }
 
-    public function hours(){
-        if (isset($_GET['reservation_date'])){
-            $data["date"] = $_GET['reservation_date'];
+    public function hours($date){
+        if (isset($date)){
+            $data["date"] = $date;
             $data["hours"] = $this->model->getAvailableHour($data);
             // Preparar la respuesta como un array
             $response = [];

@@ -10,6 +10,8 @@
                 <div class="title">
                     <i class='bx bx-calendar'></i>
                     <span class="text">Calendario</span>
+                    <input id="calendar_start_date" type="date" value="<?= date("Y-m-d");?>">
+                    <input id="calendar_end_date" type="date" value="<?= date("Y-m-d");?>">
                 </div>
             </div>
             <div class="activity">
@@ -17,148 +19,60 @@
                     <table>
                         <thead>
                             <tr>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Joined</th>
-                                <th>Type</th>
-                                <th>Status</th>
+                                <th>Nombre</th>
+                                <th>Correo</th>
+                                <th>Teléfono</th>
+                                <th>Dirección</th>
+                                <th>Producto</th>
+                                <th>Hora</th>
+                                <th>Fecha</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td>Prem Shahi</td>
                                 <td>premshahi@gmail.com</td>
+                                <td>54573864</td>
+                                <td>Boca del Monte</td>
+                                <td>GPS3G</td>
+                                <td>10:00am</td>
                                 <td>2022-02-12</td>
-                                <td>New</td>
-                                <td>Linked</td>
                             </tr>
                             <tr>
                                 <td>Prem Shahi</td>
                                 <td>premshahi@gmail.com</td>
+                                <td>54573864</td>
+                                <td>Boca del Monte</td>
+                                <td>GPS3G</td>
+                                <td>10:00am</td>
                                 <td>2022-02-12</td>
-                                <td>New</td>
-                                <td>Linked</td>
                             </tr>
                             <tr>
                                 <td>Prem Shahi</td>
                                 <td>premshahi@gmail.com</td>
+                                <td>54573864</td>
+                                <td>Boca del Monte</td>
+                                <td>GPS3G</td>
+                                <td>10:00am</td>
                                 <td>2022-02-12</td>
-                                <td>New</td>
-                                <td>Linked</td>
                             </tr>
                             <tr>
                                 <td>Prem Shahi</td>
                                 <td>premshahi@gmail.com</td>
+                                <td>54573864</td>
+                                <td>Boca del Monte</td>
+                                <td>GPS3G</td>
+                                <td>10:00am</td>
                                 <td>2022-02-12</td>
-                                <td>New</td>
-                                <td>Linked</td>
                             </tr>
                             <tr>
                                 <td>Prem Shahi</td>
                                 <td>premshahi@gmail.com</td>
+                                <td>54573864</td>
+                                <td>Boca del Monte</td>
+                                <td>GPS3G</td>
+                                <td>10:00am</td>
                                 <td>2022-02-12</td>
-                                <td>New</td>
-                                <td>Linked</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="activity-data">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Joined</th>
-                                <th>Type</th>
-                                <th>Status</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Prem Shahi</td>
-                                <td>premshahi@gmail.com</td>
-                                <td>2022-02-12</td>
-                                <td>New</td>
-                                <td>Linked</td>
-                            </tr>
-                            <tr>
-                                <td>Prem Shahi</td>
-                                <td>premshahi@gmail.com</td>
-                                <td>2022-02-12</td>
-                                <td>New</td>
-                                <td>Linked</td>
-                            </tr>
-                            <tr>
-                                <td>Prem Shahi</td>
-                                <td>premshahi@gmail.com</td>
-                                <td>2022-02-12</td>
-                                <td>New</td>
-                                <td>Linked</td>
-                            </tr>
-                            <tr>
-                                <td>Prem Shahi</td>
-                                <td>premshahi@gmail.com</td>
-                                <td>2022-02-12</td>
-                                <td>New</td>
-                                <td>Linked</td>
-                            </tr>
-                            <tr>
-                                <td>Prem Shahi</td>
-                                <td>premshahi@gmail.com</td>
-                                <td>2022-02-12</td>
-                                <td>New</td>
-                                <td>Linked</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="activity-data">
-                    <table class="activity-data">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Joined</th>
-                                <th>Type</th>
-                                <th>Status</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Prem Shahi</td>
-                                <td>premshahi@gmail.com</td>
-                                <td>2022-02-12</td>
-                                <td>New</td>
-                                <td>Linked</td>
-                            </tr>
-                            <tr>
-                                <td>Prem Shahi</td>
-                                <td>premshahi@gmail.com</td>
-                                <td>2022-02-12</td>
-                                <td>New</td>
-                                <td>Linked</td>
-                            </tr>
-                            <tr>
-                                <td>Prem Shahi</td>
-                                <td>premshahi@gmail.com</td>
-                                <td>2022-02-12</td>
-                                <td>New</td>
-                                <td>Linked</td>
-                            </tr>
-                            <tr>
-                                <td>Prem Shahi</td>
-                                <td>premshahi@gmail.com</td>
-                                <td>2022-02-12</td>
-                                <td>New</td>
-                                <td>Linked</td>
-                            </tr>
-                            <tr>
-                                <td>Prem Shahi</td>
-                                <td>premshahi@gmail.com</td>
-                                <td>2022-02-12</td>
-                                <td>New</td>
-                                <td>Linked</td>
                             </tr>
                         </tbody>
                     </table>

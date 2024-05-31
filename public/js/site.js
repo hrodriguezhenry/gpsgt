@@ -57,7 +57,7 @@ document.querySelectorAll('.nav_link').forEach(anchor => {
 
 date.addEventListener('change', (event) => {
     let selectedDate = event.target.value;
-    fetch('/gpsgt/inicio/horas?reservation_date=' + selectedDate)
+    fetch('/gpsgt/inicio/horas/' + selectedDate)
         .then(response => response.json()) // Cambiar a response.json()
         .then(data => {
             // Limpiar las opciones anteriores
