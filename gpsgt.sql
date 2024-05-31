@@ -1,6 +1,6 @@
 -- --------------------------------------------------------
--- Host:                         localhost
--- Versión del servidor:         8.0.36 - MySQL Community Server - GPL
+-- Host:                         127.0.0.1
+-- Versión del servidor:         8.0.33 - MySQL Community Server - GPL
 -- SO del servidor:              Win64
 -- HeidiSQL Versión:             12.7.0.6850
 -- --------------------------------------------------------
@@ -35,7 +35,8 @@ CREATE TABLE IF NOT EXISTS `product` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Volcando datos para la tabla gpsgt.product: ~0 rows (aproximadamente)
+-- Volcando datos para la tabla gpsgt.product: ~3 rows (aproximadamente)
+DELETE FROM `product`;
 INSERT INTO `product` (`id`, `name`, `active`, `created_at`, `created_by`, `updated_at`, `updated_by`, `deleted_at`, `deleted_by`) VALUES
 	(1, 'GPS3G', 1, '2024-05-29 10:37:49', 1, '2024-05-29 10:37:49', 1, NULL, NULL),
 	(2, 'GPS4G', 1, '2024-05-29 10:37:58', 1, '2024-05-29 10:37:58', 1, NULL, NULL),
@@ -45,24 +46,61 @@ INSERT INTO `product` (`id`, `name`, `active`, `created_at`, `created_by`, `upda
 DROP TABLE IF EXISTS `reservation`;
 CREATE TABLE IF NOT EXISTS `reservation` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
-  `first_name` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
-  `last_name` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
-  `email` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
+  `first_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `last_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `email` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `phone_number` int unsigned NOT NULL,
   `address` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `product_id` int unsigned NOT NULL,
   `product_quantity` int unsigned NOT NULL,
-  `event_id` int unsigned NOT NULL DEFAULT '1',
+  `reservation_hour_id` int unsigned DEFAULT NULL,
+  `reservation_date` date NOT NULL,
   `created_at` datetime NOT NULL DEFAULT (now()),
   `created_by` int NOT NULL DEFAULT '1',
   `updated_at` datetime NOT NULL DEFAULT (now()) ON UPDATE CURRENT_TIMESTAMP,
   `updated_by` int NOT NULL DEFAULT '1',
   `deleted_at` datetime DEFAULT NULL,
   `deleted_by` int unsigned DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  PRIMARY KEY (`id`),
+  KEY `fk_reservation_product` (`product_id`),
+  CONSTRAINT `fk_reservation_product` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Volcando datos para la tabla gpsgt.reservation: ~0 rows (aproximadamente)
+-- Volcando datos para la tabla gpsgt.reservation: ~8 rows (aproximadamente)
+DELETE FROM `reservation`;
+INSERT INTO `reservation` (`id`, `first_name`, `last_name`, `email`, `phone_number`, `address`, `product_id`, `product_quantity`, `reservation_hour_id`, `reservation_date`, `created_at`, `created_by`, `updated_at`, `updated_by`, `deleted_at`, `deleted_by`) VALUES
+	(1, 'Henry', 'Rodríguez', 'hrodriguezhenry@gmail.com', 54573864, '2 Calle 1-25 Zona 8, San Miguel Petapa, Guatemala', 1, 1, 1, '2024-05-30', '2024-05-30 18:37:19', 1, '2024-05-30 18:37:19', 1, NULL, NULL),
+	(2, 'Henry', 'Rodriguez', 'hrodriguezhenry@gmail.com', 54573864, 'Lote 144 La Linea', 1, 2, 2, '2024-05-31', '2024-05-30 18:49:36', 1, '2024-05-30 18:49:36', 1, NULL, NULL),
+	(3, 'Henry', 'Rodriguez', 'hrodriguezhenry@gmail.com', 54573864, 'Lote 144 La Linea', 2, 4, 2, '2024-05-30', '2024-05-30 18:56:15', 1, '2024-05-30 18:56:15', 1, NULL, NULL),
+	(4, 'Henry', 'Rodríguez', 'hrodriguezhenry@gmail.com', 54573864, '2 Calle 1-25 Zona 8, San Miguel Petapa, Guatemala', 3, 5, 1, '2024-06-01', '2024-05-30 18:57:51', 1, '2024-05-30 21:14:59', 1, NULL, NULL),
+	(5, 'Henry', 'Rodríguez', 'hrodriguezhenry@gmail.com', 54573864, '2 Calle 1-25 Zona 8, San Miguel Petapa, Guatemala', 3, 5, 2, '2024-06-01', '2024-05-30 18:58:00', 1, '2024-05-30 21:15:01', 1, NULL, NULL),
+	(6, 'Henry', 'Rodríguez', 'hrodriguezhenry@gmail.com', 54573864, '2 Calle 1-25 Zona 8, San Miguel Petapa, Guatemala', 3, 5, 3, '2024-06-01', '2024-05-30 18:58:00', 1, '2024-05-30 21:15:02', 1, NULL, NULL),
+	(7, 'Henry', 'Rodríguez', 'hrodriguezhenry@gmail.com', 54573864, '2 Calle 1-25 Zona 8, San Miguel Petapa, Guatemala', 3, 5, 4, '2024-06-01', '2024-05-30 18:58:00', 1, '2024-05-30 21:15:03', 1, NULL, NULL),
+	(8, 'Henry', 'Rodríguez', 'hrodriguezhenry@gmail.com', 54573864, '2 Calle 1-25 Zona 8, San Miguel Petapa, Guatemala', 3, 5, 5, '2024-06-01', '2024-05-30 18:58:00', 1, '2024-05-30 21:45:58', 1, NULL, NULL);
+
+-- Volcando estructura para tabla gpsgt.reservation_hour
+DROP TABLE IF EXISTS `reservation_hour`;
+CREATE TABLE IF NOT EXISTS `reservation_hour` (
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `active` int unsigned NOT NULL DEFAULT '1',
+  `created_at` datetime NOT NULL DEFAULT (now()),
+  `created_by` int unsigned NOT NULL DEFAULT '1',
+  `updated_at` datetime NOT NULL DEFAULT (now()) ON UPDATE CURRENT_TIMESTAMP,
+  `updated_by` int unsigned NOT NULL DEFAULT '1',
+  `deleted_at` datetime DEFAULT NULL,
+  `deleted_by` int DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Volcando datos para la tabla gpsgt.reservation_hour: ~5 rows (aproximadamente)
+DELETE FROM `reservation_hour`;
+INSERT INTO `reservation_hour` (`id`, `name`, `active`, `created_at`, `created_by`, `updated_at`, `updated_by`, `deleted_at`, `deleted_by`) VALUES
+	(1, '10:00am', 1, '2024-05-30 17:29:44', 1, '2024-05-30 17:29:44', 1, NULL, NULL),
+	(2, '11:30am', 1, '2024-05-30 17:29:44', 1, '2024-05-30 17:30:06', 1, NULL, NULL),
+	(3, '01:00pm', 1, '2024-05-30 17:29:44', 1, '2024-05-30 17:30:12', 1, NULL, NULL),
+	(4, '02:30pm', 1, '2024-05-30 17:29:44', 1, '2024-05-30 17:30:21', 1, NULL, NULL),
+	(5, '04:00pm', 1, '2024-05-30 17:29:44', 1, '2024-05-30 17:30:21', 1, NULL, NULL);
 
 -- Volcando estructura para tabla gpsgt.role
 DROP TABLE IF EXISTS `role`;
@@ -83,6 +121,7 @@ CREATE TABLE IF NOT EXISTS `role` (
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Volcando datos para la tabla gpsgt.role: ~2 rows (aproximadamente)
+DELETE FROM `role`;
 INSERT INTO `role` (`id`, `view_id`, `name`, `active`, `created_at`, `created_by`, `updated_at`, `updated_by`, `deleted_at`, `deleted_by`) VALUES
 	(1, 1, 'administrador', 1, '2024-05-21 19:00:41', 1, '2024-05-21 19:00:41', 1, NULL, NULL),
 	(2, 2, 'usuario', 1, '2024-05-23 18:05:01', 1, '2024-05-23 18:05:14', 1, NULL, NULL);
@@ -111,6 +150,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Volcando datos para la tabla gpsgt.user: ~2 rows (aproximadamente)
+DELETE FROM `user`;
 INSERT INTO `user` (`id`, `rol_id`, `first_name`, `last_name`, `email`, `phone_number`, `password`, `address`, `active`, `created_at`, `created_by`, `updated_at`, `updated_by`, `deleted_at`, `deleted_by`) VALUES
 	(1, 1, 'Administrador', '', 'admin@gpsgt', NULL, '487edeab14b06207ea401d488a42a9d8c4f58b5661e43ff4f7630ef266f3452e', NULL, 1, '2024-05-21 19:02:10', 1, '2024-05-23 19:29:02', 1, NULL, NULL),
 	(2, 2, 'Henry', 'Rodríguez', 'hrodriguezhenry@gmail.com', 54573864, '487edeab14b06207ea401d488a42a9d8c4f58b5661e43ff4f7630ef266f3452e', 'Villa Canales', 1, '2024-05-23 19:42:32', 1, '2024-05-23 19:43:01', 1, NULL, NULL);
@@ -131,6 +171,7 @@ CREATE TABLE IF NOT EXISTS `view` (
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Volcando datos para la tabla gpsgt.view: ~2 rows (aproximadamente)
+DELETE FROM `view`;
 INSERT INTO `view` (`id`, `name`, `active`, `created_at`, `created_by`, `updated_at`, `updated_by`, `deleted_at`, `deleted_by`) VALUES
 	(1, 'dashboard', 1, '2024-05-21 18:59:55', 1, '2024-05-21 19:00:00', 1, NULL, NULL),
 	(2, 'usuario', 1, '2024-05-23 18:04:24', 1, '2024-05-23 18:04:24', 1, NULL, NULL);

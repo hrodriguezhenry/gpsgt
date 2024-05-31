@@ -23,5 +23,12 @@ class Controllers{
     public function view($view, $data = []){
         require_once("../App/Views/".$view.".php");
     }
+
+    // Destructor para cerrar la conexión
+    public function __destruct() {
+        if(isset($this->model)) {
+            $this->model->closeConnection();
+        }
+    }
 }
 ?>

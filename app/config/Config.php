@@ -23,12 +23,15 @@ const ROUTE_MAP = [
     "inicio" => "HomeController",
     "dashboard" => "DashboardController",
     "calendario" => "CalendarController",
-    "clientes" => "CustomerController"
+    "clientes" => "CustomerController",
+    "pruebas" => "TestController"
 ];
 
 //Rutas de métodos de español a inglés
 const ROUTE_METHOD_MAP = [
     "ingresar" => "login",
-    "registrar" => "register"
+    "registrar" => "register",
+    "agendar" => "reservation",
+    "horas" => "hours"
 ];
 ?>

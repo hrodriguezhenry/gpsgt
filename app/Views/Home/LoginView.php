@@ -7,7 +7,6 @@
                 nuestros clientes tranquilidad y control sobre sus activos en cualquier entorno.
             </p>
         </div>
-
         <div class="background">
             <img src="<?= URL_ROUTE; ?>/img/background.png" />
         </div>

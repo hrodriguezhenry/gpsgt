@@ -86,5 +86,57 @@ class HomeController extends Controllers{
             }
         }
     }
+
+    public function reservation(){
+        if($_SERVER["REQUEST_METHOD"] == "POST"){
+            $data = [
+                "reservation_first_name" => trim($_POST["reservation_first_name"]),
+                "reservation_last_name" => trim($_POST["reservation_last_name"]),
+                "reservation_email" => trim($_POST["reservation_email"]),
+                "reservation_phone_number" => trim($_POST["reservation_phone_number"]),
+                "reservation_product" => trim($_POST["reservation_product"]),
+                "reservation_product_quantity" => trim($_POST["reservation_product_quantity"]),
+                "reservation_address" => trim($_POST["reservation_address"]),
+                "reservation_date" => trim($_POST["reservation_date"]),
+                "reservation_hour" => trim($_POST["reservation_hour"])
+            ];
+            
+            $productId = $this->model->getProduct($data);
+            $reservationHourId = $this->model->getReservationHour($data);
+
+            $data["product_id"] = $productId->id;
+            $data["reservation_hour_id"] = $reservationHourId->id;
+
+
+            if($this->model->insertReservation($data)){
+                redirect("");
+            } else{
+                die("Algo salió mal");
+            }
+        }
+    }
+
+    public function hours(){
+        if (isset($_GET['reservation_date'])){
+            $data["date"] = $_GET['reservation_date'];
+            $data["hours"] = $this->model->getAvailableHour($data);
+            // Preparar la respuesta como un array
+            $response = [];
+    
+            if ($data["hours"]) {
+                // Agregar cada hora disponible al array
+                foreach ($data["hours"] as $hour) {
+                    $response[] = htmlspecialchars($hour->reservation_hour);
+                }
+            } else {
+                // Si no hay horas disponibles, agregar un mensaje al array
+                $response[] = 'Horario no disponible';
+            }
+    
+            // Devolver la respuesta como un JSON
+            header('Content-Type: application/json');
+            echo json_encode($response);
+        }
+    }
 }
 ?>

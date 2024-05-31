@@ -4,17 +4,19 @@ const formOpenBtn = document.querySelector("#form_open"),
     formCloseBtn = document.querySelector(".form_close"),
     signupBtn = document.querySelector("#signup"),
     loginBtn = document.querySelector("#login"),
-    pwShowHide = document.querySelectorAll(".pw_hide");
+    pwShowHide = document.querySelectorAll(".pw_hide"),
+    date = document.querySelector('#reservation_date'),
+    hour = document.querySelectorAll('#reservation_hour')[0];
 
 formOpenBtn.addEventListener("click", () => {
     page.classList.add("show");
-    document.body.style.overflow = 'hidden'; // Activar el scroll
+    document.body.style.overflow = 'hidden'; // Desactivar el scroll
 });
 
 formCloseBtn.addEventListener("click", () => {
     page.classList.remove("show");
     loginForm.classList.remove("active");
-    document.body.style.overflow = 'auto'; // Desactivar el scroll
+    document.body.style.overflow = 'auto'; // Activar el scroll
 });
 
 pwShowHide.forEach((icon) => {
@@ -51,4 +53,22 @@ document.querySelectorAll('.nav_link').forEach(anchor => {
             behavior: 'smooth' // Desplazamiento suave
         });
     });
+});
+
+date.addEventListener('change', (event) => {
+    let selectedDate = event.target.value;
+    fetch('/gpsgt/inicio/horas?reservation_date=' + selectedDate)
+        .then(response => response.json()) // Cambiar a response.json()
+        .then(data => {
+            // Limpiar las opciones anteriores
+            hour.innerHTML = '';
+            
+            // Iterar sobre las opciones del JSON y agregarlas al select
+            data.forEach(option => {
+                const optionElement = document.createElement('option');
+                optionElement.textContent = option;
+                hour.appendChild(optionElement);
+            });
+        })
+        .catch(error => console.error('Error:', error));
 });
