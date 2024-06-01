@@ -2,7 +2,7 @@
     <section class="admin-section">
         <div class="top">
             <i class='bx bx-menu sidebar-toggle'></i>
-            <span>Henry Rodriguez</span>
+            <span><?= $_SESSION["user_name"]; ?></span>
         </div>
 
         <div class="dash-content">

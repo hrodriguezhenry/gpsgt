@@ -8,7 +8,7 @@ class HomeModel{
     
     public function getLoginUser($data){
         $this->db->query(
-            "SELECT *
+            "SELECT CONCAT(first_name, ' ', last_name) AS user_name
             FROM user
             WHERE deleted_at IS NULL
             AND active = 1

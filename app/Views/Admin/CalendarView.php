@@ -2,7 +2,7 @@
     <section class="admin-section">
         <div class="top">
             <i class='bx bx-menu sidebar-toggle'></i>
-            <span>Henry Rodriguez</span>
+            <span><?= $_SESSION["user_name"]; ?></span>
         </div>
 
         <div class="dash-content">
@@ -16,7 +16,7 @@
             </div>
             <div class="activity">
                 <div class="activity-data">
-                    <table>
+                    <table id="calendar_table">
                         <thead>
                             <tr>
                                 <th>Nombre</th>
@@ -29,51 +29,6 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Prem Shahi</td>
-                                <td>premshahi@gmail.com</td>
-                                <td>54573864</td>
-                                <td>Boca del Monte</td>
-                                <td>GPS3G</td>
-                                <td>10:00am</td>
-                                <td>2022-02-12</td>
-                            </tr>
-                            <tr>
-                                <td>Prem Shahi</td>
-                                <td>premshahi@gmail.com</td>
-                                <td>54573864</td>
-                                <td>Boca del Monte</td>
-                                <td>GPS3G</td>
-                                <td>10:00am</td>
-                                <td>2022-02-12</td>
-                            </tr>
-                            <tr>
-                                <td>Prem Shahi</td>
-                                <td>premshahi@gmail.com</td>
-                                <td>54573864</td>
-                                <td>Boca del Monte</td>
-                                <td>GPS3G</td>
-                                <td>10:00am</td>
-                                <td>2022-02-12</td>
-                            </tr>
-                            <tr>
-                                <td>Prem Shahi</td>
-                                <td>premshahi@gmail.com</td>
-                                <td>54573864</td>
-                                <td>Boca del Monte</td>
-                                <td>GPS3G</td>
-                                <td>10:00am</td>
-                                <td>2022-02-12</td>
-                            </tr>
-                            <tr>
-                                <td>Prem Shahi</td>
-                                <td>premshahi@gmail.com</td>
-                                <td>54573864</td>
-                                <td>Boca del Monte</td>
-                                <td>GPS3G</td>
-                                <td>10:00am</td>
-                                <td>2022-02-12</td>
-                            </tr>
                         </tbody>
                     </table>
                 </div>

@@ -39,8 +39,11 @@ class HomeController extends Controllers{
                 "login_password" => trim($_POST["login_password"])
             ];
 
-            if($this->model->getLoginUser($data)){
+            $user = $this->model->getLoginUser($data);
+
+            if($user){
                 $_SESSION['loggedin'] = true;
+                $_SESSION['user_name'] = $user->user_name;
                 $view = $this->model->getLoginView($data);
                 redirect("/".$view->view);
             } else{

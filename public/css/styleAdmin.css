@@ -55,13 +55,13 @@ body.dark{
 }
 /* Tamaño de la barra de scroll */
 ::-webkit-scrollbar{
-    width: 8px;
-    height: 8px;
+    width: 0px;
+    height: 0px;
 }
-::-webkit-scrollbar:hover{
+/* ::-webkit-scrollbar:hover{
     width: 80px;
     height: 80px;
-}
+} */
 /* Color de fondo de la barra de scroll */
 ::-webkit-scrollbar-track{
     background: var(--scrollbar-background-color);
@@ -362,6 +362,11 @@ nav.close ~ .admin-section .top{
 .dash-content .activity-data{
     padding: 20px;
 }
+.activity-data{
+    width: 100%;
+    overflow-X: scroll;
+    white-space: nowrap;
+}
 .dash-content .activity table{
     width: 100%;
 }
@@ -376,8 +381,11 @@ nav.close ~ .admin-section .top{
 
 .dash-content .activity table th{
     font-weight: bold;
-    font-size: 20px;
-    
+    font-size: 20px
+}
+.activity table td a{
+    font-weight: bold;
+    font-size: 20px
 }
 
 @media (max-width: 1000px) {
@@ -425,11 +433,6 @@ nav.close ~ .admin-section .top{
         left: 270px;
         width: calc(100% - 290px);
     }
-    .activity-data{
-        width: 100%;
-        overflow-X: scroll;
-        white-space: nowrap;
-    }
 }
 @media (max-width: 780px) {
     .dash-content .boxes .box{
@@ -441,6 +444,10 @@ nav.close ~ .admin-section .top{
     }
 }
 @media (max-width: 560px) {
+    ::-webkit-scrollbar{
+        width: 0px;
+        height: 0px;
+    }
     nav{
         width: 0px;
         padding: 0px;

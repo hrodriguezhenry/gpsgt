@@ -4,6 +4,9 @@ const nav = document.querySelector('nav');
 const sidebarToggle = document.querySelector('.sidebar-toggle');
 const closeIcon = document.querySelector(".close-icon");
 const navLinks = document.querySelectorAll('.nav-links a');
+const starDate = document.querySelector('#calendar_start_date');
+const endDate = document.querySelector('#calendar_end_date');
+const calendarTable = document.querySelector('#calendar_table tbody');
 
 let getMode = localStorage.getItem("mode");
 if(getMode && getMode ==="dark"){
@@ -74,3 +77,48 @@ navLinks.forEach((navLink) => {
         localStorage.setItem("clickedIndex", clickedIndex);
     });
 });
+
+function fetchAndPopulateTable() {
+    let selectStartDate = starDate.value;
+    let selectEndDate = endDate.value;
+
+    fetch(urlBase+'/calendario/clientes/' + selectStartDate + '/' + selectEndDate)
+        .then(response => response.json())
+        .then(data => {
+            // Limpiar las filas anteriores
+            calendarTable.innerHTML = '';
+
+            // Iterar sobre las opciones del JSON y agregarlas a la tabla
+            data.forEach(item => {
+                const row = calendarTable.insertRow();
+                row.insertCell(0).textContent = item.customer_name;
+                row.insertCell(1).textContent = item.email;
+                row.insertCell(2).textContent = item.phone_number;
+                row.insertCell(3).textContent = item.address;
+                row.insertCell(4).textContent = item.product;
+                row.insertCell(5).textContent = item.hour_reservation;
+                row.insertCell(6).textContent = item.reservation_date;
+
+                const editCell = row.insertCell(7);
+                const editLink = document.createElement('a');
+                editLink.href = `http://localhost/gpsgt/calendario`;
+                editLink.textContent = 'Editar';
+                editLink.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    alert('Editar usuario con ID: '+ 1);
+                });
+                editCell.appendChild(editLink);
+
+                const deleteCell = row.insertCell(8);
+                const deleteLink = document.createElement('a');
+                deleteLink.href = `http://localhost/gpsgt/calendario`;
+                deleteLink.textContent = 'Borrar';
+                deleteCell.appendChild(deleteLink);
+            });
+        })
+        .catch(error => console.error('Error:', error));
+}
+
+window.addEventListener('load', fetchAndPopulateTable);
+starDate.addEventListener('change', fetchAndPopulateTable);
+endDate.addEventListener('change', fetchAndPopulateTable);

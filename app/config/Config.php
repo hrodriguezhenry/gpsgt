@@ -32,6 +32,7 @@ const ROUTE_METHOD_MAP = [
     "ingresar" => "login",
     "registrar" => "register",
     "agendar" => "reservation",
-    "horas" => "hours"
+    "horas" => "hours",
+    "clientes" => "customers"
 ];
 ?>

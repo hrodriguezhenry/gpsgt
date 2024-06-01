@@ -2,7 +2,7 @@
     <section class="admin-section">
         <div class="top">
             <i class='bx bx-menu sidebar-toggle'></i>
-            <span>Henry Rodriguez</span>
+            <span><?= $_SESSION["user_name"]; ?></span>
         </div>
 
         <div class="dash-content">
@@ -17,11 +17,13 @@
                     <table>
                         <thead>
                             <tr>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Joined</th>
-                                <th>Type</th>
-                                <th>Status</th>
+                            <th>Nombre</th>
+                                <th>Correo</th>
+                                <th>Teléfono</th>
+                                <th>Dirección</th>
+                                <th>Producto</th>
+                                <th>Hora</th>
+                                <th>Fecha</th>
                             </tr>
                         </thead>
                         <tbody>

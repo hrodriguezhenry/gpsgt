@@ -20,13 +20,13 @@
 						<span>1ra Avenida D 1-69</span>
 					</li>
 					<li>
-						<a href="https://wa.link/n3d0b0">
+						<a href="https://wa.link/n3d0b0" target="_blank">
 							<i class="fa fa-phone contact_icon" aria-hidden="true"></i>
 							<span>+502 4149-9466</span>
 						</a>
 					</li>
 					<li>
-						<a href="mailto:henryestuardo115@gmail.com">
+						<a href="mailto:henryestuardo115@gmail.com" target="_blank">
 							<i class="fa fa-envelope contact_icon" aria-hidden="true"></i>
 							<span>henryestuardo115@gmail.com</span>
 						</a>
@@ -37,7 +37,7 @@
 			<div class="footer_links">
 				<h2>Nuestras Redes</h2>
 				<div class="social_network">
-					<a href="https://www.facebook.com/profile.php?id=100083505482965"><i class="fa fa-facebook"></i></a>
+					<a href="https://www.facebook.com/profile.php?id=100083505482965" target="_blank"><i class="fa fa-facebook"></i></a>
 					<a href=""><i class="fa fa-twitter"></i></a>
 					<a href=""><i class="fa fa-linkedin"></i></a>
 					<a href=""><i class="fa fa-instagram"></i></a>
@@ -56,6 +56,9 @@
 			<p>© Copyright 2024 GPSgt<br>Todos los Derechos Reservados</p>
 		</div>
 	</footer>
+	<script>
+     	const urlBase = "<?= URL_ROUTE; ?>";
+    </script>
     <script type="text/javascript" src="<?= URL_ROUTE; ?>/js/site.js"></script>
 </body>
 </html>
