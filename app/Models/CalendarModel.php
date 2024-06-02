@@ -8,12 +8,13 @@ class CalendarModel{
 
     public function getCustomers($data){
         $this->db->query(
-            "SELECT CONCAT(r.first_name, ' ', r.last_name) AS customer_name,
+            "SELECT r.id,
+                CONCAT(r.first_name, ' ', r.last_name) AS customer_name,
                 r.email,
                 r.phone_number,
                 r.address,
                 p.`name` AS product,
-                rh.`name` AS hour_reservation,
+                rh.`name` AS reservation_hour,
                 r.reservation_date
             FROM reservation AS r
             INNER JOIN product AS p
@@ -34,7 +35,119 @@ class CalendarModel{
         $row = $this->db->records();
         return $row;
     }
+
+    public function getCustomer($data){
+        $this->db->query(
+            "SELECT r.id,
+                r.first_name,
+                r.last_name,
+                r.email,
+                r.phone_number,
+                r.address,
+                p.`name` AS product,
+                r.product_quantity,
+                rh.`name` AS reservation_hour,
+                r.reservation_date
+            FROM reservation AS r
+            INNER JOIN product AS p
+            ON r.product_id = p.id
+            INNER JOIN reservation_hour AS rh
+            ON r.reservation_hour_id = rh.id
+            WHERE r.deleted_at IS NULL
+            AND p.deleted_at IS NULL
+            AND rh.deleted_at IS NULL
+            AND r.id = :id
+            LIMIT 1;"
+        );
+
+        $this->db->bind(":id", $data["id"]);
+        $row = $this->db->record();
+        return $row;
+    }
     
+    public function getAvailableHour($data){
+        $this->db->query(
+            "SELECT rh.`name` AS reservation_hour
+            FROM reservation_hour AS rh
+            WHERE rh.`active` = 1
+            AND rh.deleted_at IS NULL
+            AND NOT EXISTS (
+                SELECT 1
+                FROM reservation AS r
+                WHERE r.reservation_hour_id = rh.id
+                AND r.deleted_at IS NULL
+                AND r.reservation_date = :date
+            );"
+        );
+
+        $this->db->bind(":date", $data["date"]);
+        $row = $this->db->records();
+        return $row;
+    }
+
+    public function getProduct($data){
+        $this->db->query(
+            "SELECT p.id
+            FROM product AS p
+            WHERE p.`active` = 1
+            AND p.deleted_at IS NULL
+            AND p.`name` = :product
+            LIMIT 1;"
+        );
+
+        $this->db->bind(":product", $data["update_product"]);
+        $row = $this->db->record();
+        return $row;
+    }
+
+    public function getReservationHour($data){
+        $this->db->query(
+            "SELECT rh.id
+            FROM reservation_hour AS rh
+            WHERE rh.`active` = 1
+            AND rh.deleted_at IS NULL
+            AND rh.`name` = :hour
+            LIMIT 1;"
+        );
+
+        $this->db->bind(":hour", $data["update_hour"]);
+        $row = $this->db->record();
+        return $row;
+    }
+
+    public function updateReservation($data){
+        $this->db->query(
+            "UPDATE reservation
+            SET first_name = :first_name,
+            last_name = :last_name,
+            email = :email,
+            phone_number = :phone_number,
+            product_id = :product_id,
+            product_quantity = :product_quantity,
+            address = :address,
+            reservation_date = :date,
+            reservation_hour_id = :hour_id
+            WHERE id = :id;"
+        );
+
+        $this->db->bind(":id", $data["update_id"]);
+        $this->db->bind(":first_name", $data["update_first_name"]);
+        $this->db->bind(":last_name", $data["update_last_name"]);
+        $this->db->bind(":email", $data["update_email"]);
+        $this->db->bind(":phone_number", $data["update_phone_number"]);
+        $this->db->bind(":product_id", $data["product_id"]);
+        $this->db->bind(":product_quantity", $data["update_product_quantity"]);
+        $this->db->bind(":address", $data["update_address"]);
+        $this->db->bind(":date", $data["update_date"]);
+        $this->db->bind(":hour_id", $data["hour_id"]);
+        if($this->db->execute()){
+            return true;
+        } else{
+            return false;
+        }
+    }
+
+
     public function closeConnection() {
         $this->db->closeConnection();
     }

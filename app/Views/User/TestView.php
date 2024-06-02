@@ -36,7 +36,7 @@
             padding: 25px;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
         }
-        .update_form_container h2 {
+        h2 {
             font-size: 25px;
             color: #000;
             font-weight: bold;

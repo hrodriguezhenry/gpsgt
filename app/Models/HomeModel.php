@@ -8,7 +8,8 @@ class HomeModel{
     
     public function getLoginUser($data){
         $this->db->query(
-            "SELECT CONCAT(first_name, ' ', last_name) AS user_name
+            "SELECT id AS user_id,
+                CONCAT(first_name, ' ', last_name) AS user_name
             FROM user
             WHERE deleted_at IS NULL
             AND active = 1
@@ -43,7 +44,9 @@ class HomeModel{
 
     public function getRegisterUser($data){
         $this->db->query(
-            "SELECT email
+            "SELECT id AS user_id,
+                CONCAT(first_name, ' ', last_name) AS user_name,
+                email
             FROM user
             WHERE deleted_at IS NULL
             AND active = 1 
@@ -137,7 +140,7 @@ class HomeModel{
         $this->db->bind(":product_quantity", $data["reservation_product_quantity"]);
         $this->db->bind(":address", $data["reservation_address"]);
         $this->db->bind(":date", $data["reservation_date"]);
-        $this->db->bind(":hour_id", $data["reservation_hour_id"]);
+        $this->db->bind(":hour_id", $data["hour_id"]);
         if($this->db->execute()){
             return true;
         } else{

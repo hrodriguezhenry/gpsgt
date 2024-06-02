@@ -48,7 +48,14 @@
 	justify-content: space-between;
 }
 .nav_item{
-	column-gap: 55px;
+	column-gap: 35px;
+}
+.nav_user{
+	color: #fff;
+	max-height: 100%;
+	margin: auto 5px;
+	font-weight: 600;
+	font-size: 19px;
 }
 .nav_link,
 .button{
@@ -60,6 +67,8 @@
 .nav_link{
 	text-decoration: double;
 	font-size: 19px;
+	border: none;
+	background: none;
 }
 .nav_link:hover{
 	color: #fff;
@@ -120,7 +129,7 @@ section {
 }
 .login_form_container{
 	position: fixed;
-	max-width: 350px;
+	max-width: 550px;
 	width: 100%;
 	top: 50%;
 	left: 50%;

@@ -20,7 +20,11 @@ const DB_CHARSET = "chartset=utf8";
 
 //Rutas de controladores de español a inglés
 const ROUTE_MAP = [
+    //Home
     "inicio" => "HomeController",
+    //Usuario
+    "usuario" => "UserController",
+    //Admin
     "dashboard" => "DashboardController",
     "calendario" => "CalendarController",
     "clientes" => "CustomerController",
@@ -29,10 +33,15 @@ const ROUTE_MAP = [
 
 //Rutas de métodos de español a inglés
 const ROUTE_METHOD_MAP = [
+    //Home
     "ingresar" => "login",
     "registrar" => "register",
     "agendar" => "reservation",
     "horas" => "hours",
-    "clientes" => "customers"
+    //Admin
+    "reservacion" => "reservation",
+    "cliente" => "customer",
+    "editar" => "update",
+    "borrar" => "delete"
 ];
 ?>

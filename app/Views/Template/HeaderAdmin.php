@@ -34,10 +34,10 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
         <i class="bx bx-x close-icon"></i>
         <div class="menu-items">
             <ul class="nav-links">
-                <li><a href="<?= URL_ROUTE; ?>/dashboard">
+                <!-- <li><a href="<?= URL_ROUTE; ?>/dashboard">
                     <i class='bx bx-home'></i>
                     <span class="link-name">Dahsboard</span>
-                </a></li>
+                </a></li> -->
                 <li><a href="<?= URL_ROUTE; ?>/calendario">
                     <i class='bx bx-calendar' ></i>
                     <span class="link-name">Calendario</span>

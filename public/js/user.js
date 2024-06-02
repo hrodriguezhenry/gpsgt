@@ -33,15 +33,15 @@ pwShowHide.forEach((icon) => {
     });
 });
 
-signupBtn.addEventListener("click", (e) =>{
-    e.preventDefault();
-    loginForm.classList.add("active");
-});
+// signupBtn.addEventListener("click", (e) =>{
+//     e.preventDefault();
+//     loginForm.classList.add("active");
+// });
 
-loginBtn.addEventListener("click", (e) =>{
-    e.preventDefault();
-    loginForm.classList.remove("active");
-});
+// loginBtn.addEventListener("click", (e) =>{
+//     e.preventDefault();
+//     loginForm.classList.remove("active");
+// });
 
 // Agrega un event listener a todos los enlaces de la navegación
 document.querySelectorAll('.nav_link').forEach(anchor => {
@@ -57,26 +57,18 @@ document.querySelectorAll('.nav_link').forEach(anchor => {
 
 date.addEventListener('change', (event) => {
     let selectedDate = event.target.value;
-    fetch(urlBase+'/calendario/horas/' + selectedDate)
+    fetch(urlBase+'/inicio/horas/' + selectedDate)
         .then(response => response.json()) // Cambiar a response.json()
         .then(data => {
+            // Limpiar las opciones anteriores
             hour.innerHTML = '';
             
-            if (data.length === 0) {
+            // Iterar sobre las opciones del JSON y agregarlas al select
+            data.forEach(option => {
                 const optionElement = document.createElement('option');
-                optionElement.textContent = 'Horario no disponible';
-                optionElement.value = '';
-                optionElement.disabled = true;
+                optionElement.textContent = option;
                 hour.appendChild(optionElement);
-            } else {
-                // Iterar sobre las opciones del JSON y agregarlas al select
-                data.forEach(option => {
-                    const optionElement = document.createElement('option');
-                    optionElement.textContent = option;
-                    optionElement.value = option;
-                    hour.appendChild(optionElement);
-                });
-            }
+            });
         })
         .catch(error => console.error('Error:', error));
 });

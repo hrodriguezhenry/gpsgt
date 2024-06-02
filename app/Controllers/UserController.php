@@ -1,34 +1,11 @@
 <?php
-class HomeController extends Controllers{
+class UserController extends Controllers{
     public function __construct(){
         parent::__construct();
     }
 
     public function index(){
-        session_start();
-
-        $data = [
-            "login_email" => "",
-            "login_password" => "",
-            "register_email" => "",
-            "register_first_name" => "",
-            "register_last_name" => "",
-            "register_phone" => "",
-            "register_address" => "",
-            "register_password" => "",
-            "register_confirm_password" => ""
-        ];
-
-        if(isset($_SESSION['form_data'])) {
-            foreach ($_SESSION['form_data'] as $key => $value) {
-                if (!empty($value)) {
-                    $data[$key] = $value;
-                }
-            }
-
-            unset($_SESSION['form_data']);
-        }
-        $this->view("Home/HomeView", $data);
+        $this->view("User/UserView");
     }
 
     public function login(){
@@ -43,7 +20,6 @@ class HomeController extends Controllers{
 
             if($user){
                 $_SESSION['loggedin'] = true;
-                $_SESSION['user_id'] = $user->user_id;
                 $_SESSION['user_name'] = $user->user_name;
                 $view = $this->model->getLoginView($data);
                 redirect("/".$view->view);
@@ -82,9 +58,6 @@ class HomeController extends Controllers{
             } else{
                 if($this->model->insertUser($data)){
                     $_SESSION['loggedin'] = true;
-                    $user = $this->model->getRegisterUser($data);
-                    $_SESSION['user_id'] = $user->user_id;
-                    $_SESSION['user_name'] = $user->user_name;
                     $view = $this->model->getRegisterView($data);
                     redirect("/".$view->view);
                 } else{
@@ -94,29 +67,32 @@ class HomeController extends Controllers{
         }
     }
 
-    public function reservation(){
+    public function reservation($userId){
         if($_SERVER["REQUEST_METHOD"] == "POST"){
             $data = [
-                "reservation_first_name" => trim($_POST["reservation_first_name"]),
-                "reservation_last_name" => trim($_POST["reservation_last_name"]),
-                "reservation_email" => trim($_POST["reservation_email"]),
-                "reservation_phone_number" => trim($_POST["reservation_phone_number"]),
+                "reservation_user_id" => $userId,
                 "reservation_product" => trim($_POST["reservation_product"]),
                 "reservation_product_quantity" => trim($_POST["reservation_product_quantity"]),
-                "reservation_address" => trim($_POST["reservation_address"]),
                 "reservation_date" => trim($_POST["reservation_date"]),
                 "reservation_hour" => trim($_POST["reservation_hour"])
             ];
             
+            $user = $this->model->getUser($data);
             $productId = $this->model->getProduct($data);
             $reservationHourId = $this->model->getReservationHour($data);
 
+            $data["first_name"] = $user->first_name;
+            $data["last_name"] = $user->last_name;
+            $data["email"] = $user->email;
+            $data["phone_number"] = $user->phone_number;
+            $data["address"] = $user->address;
             $data["product_id"] = $productId->id;
             $data["hour_id"] = $reservationHourId->id;
 
+            print_r($data);
 
             if($this->model->insertReservation($data)){
-                redirect("");
+                redirect("/usuario");
             } else{
                 die("Algo salió mal");
             }
@@ -135,6 +111,9 @@ class HomeController extends Controllers{
                 foreach ($data["hours"] as $hour) {
                     $response[] = htmlspecialchars($hour->reservation_hour);
                 }
+            } else {
+                // Si no hay horas disponibles, agregar un mensaje al array
+                $response[] = 'Horario no disponible';
             }
     
             // Devolver la respuesta como un JSON
