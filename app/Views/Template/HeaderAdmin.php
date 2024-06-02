@@ -40,11 +40,11 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                 </a></li> -->
                 <li><a href="<?= URL_ROUTE; ?>/calendario">
                     <i class='bx bx-calendar' ></i>
-                    <span class="link-name">Calendario</span>
+                    <span class="link-name">Cita</span>
                 </a></li>
-                <li><a href="<?= URL_ROUTE; ?>/clientes">
+                <li><a href="<?= URL_ROUTE; ?>/usuarios">
                     <i class='bx bx-user'></i>
-                    <span class="link-name">Clientes</span>
+                    <span class="link-name">Usuarios</span>
                 </a></li>
             </ul>
             

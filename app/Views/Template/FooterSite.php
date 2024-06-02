@@ -38,8 +38,8 @@
 				<h2>Nuestras Redes</h2>
 				<div class="social_network">
 					<a href="https://www.facebook.com/profile.php?id=100083505482965" target="_blank"><i class="fa fa-facebook"></i></a>
-					<a href="https://www.instagram.com/gps_g.t?igsh=MTl2eXM3YnlrcW11ZA=="><i class="fa fa-instagram"></i></a>
-					<a href="https://www.tiktok.com/@gps.gt?_t=8mqdtsOGo34&_r=1"><i class='bx bxl-tiktok'></i></a>
+					<a href="https://www.instagram.com/gps_g.t?igsh=MTl2eXM3YnlrcW11ZA%3D%3D"  target="_blank"><i class="fa fa-instagram"></i></a>
+					<a href="https://www.tiktok.com/@gps.gt?_t=8mqdtsOGo34&_r=1"  target="_blank"><i class='bx bxl-tiktok'></i></a>
 					<!-- <a href=""><i class="fa fa-instagram"></i></a>
 					<a href=""><i class="fa fa-pinterest" ></i></a> -->
 				</div>

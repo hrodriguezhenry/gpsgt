@@ -69,6 +69,7 @@
 	font-size: 19px;
 	border: none;
 	background: none;
+	cursor: pointer;
 }
 .nav_link:hover{
 	color: #fff;

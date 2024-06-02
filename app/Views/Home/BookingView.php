@@ -58,7 +58,7 @@
 
 				<div class="reservation_form_input_box">
 					<label>Dirección</label>
-					<input type="text" name="reservation_address" placeholder="Ingresa la dirección de instalación" maxlength="100">
+					<input type="text" name="reservation_address" placeholder="Ingresa la dirección de instalación" maxlength="100" required>
 				</div>
 
 				<div class="reservation_form_column">

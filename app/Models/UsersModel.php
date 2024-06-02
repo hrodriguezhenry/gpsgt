@@ -1,62 +1,51 @@
 <?php
-class CalendarModel{
+class UsersModel{
     private $db;
 
     public function __construct(){
         $this->db = new Database;
     }
 
-    public function getCustomers($data){
+    public function getUsers(){
         $this->db->query(
-            "SELECT r.id,
-                CONCAT(r.first_name, ' ', r.last_name) AS customer_name,
-                r.email,
-                r.phone_number,
-                r.address,
-                p.`name` AS product,
-                rh.`name` AS reservation_hour,
-                r.reservation_date
-            FROM reservation AS r
-            INNER JOIN product AS p
-            ON r.product_id = p.id
-            INNER JOIN reservation_hour AS rh
-            ON r.reservation_hour_id = rh.id
-            WHERE r.deleted_at IS NULL
-            AND p.deleted_at IS NULL
-            AND rh.deleted_at IS NULL
-            AND r.reservation_date BETWEEN :start_date
-            AND :end_date
-            ORDER BY r.reservation_date ASC,
-            rh.hour_order ASC;"
+            "SELECT u.id,
+                r.`name` AS role,
+                CONCAT(u.first_name, ' ', u.last_name) AS user_name,
+                u.email,
+                u.phone_number,
+                u.address,
+                IF(u.`active` = 1, 'Si', 'No') AS active
+            FROM user AS u
+            INNER JOIN role AS r
+            ON u.role_id = r.id
+            INNER JOIN view AS v
+            ON r.view_id = v.id
+            WHERE u.deleted_at IS NULL
+            AND u.active = 1
+            ORDER BY u.created_at ASC;"
         );
-
-        $this->db->bind(":start_date", $data["start_date"]);
-        $this->db->bind(":end_date", $data["end_date"]);
         $row = $this->db->records();
         return $row;
     }
 
-    public function getCustomer($data){
+    public function getUser($data){
         $this->db->query(
-            "SELECT r.id,
-                r.first_name,
-                r.last_name,
-                r.email,
-                r.phone_number,
-                r.address,
-                p.`name` AS product,
-                r.product_quantity,
-                rh.`name` AS reservation_hour,
-                r.reservation_date
-            FROM reservation AS r
-            INNER JOIN product AS p
-            ON r.product_id = p.id
-            INNER JOIN reservation_hour AS rh
-            ON r.reservation_hour_id = rh.id
-            WHERE r.deleted_at IS NULL
-            AND p.deleted_at IS NULL
-            AND rh.deleted_at IS NULL
-            AND r.id = :id
+            "SELECT u.id,
+                r.`name` AS role,
+                u.first_name,
+                u.last_name,
+                u.email,
+                u.phone_number,
+                u.address,
+                IF(u.`active` = 1, 'Si', 'No') AS active
+            FROM user AS u
+            INNER JOIN role AS r
+            ON u.role_id = r.id
+            INNER JOIN view AS v
+            ON r.view_id = v.id
+            WHERE u.deleted_at IS NULL
+            AND u.active = 1
+            AND u.id = :id
             LIMIT 1;"
         );
 
@@ -85,17 +74,17 @@ class CalendarModel{
         return $row;
     }
 
-    public function getProduct($data){
+    public function getRole($data){
         $this->db->query(
-            "SELECT p.id
-            FROM product AS p
-            WHERE p.`active` = 1
-            AND p.deleted_at IS NULL
-            AND p.`name` = :product
+            "SELECT r.id
+            FROM `role` AS r
+            WHERE r.deleted_at IS NULL
+            AND r.`active` = 1
+            AND r.name = :role
             LIMIT 1;"
         );
 
-        $this->db->bind(":product", $data["update_product"]);
+        $this->db->bind(":role", $data["update_role"]);
         $row = $this->db->record();
         return $row;
     }
@@ -115,33 +104,31 @@ class CalendarModel{
         return $row;
     }
 
-    public function updateReservation($data){
+    public function updateUser($data){
         $this->db->query(
-            "UPDATE reservation
+            "UPDATE user
             SET first_name = :first_name,
             last_name = :last_name,
             email = :email,
-            phone_number = :phone_number,
-            product_id = :product_id,
-            product_quantity = :product_quantity,
-            address = :address,
-            reservation_date = :date,
-            reservation_hour_id = :hour_id,
+            phone_number = IF(:phone_number = '', NULL, :phone_number),
+            role_id = :role_id,
+            active = IF(:active = 'Si', 1, 0),
+            address = IF(:address = '', NULL, :address),
+            password = SHA2(:password , 256),
             updated_at = CURRENT_TIMESTAMP(),
             updated_by = :user_id
             WHERE id = :id;"
         );
-
+        print_r($data);
         $this->db->bind(":id", $data["update_id"]);
         $this->db->bind(":first_name", $data["update_first_name"]);
         $this->db->bind(":last_name", $data["update_last_name"]);
         $this->db->bind(":email", $data["update_email"]);
         $this->db->bind(":phone_number", $data["update_phone_number"]);
-        $this->db->bind(":product_id", $data["product_id"]);
-        $this->db->bind(":product_quantity", $data["update_product_quantity"]);
+        $this->db->bind(":role_id", $data["role_id"]);
+        $this->db->bind(":active", $data["update_active"]);
         $this->db->bind(":address", $data["update_address"]);
-        $this->db->bind(":date", $data["update_date"]);
-        $this->db->bind(":hour_id", $data["hour_id"]);
+        $this->db->bind(":password", $data["update_password"]);
         $this->db->bind(":user_id", $data["user_id"]);
         if($this->db->execute()){
             return true;
@@ -150,9 +137,9 @@ class CalendarModel{
         }
     }
 
-    public function deleteReservation($data){
+    public function deleteUser($data){
         $this->db->query(
-            "UPDATE reservation
+            "UPDATE user
             SET deleted_at = CURRENT_TIMESTAMP(),
             deleted_by = :user_id
             WHERE id = :id;"

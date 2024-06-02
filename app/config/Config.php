@@ -27,7 +27,7 @@ const ROUTE_MAP = [
     //Admin
     "dashboard" => "DashboardController",
     "calendario" => "CalendarController",
-    "clientes" => "CustomerController",
+    "usuarios" => "UsersController",
     "pruebas" => "TestController"
 ];
 
@@ -41,6 +41,8 @@ const ROUTE_METHOD_MAP = [
     //Admin
     "reservacion" => "reservation",
     "cliente" => "customer",
+    "usuarios" => "users",
+    "usuario" => "user",
     "editar" => "update",
     "borrar" => "delete"
 ];

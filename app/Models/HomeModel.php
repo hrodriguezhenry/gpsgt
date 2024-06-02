@@ -28,7 +28,7 @@ class HomeModel{
             "SELECT v.`name` AS view
             FROM user AS u
             INNER JOIN role AS r
-            ON u.rol_id = r.id
+            ON u.role_id = r.id
             INNER JOIN view AS v
             ON r.view_id = v.id
             WHERE u.deleted_at IS NULL
@@ -62,7 +62,7 @@ class HomeModel{
             "SELECT v.`name` AS view
             FROM user AS u
             INNER JOIN role AS r
-            ON u.rol_id = r.id
+            ON u.role_id = r.id
             INNER JOIN view AS v
             ON r.view_id = v.id
             WHERE u.deleted_at IS NULL

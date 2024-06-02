@@ -2,8 +2,8 @@
     <section class="admin-section">
         <div class="modal_update_form">
             <div class="update_form_container">
-                <form action="<?php echo URL_ROUTE; ?>/calendario/editar/<?= $_SESSION["user_id"]; ?>" method="POST" class="update_form">
-                    <h2>Editar Cliente</h2>
+                <form action="<?php echo URL_ROUTE; ?>/usuarios/editar/<?= $_SESSION["user_id"]; ?>" method="POST" class="update_form">
+                    <h2>Editar Usuario</h2>
                     
                     <input type="hidden" id="update_id" name="update_id">
 
@@ -15,7 +15,7 @@
 
                         <div class="update_form_input_box">
                             <label>Apellido</label>
-                            <input type="text" id="update_last_name" name="update_last_name" maxlength="50" required>
+                            <input type="text" id="update_last_name" name="update_last_name" maxlength="50">
                         </div>
                     </div>
                         
@@ -27,54 +27,52 @@
 
                         <div class="update_form_input_box">
                             <label>Teléfono</label>
-                            <input type="number" id="update_phone_number" name="update_phone_number" min="00000000" max="99999999" required>
+                            <input type="number" id="update_phone_number" name="update_phone_number" min="00000000" max="99999999">
                         </div>
                     </div>
+                    
                     <div class="update_form_column">
                         <div class="update_form_input_box">
-                            <label>Dispositivo</label>
+                            <label>Rol</label>
                             <div class="update_form_select_box">
-                                <select id="update_product" name="update_product" required>
-                                    <option>GPS3G</option>
-                                    <option>GPS4G</option>
-                                    <option>GPS4G Motocicleta</option>
+                                <select id="update_role" name="update_role" required>
+                                    <option>Administrador</option>
+                                    <option>Usuario</option>
                                 </select>
                             </div>
                         </div>
 
                         <div class="update_form_input_box">
-                            <label>Cantidad</label>
+                            <label>Activo</label>
                             <div class="update_form_select_box">
-                                <select id="update_product_quantity" name="update_product_quantity" required>
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
+                                <select id="update_active" name="update_active" required>
+                                    <option>Si</option>
+                                    <option>No</option>
                                 </select>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="update_form_input_box">
-                        <label>Dirección</label>
-                        <input type="text" id="update_address" name="update_address" maxlength="100">
                     </div>
 
                     <div class="update_form_column">
                         <div class="update_form_input_box">
-                            <label>Fecha</label>
-                            <input type="date" id="update_date" name="update_date" min="<?= date("Y-m-d");?>" required>
+                            <label>Dirección</label>
+                            <input type="text" id="update_address" name="update_address" maxlength="100">
                         </div>
 
                         <div class="update_form_input_box">
-                            <label>Hora</label>
-                            <div class="update_form_select_box">
-                                <select id="update_hour" name="update_hour" required>
-                                </select>
-                            </div>
+                            <label>Restablecer Contraseña</label>
+                            <input type="text"
+                                id="update_password"
+                                name="update_password"
+                                minlength="8"
+                                pattern="(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                                title="Debe contener al menos un número, un carácter especial [!@#$%^&*], una letra mayúscula, una letra minúscula y al menos 8 caracteres en total."
+                                required
+                            >
                         </div>
                     </div>
+                    
+
                     <div class="update_form_column">
                         <div class="update_form_button update_form_save_button">
                             <button class="update_save_button" type="submit">Guardar</button>
@@ -89,8 +87,8 @@
 
         <div class="modal_delete_form">
             <div class="delete_form_container">
-                <form action="<?php echo URL_ROUTE; ?>/calendario/borrar/<?= $_SESSION["user_id"]; ?>" method="POST" class="delete_form">
-                    <h2>Eliminar Cliente</h2>
+                <form action="<?php echo URL_ROUTE; ?>/usuarios/borrar/<?= $_SESSION["user_id"]; ?>" method="POST" class="delete_form">
+                    <h2>Eliminar Usuario</h2>
                     
                     <input type="hidden" id="delete_id" name="delete_id">
                     
@@ -111,23 +109,15 @@
                     </div>
                     
                     <div class="delete_form_input_box">
-                        <span>Dispositivo: </span><span id="delete_product"></span>
+                        <span>Rol: </span><span id="delete_role"></span>
                     </div>
                     
                     <div class="delete_form_input_box">
-                        <span>Cantidad: </span><span id="delete_product_quantity"></span>
+                        <span>Activo: </span><span id="delete_active"></span>
                     </div>
 
                     <div class="delete_form_input_box">
                         <span>Dirección: </span><span id="delete_address"></span>
-                    </div>
-
-                    <div class="delete_form_input_box">
-                        <span>Fecha: </span><span id="delete_date"></span>
-                    </div>
-
-                    <div class="delete_form_input_box">
-                        <span>Hora: </span><span id="delete_hour"></span>
                     </div>
 
                     <div class="delete_form_column">
@@ -150,24 +140,21 @@
         <div class="dash-content">
             <div class="overview">
                 <div class="title">
-                    <i class='bx bx-calendar'></i>
-                    <span class="text">Calendario</span>
-                    <input id="calendar_start_date" type="date" value="<?= date("Y-m-d");?>">
-                    <input id="calendar_end_date" type="date" value="<?= date("Y-m-d");?>">
+                    <i class='bx bx-user'></i>
+                    <span class="text">Usuarios</span>
                 </div>
             </div>
             <div class="activity">
                 <div class="activity-data">
-                    <table id="calendar_table">
+                    <table id="users_table">
                         <thead>
                             <tr>
                                 <th>Nombre</th>
-                                <th>Correo</th>
+                                <th>Rol</th>
+                                <th>Email</th>
                                 <th>Teléfono</th>
                                 <th>Dirección</th>
-                                <th>Producto</th>
-                                <th>Hora</th>
-                                <th>Fecha</th>
+                                <th>Activo</th>
                             </tr>
                         </thead>
                         <tbody>

@@ -87,7 +87,7 @@ class CalendarController extends Controllers{
         }
     }
 
-    public function update(){
+    public function update($id){
         if($_SERVER["REQUEST_METHOD"] == "POST"){
             $data = [
                 "update_id" => trim($_POST["update_id"]),
@@ -107,6 +107,7 @@ class CalendarController extends Controllers{
 
             $data["product_id"] = $productId->id;
             $data["hour_id"] = $reservationHourId->id;
+            $data["user_id"] = $id;
 
 
             if($this->model->updateReservation($data)){
@@ -116,6 +117,17 @@ class CalendarController extends Controllers{
             }
         }
     }
-    
+    public function delete($id){
+        if($_SERVER["REQUEST_METHOD"] == "POST"){
+            $data["delete_id"] = trim($_POST["delete_id"]);
+            $data["user_id"] = $id;
+
+            if($this->model->deleteReservation($data)){
+                redirect("/calendario");
+            } else{
+                die("Algo salió mal");
+            }
+        }
+    }
 }
 ?>

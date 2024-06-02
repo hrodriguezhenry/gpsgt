@@ -70,12 +70,5 @@
                     </div>
                 </form>
             </div>
-
-            <!-- Formulario de registro -->
-            <!-- <div class="form signup_form">
-                          
-                <h2>Registro</h2>
-                <div class="login_signup">¿Tienes una cuenta? <a href="#" id="login">Iniciar Sesión</a></div>
-            </div> -->
         </div>
     </section>

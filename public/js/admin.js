@@ -8,8 +8,11 @@ const navLinks = document.querySelectorAll('.nav-links a');
 const starDate = document.querySelector('#calendar_start_date');
 const endDate = document.querySelector('#calendar_end_date');
 const calendarTable = document.querySelector('#calendar_table tbody');
-const cancelButton = document.querySelector('.cancel_button');
+const usersTable = document.querySelector('#users_table tbody');
+const updateCancelButton = document.querySelector('.update_cancel_button');
+const deleteCancelButton = document.querySelector('.delete_cancel_button');
 const modalUpdate = document.querySelector('.modal_update_form');
+const modalDelete = document.querySelector('.modal_delete_form');
 const hour = document.querySelectorAll('#update_hour')[0];
 const date = document.querySelector('#update_date');
 
@@ -89,30 +92,106 @@ navLinks.forEach((navLink) => {
 });
 
 // Función para obtener y llenar la tabla de calendario
-function fetchAndPopulateTable() {
-    let selectStartDate = starDate.value;
-    let selectEndDate = endDate.value;
+if(starDate && endDate){
+    function fetchAndPopulateTable() {
+        let selectStartDate = starDate.value;
+        let selectEndDate = endDate.value;
+    
+        fetch(urlBase+'/calendario/reservacion/' + selectStartDate + '/' + selectEndDate)
+            .then(response => response.json())
+            .then(data => {
+                // Limpiar las filas anteriores
+                calendarTable.innerHTML = '';
+    
+                // Iterar sobre las opciones del JSON y agregarlas a la tabla
+                data.forEach(item => {
+                    const row = calendarTable.insertRow();
+                    row.insertCell(0).textContent = item.customer_name;
+                    row.insertCell(1).textContent = item.email;
+                    row.insertCell(2).textContent = item.phone_number;
+                    row.insertCell(3).textContent = item.address;
+                    row.insertCell(4).textContent = item.product;
+                    row.insertCell(5).textContent = item.hour;
+                    row.insertCell(6).textContent = item.date;
+    
+                    const editCell = row.insertCell(7);
+                    const editLink = document.createElement('a');
+                    editLink.href = "";
+                    editLink.textContent = 'Editar';
+    
+                    editLink.addEventListener('click', function(event) {
+                        event.preventDefault();
+                        body.classList.add("modal");
+                        modalUpdate.classList.add("active");
+    
+                        fetch(urlBase + '/calendario/cliente/' + item.id)
+                                .then(response => response.json())
+                                .then(userData => {
+                                    openModal(userData);
+                                })
+                                .catch(error => console.error('Error:', error));
+                    });
+                    editCell.appendChild(editLink);
+    
+                    const deleteCell = row.insertCell(8);
+                    const deleteLink = document.createElement('a');
+                    deleteLink.href = "";
+                    deleteLink.textContent = 'Borrar';
+    
+                    deleteLink.addEventListener('click', function(event) {
+                        event.preventDefault();
+                        body.classList.add("modal");
+                        modalDelete.classList.add("active");
+    
+                        fetch(urlBase + '/calendario/cliente/' + item.id)
+                                .then(response => response.json())
+                                .then(userData => {
+                                    openModalDelete(userData);
+                                })
+                                .catch(error => console.error('Error:', error));
+                    });
+    
+                    deleteCell.appendChild(deleteLink);
+                });
+            })
+            .catch(error => console.error('Error:', error));
+    }
+}
 
-    fetch(urlBase+'/calendario/reservacion/' + selectStartDate + '/' + selectEndDate)
+
+window.addEventListener('load', fetchAndPopulateTable);
+
+if(starDate){
+    starDate.addEventListener('change', fetchAndPopulateTable);
+}
+if(endDate){
+    endDate.addEventListener('change', fetchAndPopulateTable);
+}
+
+
+
+// Función para obtener y llenar la tabla de calendario
+function UsersTable() {
+    fetch(urlBase+'/usuarios/usuarios')
         .then(response => response.json())
         .then(data => {
             // Limpiar las filas anteriores
-            calendarTable.innerHTML = '';
+            usersTable.innerHTML = '';
 
             // Iterar sobre las opciones del JSON y agregarlas a la tabla
             data.forEach(item => {
-                const row = calendarTable.insertRow();
-                row.insertCell(0).textContent = item.customer_name;
-                row.insertCell(1).textContent = item.email;
-                row.insertCell(2).textContent = item.phone_number;
-                row.insertCell(3).textContent = item.address;
-                row.insertCell(4).textContent = item.product;
-                row.insertCell(5).textContent = item.hour;
-                row.insertCell(6).textContent = item.date;
+                const row = usersTable.insertRow();
+                row.insertCell(0).textContent = item.user_name;
+                row.insertCell(1).textContent = item.role;
+                row.insertCell(2).textContent = item.email;
+                row.insertCell(3).textContent = item.phone_number;
+                row.insertCell(4).textContent = item.address;
+                row.insertCell(5).textContent = item.product;
+                row.insertCell(6).textContent = item.active;
 
                 const editCell = row.insertCell(7);
                 const editLink = document.createElement('a');
-                editLink.href = urlBase+'/calendario/cliente/'+item.id;
+                editLink.href = "";
                 editLink.textContent = 'Editar';
 
                 editLink.addEventListener('click', function(event) {
@@ -120,35 +199,50 @@ function fetchAndPopulateTable() {
                     body.classList.add("modal");
                     modalUpdate.classList.add("active");
 
-                    fetch(urlBase + '/calendario/cliente/' + item.id)
+                    fetch(urlBase + '/usuarios/usuario/' + item.id)
                             .then(response => response.json())
                             .then(userData => {
-                                openModal(userData);
+                                usersUpdateModal(userData);
                             })
                             .catch(error => console.error('Error:', error));
-
-                    // alert('Editar usuario con ID: '+ 1);
                 });
                 editCell.appendChild(editLink);
 
                 const deleteCell = row.insertCell(8);
                 const deleteLink = document.createElement('a');
-                deleteLink.href = urlBase+'/calendario/cliente/'+item.id;
+                deleteLink.href = "";
                 deleteLink.textContent = 'Borrar';
+
+                deleteLink.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    body.classList.add("modal");
+                    modalDelete.classList.add("active");
+
+                    fetch(urlBase + '/usuarios/usuario/' + item.id)
+                            .then(response => response.json())
+                            .then(userData => {
+                                usersDeleteModal(userData);
+                            })
+                            .catch(error => console.error('Error:', error));
+                });
+
                 deleteCell.appendChild(deleteLink);
             });
         })
         .catch(error => console.error('Error:', error));
 }
 
-window.addEventListener('load', fetchAndPopulateTable);
-starDate.addEventListener('change', fetchAndPopulateTable);
-endDate.addEventListener('change', fetchAndPopulateTable);
+window.addEventListener('load', UsersTable);
 
 
-cancelButton.addEventListener("click", () => {
+updateCancelButton.addEventListener("click", () => {
     body.classList.remove("modal");
     modalUpdate.classList.remove("active");
+});
+
+deleteCancelButton.addEventListener("click", () => {
+    body.classList.remove("modal");
+    modalDelete.classList.remove("active");
 });
 
 
@@ -162,8 +256,6 @@ function openModal(user) {
     document.querySelector('#update_product').value = user[0].product || '';
     document.querySelector('#update_product_quantity').value = user[0].product_quantity || '';
     document.querySelector('#update_date').value = user[0].date || '';
-    // document.querySelector('#update_hour').value = user[0].hour || '';
-
 
     hour.innerHTML = '';
     const optionElement = document.createElement('option');
@@ -179,7 +271,7 @@ function openModal(user) {
             optionElement.textContent = 'Horario no disponible';
             optionElement.value = '';
             optionElement.disabled = true;
-            hourSelect.appendChild(optionElement);
+            hour.appendChild(optionElement);
         } else {
             // Iterar sobre las opciones del JSON y agregarlas al select
             data.forEach(option => {
@@ -193,28 +285,67 @@ function openModal(user) {
     .catch(error => console.error('Error:', error));
 }
 
-date.addEventListener('change', (event) => {
-    let selectedDate = event.target.value;
-    fetch(urlBase+'/calendario/horas/' + selectedDate)
-        .then(response => response.json()) // Cambiar a response.json()
-        .then(data => {
-            hour.innerHTML = '';
-            
-            if (data.length === 0) {
-                const optionElement = document.createElement('option');
-                optionElement.textContent = 'Horario no disponible';
-                optionElement.value = '';
-                optionElement.disabled = true;
-                hour.appendChild(optionElement);
-            } else {
-                // Iterar sobre las opciones del JSON y agregarlas al select
-                data.forEach(option => {
+function openModalDelete(user) {
+    document.querySelector('#delete_id').value = user[0].id || '';
+    document.querySelector('#delete_first_name').innerText = user[0].first_name || '';
+    document.querySelector('#delete_last_name').innerText = user[0].last_name || '';
+    document.querySelector('#delete_email').innerText = user[0].email || '';
+    document.querySelector('#delete_phone_number').innerText = user[0].phone_number || '';
+    document.querySelector('#delete_address').innerText = user[0].address || '';
+    document.querySelector('#delete_product').innerText = user[0].product || '';
+    document.querySelector('#delete_product_quantity').innerText = user[0].product_quantity || '';
+    document.querySelector('#delete_date').innerText = user[0].date || '';
+    document.querySelector('#delete_hour').innerText = user[0].hour || '';
+}
+
+if(date){
+
+
+
+    date.addEventListener('change', (event) => {
+        let selectedDate = event.target.value;
+        fetch(urlBase+'/calendario/horas/' + selectedDate)
+            .then(response => response.json()) // Cambiar a response.json()
+            .then(data => {
+                hour.innerHTML = '';
+                
+                if (data.length === 0) {
                     const optionElement = document.createElement('option');
-                    optionElement.textContent = option;
-                    optionElement.value = option;
+                    optionElement.textContent = 'Horario no disponible';
+                    optionElement.value = '';
+                    optionElement.disabled = true;
                     hour.appendChild(optionElement);
-                });
-            }
-        })
-        .catch(error => console.error('Error:', error));
-});
+                } else {
+                    // Iterar sobre las opciones del JSON y agregarlas al select
+                    data.forEach(option => {
+                        const optionElement = document.createElement('option');
+                        optionElement.textContent = option;
+                        optionElement.value = option;
+                        hour.appendChild(optionElement);
+                    });
+                }
+            })
+            .catch(error => console.error('Error:', error));
+    });
+}
+function usersUpdateModal(user) {
+    document.querySelector('#update_id').value = user[0].id || '';
+    document.querySelector('#update_first_name').value = user[0].first_name || '';
+    document.querySelector('#update_last_name').value = user[0].last_name || '';
+    document.querySelector('#update_email').value = user[0].email || '';
+    document.querySelector('#update_phone_number').value = user[0].phone_number || '';
+    document.querySelector('#update_role').value = user[0].role || '';
+    document.querySelector('#update_active').value = user[0].active || '';
+    document.querySelector('#update_address').value = user[0].address || '';
+}
+
+function usersDeleteModal(user) {
+    document.querySelector('#delete_id').value = user[0].id || '';
+    document.querySelector('#delete_first_name').innerText = user[0].first_name || '';
+    document.querySelector('#delete_last_name').innerText = user[0].last_name || '';
+    document.querySelector('#delete_email').innerText = user[0].email || '';
+    document.querySelector('#delete_phone_number').innerText = user[0].phone_number || '';
+    document.querySelector('#delete_address').innerText = user[0].address || '';
+    document.querySelector('#delete_role').innerText = user[0].role || '';
+    document.querySelector('#delete_active').innerText = user[0].active || '';
+}
