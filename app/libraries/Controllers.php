@@ -11,7 +11,7 @@ class Controllers{
     public function model(){
         $model = get_class($this);
         $model = str_replace("Controller","Model", $model);
-        $routClassModel = "../App/Models/".$model.".php";
+        $routClassModel = "../app/Models/".$model.".php";
         
         if(file_exists($routClassModel)){
             require_once($routClassModel);
@@ -21,7 +21,7 @@ class Controllers{
 
     //Cargar vista
     public function view($view, $data = []){
-        require_once("../App/Views/".$view.".php");
+        require_once("../app/Views/".$view.".php");
     }
 
     // Destructor para cerrar la conexión

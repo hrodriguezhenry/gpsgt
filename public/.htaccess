@@ -1,8 +1,10 @@
 <IfModule mod_rewrite.c>
     Options -Indexes
     Options -Multiviews
+
+    # Aplica a hostinger
     RewriteEngine On
-    RewriteBase /gpsgt/public
+    RewriteBase /gpsgt//public
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^(.+)$ index.php?url=$1 [QSA,L]

@@ -19,7 +19,7 @@ Class Core{
         if(isset($url) && isset(ROUTE_MAP[strtolower($url[0])])){
             $url[0] = ROUTE_MAP[strtolower($url[0])];
 
-            if(file_exists("../App/Controllers/".$url[0].".php")){
+            if(file_exists("../app/Controllers/".$url[0].".php")){
                 $this->controller = $url[0];
                 unset($url[0]);
             }
@@ -28,7 +28,7 @@ Class Core{
         }
         
         //Se requiere el controlador
-        require_once("../App/Controllers/".$this->controller.".php");
+        require_once("../app/Controllers/".$this->controller.".php");
         $this->controller = new $this->controller;
         
         //Validar si en la url se ha llamado a un método
