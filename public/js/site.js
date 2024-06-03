@@ -55,28 +55,27 @@ document.querySelectorAll('.nav_link').forEach(anchor => {
     });
 });
 
-date.addEventListener('change', (event) => {
+date.addEventListener('change', async (event) => {
     let selectedDate = event.target.value;
-    fetch(urlBase+'/calendario/horas/' + selectedDate)
-        .then(response => response.json()) // Cambiar a response.json()
-        .then(data => {
-            hour.innerHTML = '';
+    const response = await fetch(urlBase+'/calendario/horas/' + selectedDate)
+    const data = await response.json();
+
+    console.log(data)
+    hour.innerHTML = '';
             
-            if (data.length === 0) {
-                const optionElement = document.createElement('option');
-                optionElement.textContent = 'Horario no disponible';
-                optionElement.value = '';
-                optionElement.disabled = true;
-                hour.appendChild(optionElement);
-            } else {
-                // Iterar sobre las opciones del JSON y agregarlas al select
-                data.forEach(option => {
-                    const optionElement = document.createElement('option');
-                    optionElement.textContent = option;
-                    optionElement.value = option;
-                    hour.appendChild(optionElement);
-                });
-            }
-        })
-        .catch(error => console.error('Error:', error));
+    if (data.length === 0) {
+        const optionElement = document.createElement('option');
+        optionElement.textContent = 'Horario no disponible';
+        optionElement.value = '';
+        optionElement.disabled = true;
+        hour.appendChild(optionElement);
+    } else {
+        // Iterar sobre las opciones del JSON y agregarlas al select
+        data.forEach(option => {
+            const optionElement = document.createElement('option');
+            optionElement.textContent = option;
+            optionElement.value = option;
+            hour.appendChild(optionElement);
+        });
+    }
 });
