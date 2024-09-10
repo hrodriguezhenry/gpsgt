@@ -1,4 +1,4 @@
-<?php require_once(APP_ROUTE."/Views/Template/HeaderAdmin.php"); ?>
+<?php require_once APP_ROUTE."/Views/Template/HeaderAdmin.php"; ?>
     <section class="admin-section">
         <div class="modal_update_form">
             <div class="update_form_container">

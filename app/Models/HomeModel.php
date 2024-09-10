@@ -8,13 +8,17 @@ class HomeModel{
     
     public function getLoginUser($data){
         $this->db->query(
-            "SELECT id AS user_id,
-                CONCAT(first_name, ' ', last_name) AS user_name
-            FROM user
-            WHERE deleted_at IS NULL
-            AND active = 1
-            AND email = :email
-            AND password = SHA2(:password , 256) LIMIT 1;"
+            "SELECT u.id AS user_id,
+                CONCAT(u.first_name, ' ', u.last_name) AS user_name,
+                r.`name` AS role_name
+            FROM `user` AS u
+            INNER JOIN `role` AS r
+            ON u.role_id = r.id
+            WHERE u.deleted_at IS NULL
+            AND r.deleted_at IS NULL
+            AND u.active = 1
+            AND u.email = :email
+            AND u.password = SHA2(:password , 256) LIMIT 1;"
         );
 
         $this->db->bind(":email", $data["login_email"]);

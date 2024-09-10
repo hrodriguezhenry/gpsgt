@@ -45,6 +45,7 @@ class HomeController extends Controllers{
                 $_SESSION['loggedin'] = true;
                 $_SESSION['user_id'] = $user->user_id;
                 $_SESSION['user_name'] = $user->user_name;
+                $_SESSION['role_name'] = $user->role_name;
                 $view = $this->model->getLoginView($data);
                 redirect("/".$view->view);
             } else{

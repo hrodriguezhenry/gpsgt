@@ -28,7 +28,10 @@ const ROUTE_MAP = [
     "dashboard" => "DashboardController",
     "calendario" => "CalendarController",
     "usuarios" => "UsersController",
-    "pruebas" => "TestController"
+
+    //Pruebas
+    "pruebas" => "TestController",
+    "calendariob5" => "CalendarB5Controller"
 ];
 
 //Rutas de métodos de español a inglés

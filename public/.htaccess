@@ -1,7 +1,7 @@
 Options -Indexes
 Options -Multiviews
 
-# Aplica a hostinger
+# Unicas reglas que se aplican en hostinger
 RewriteEngine On
 RewriteBase /gpsgt//public
 RewriteCond %{REQUEST_FILENAME} !-d
