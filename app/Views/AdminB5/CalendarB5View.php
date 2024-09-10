@@ -52,6 +52,7 @@
                                     <th scope="col">Producto</th>
                                     <th scope="col">Hora</th>
                                     <th scope="col">Fecha</th>
+                                    <th scope="col">Acción</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -61,7 +62,12 @@
                                     <td>Jhon Doe</td>
                                     <td>$123</td>
                                     <td>Paid</td>
-                                    <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
+                                    <td>Paid</td>
+                                    <td>Paid</td>
+                                    <td>
+                                        <a class="btn btn-sm btn-primary" href="">Actualizar</a>
+                                        <a class="btn btn-sm btn-danger" href="">Borrar</a>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>01 Jan 2045</td>
@@ -69,7 +75,12 @@
                                     <td>Jhon Doe</td>
                                     <td>$123</td>
                                     <td>Paid</td>
-                                    <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
+                                    <td>Paid</td>
+                                    <td>Paid</td>
+                                    <td>
+                                        <a class="btn btn-sm btn-primary" href="">Actualizar</a>
+                                        <a class="btn btn-sm btn-danger" href="">Borrar</a>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>01 Jan 2045</td>
@@ -77,7 +88,12 @@
                                     <td>Jhon Doe</td>
                                     <td>$123</td>
                                     <td>Paid</td>
-                                    <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
+                                    <td>Paid</td>
+                                    <td>Paid</td>
+                                    <td>
+                                        <a class="btn btn-sm btn-primary" href="">Actualizar</a>
+                                        <a class="btn btn-sm btn-danger" href="">Borrar</a>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>01 Jan 2045</td>
@@ -85,7 +101,12 @@
                                     <td>Jhon Doe</td>
                                     <td>$123</td>
                                     <td>Paid</td>
-                                    <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
+                                    <td>Paid</td>
+                                    <td>Paid</td>
+                                    <td>
+                                        <a class="btn btn-sm btn-primary" href="">Actualizar</a>
+                                        <a class="btn btn-sm btn-danger" href="">Borrar</a>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>01 Jan 2045</td>
@@ -93,7 +114,12 @@
                                     <td>Jhon Doe</td>
                                     <td>$123</td>
                                     <td>Paid</td>
-                                    <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
+                                    <td>Paid</td>
+                                    <td>Paid</td>
+                                    <td>
+                                        <a class="btn btn-sm btn-primary" href="">Actualizar</a>
+                                        <a class="btn btn-sm btn-danger" href="">Borrar</a>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
