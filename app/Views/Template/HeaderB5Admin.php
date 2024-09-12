@@ -65,7 +65,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                 </div>
                 <div class="navbar-nav w-100">
                     <a href="<?= URL_ROUTE; ?>/dashboardb5" class="nav-item nav-link"><i class="bi bi-bar-chart-line me-2"></i>Dashboard</a>
-                    <a href="<?= URL_ROUTE; ?>/calendariob5" class="nav-item nav-link active"><i class="bi bi-calendar me-2"></i>Calendario</a>
+                    <a href="<?= URL_ROUTE; ?>/calendariob5" class="nav-item nav-link active"><i class="bi bi-calendar me-2"></i>Citas</a>
                     <a href="<?= URL_ROUTE; ?>/usuariob5" class="nav-item nav-link"><i class="bi bi-person me-2"></i>Usuarios</a>
                 </div>
             </nav>
@@ -86,7 +86,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                 </a>
                 <div class="navbar-nav align-items-center ms-auto">
                     <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"  style="transition: 3s ease-in-out;">
                             <i class="bi bi-person-circle "></i>
                             <span class="d-none d-lg-inline-flex"><?= $_SESSION["user_name"]; ?></span>
                         </a>

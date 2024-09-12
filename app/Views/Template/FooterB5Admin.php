@@ -33,6 +33,9 @@
 
     <!-- Template Javascript -->
     <script src="<?= URL_ROUTE; ?>/js/main.js"></script>
+
+    <!-- Código personalizado de Javascript -->
+    <script src="<?= URL_ROUTE; ?>/js/script.js"></script>
 </body>
 
 </html>

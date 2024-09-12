@@ -9,34 +9,39 @@ class CalendarB5Controller extends Controllers{
         $this->view("AdminB5/CalendarB5View");
     }
     
-    public function reservation(...$date) {
-        if (isset($date)) {
-            $data["start_date"] = $date[0];
-            $data["end_date"] = $date[1];
+    public function reservation() {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $startDate = $_POST['startDate'] ?? '';
+            $endDate = $_POST['endDate'] ?? '';
             
-            $data["customers"] = $this->model->getCustomers($data);
-            // Preparar la respuesta como un array
-            $response = [];
+            $customers = $this->model->getCustomers(['start_date' => $startDate, 'end_date' => $endDate]);
 
-            if ($data["customers"]) {
-                // Agregar cada cliente al array
-                foreach ($data["customers"] as $customer) {
-                    $response[] = [
-                        'id' => $customer->id,
-                        'customer_name' => $customer->customer_name,
-                        'email' => $customer->email,
-                        'phone_number' => $customer->phone_number,
-                        'address' => $customer->address,
-                        'product' => $customer->product,
-                        'hour' => $customer->reservation_hour,
-                        'date' => $customer->reservation_date
-                    ];
+            $html = '';
+
+            if ($customers) {
+                foreach ($customers as $customer) {
+                    $html .= '<tr>';
+                    // $html .= '<td>' . htmlspecialchars($customer->id) . '</td>';
+                    $html .= '<td>' . htmlspecialchars($customer->customer_name) . '</td>';
+                    $html .= '<td>' . htmlspecialchars($customer->email) . '</td>';
+                    $html .= '<td>' . htmlspecialchars($customer->phone_number) . '</td>';
+                    $html .= '<td>' . htmlspecialchars($customer->address) . '</td>';
+                    $html .= '<td>' . htmlspecialchars($customer->product) . '</td>';
+                    $html .= '<td>' . htmlspecialchars($customer->reservation_hour) . '</td>';
+                    $html .= '<td>' . htmlspecialchars($customer->reservation_date) . '</td>';
+                    $html .= '<td>
+                                <div class="d-flex">
+                                    <a class="btn btn-sm btn-primary me-1" href=""><i class="bi bi-pencil"></i></a>
+                                    <a class="btn btn-sm btn-danger" href=""><i class="bi bi-trash-fill"></i></a>
+                                </div>
+                            </td>';
+                    $html .= '</tr>';
                 }
             }
-            
-            // Devolver la respuesta como un JSON
-            header('Content-Type: application/json');
-            echo json_encode($response);
+
+            // Enviar el HTML como respuesta
+            header('Content-Type: text/html');
+            echo $html;
         }
     }
 
