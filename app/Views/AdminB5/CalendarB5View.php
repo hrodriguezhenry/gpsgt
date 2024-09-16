@@ -1,4 +1,25 @@
 <?php require_once APP_ROUTE."/Views/Template/HeaderB5Admin.php"; ?>
+            <!-- Modal de Actualizar-->
+            <div class="modal fade" id="updateReservationModal" tabindex="-1" aria-labelledby="updateReservationModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title w-100 text-center" id="updateReservationModalLabel">Actualizar Cita</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <!-- <div class="modal-body">
+                        ...
+                    </div> -->
+
+                    <div class="modal-footer d-flex justify-content-center">
+                        <button type="button" class="btn btn-primary">Guardar</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    </div>
+                    </div>
+                </div>
+            </div>
+
+            
             <!-- Titulo del Módulo Inicio -->
             <div class="container-fluid pt-4 px-4">
                 <div class="row">
@@ -52,6 +73,5 @@
                 </div>
             </div>
             <!-- Citas Realizadas Fin -->
-
-            
+   
 <?php require_once APP_ROUTE."/Views/Template/FooterB5Admin.php"; ?>
