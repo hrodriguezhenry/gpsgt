@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Función para realizar la petición fetch y actualizar la tabla
     const updateTable = (startDate, endDate) => {
-        fetch('http://localhost/gpsgt/calendariob5/reservacion', {
+        fetch(urlBase+'/calendariob5/reservacion', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',

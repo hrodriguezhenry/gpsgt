@@ -1,20 +1,58 @@
 <?php require_once APP_ROUTE."/Views/Template/HeaderB5Admin.php"; ?>
             <!-- Modal de Actualizar-->
             <div class="modal fade" id="updateReservationModal" tabindex="-1" aria-labelledby="updateReservationModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title w-100 text-center" id="updateReservationModalLabel">Actualizar Cita</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <!-- <div class="modal-body">
-                        ...
-                    </div> -->
-
-                    <div class="modal-footer d-flex justify-content-center">
-                        <button type="button" class="btn btn-primary">Guardar</button>
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    </div>
+                <div class="modal-dialog modal-dialog-centered ">
+                    <div class="modal-content" >
+                        <div class="modal-header">
+                            <h5 class="modal-title w-100 text-center" id="updateReservationModalLabel">Actualizar Cita</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="row">
+                                    <div class="mb-1 mb-sm-3 col-6">
+                                        <label for="exampleInputEmail1" class="form-label mb-0 mb-sm-1">Nombre</label>
+                                        <input type="text" class="form-control" id="exampleInputEmail1">
+                                    </div>
+                                    <div class="mb-1 mb-sm-3 col-6">
+                                        <label for="exampleInputPassword1" class="form-label mb-0 mb-sm-1">Apellido</label>
+                                        <input type="text" class="form-control" id="exampleInputPassword1">
+                                    </div>
+                                    <div class="mb-1 mb-sm-3 col-6">
+                                        <label for="exampleInputPassword1" class="form-label mb-0 mb-sm-1">Correo</label>
+                                        <input type="text" class="form-control" id="exampleInputPassword1">
+                                    </div>
+                                    <div class="mb-1 mb-sm-3 col-6">
+                                        <label for="exampleInputPassword1" class="form-label mb-0 mb-sm-1">Teléfono</label>
+                                        <input type="text" class="form-control" id="exampleInputPassword1">
+                                    </div>
+                                    <div class="mb-2 mb-sm-3 col-6">
+                                        <label for="exampleInputPassword1" class="form-label mb-0 mb-sm-1">Dispositivo</label>
+                                        <input type="text" class="form-control" id="exampleInputPassword1">
+                                    </div>
+                                    <div class="mb-2 mb-sm-3 col-6">
+                                        <label for="exampleInputPassword1" class="form-label mb-0 mb-sm-1">Cantidad</label>
+                                        <input type="text" class="form-control" id="exampleInputPassword1">
+                                    </div>
+                                    <div class="mb-2 mb-sm-3 col-12">
+                                        <label for="exampleInputPassword1" class="form-label mb-0 mb-sm-1">Dirección</label>
+                                        <input type="text" class="form-control" id="exampleInputPassword1">
+                                    </div>
+                                    <div class="mb-2 mb-sm-3 col-6">
+                                        <label for="exampleInputPassword1" class="form-label mb-0 mb-sm-1">Fecha</label>
+                                        <input type="text" class="form-control" id="exampleInputPassword1">
+                                    </div>
+                                    <div class="mb-2 mb-sm-3 col-6">
+                                        <label for="exampleInputPassword1" class="form-label mb-0 mb-sm-1">Hora</label>
+                                        <input type="text" class="form-control" id="exampleInputPassword1">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer d-flex justify-content-center">
+                            <button type="button" class="btn btn-primary">Guardar</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -35,6 +35,9 @@
     <script src="<?= URL_ROUTE; ?>/js/main.js"></script>
 
     <!-- Código personalizado de Javascript -->
+    <script>
+      	const urlBase = "<?= URL_ROUTE; ?>";
+    </script>
     <script src="<?= URL_ROUTE; ?>/js/script.js"></script>
 </body>
 
