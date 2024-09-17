@@ -38,7 +38,7 @@
     <script>
       	const urlBase = "<?= URL_ROUTE; ?>";
     </script>
-    <script src="<?= URL_ROUTE; ?>/js/script.js"></script>
+    <script type="module" src="<?= URL_ROUTE; ?>/js/app.js"></script>
 </body>
 
 </html>

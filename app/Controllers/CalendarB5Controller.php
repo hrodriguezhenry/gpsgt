@@ -31,7 +31,14 @@ class CalendarB5Controller extends Controllers{
                     $html .= '<td>' . htmlspecialchars($customer->reservation_date) . '</td>';
                     $html .= '<td>
                                 <div class="d-flex">
-                                    <button type="button" class="btn btn-sm btn-primary me-1" data-bs-toggle="modal" data-bs-target="#updateReservationModal"><i class="bi bi-pencil"></i></button>
+                                    <button
+                                        type="button"
+                                        class="btn btn-sm btn-primary me-1"
+                                        id="buttonUpdateModal"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#updateReservationModal">
+                                            <i class="bi bi-pencil"></i>
+                                    </button>
                                     <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#updateReservationModal"><i class="bi bi-trash-fill"></i></button>
                                 </div>
                             </td>';
