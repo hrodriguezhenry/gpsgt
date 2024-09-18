@@ -21,7 +21,6 @@ class CalendarB5Controller extends Controllers{
             if ($customers) {
                 foreach ($customers as $customer) {
                     $html .= '<tr>';
-                    // $html .= '<td>' . htmlspecialchars($customer->id) . '</td>';
                     $html .= '<td>' . htmlspecialchars($customer->customer_name) . '</td>';
                     $html .= '<td>' . htmlspecialchars($customer->email) . '</td>';
                     $html .= '<td>' . htmlspecialchars($customer->phone_number) . '</td>';
@@ -33,13 +32,18 @@ class CalendarB5Controller extends Controllers{
                                 <div class="d-flex">
                                     <button
                                         type="button"
-                                        class="btn btn-sm btn-primary me-1"
-                                        id="buttonUpdateModal"
+                                        class="btn btn-sm btn-primary me-1 btn-update-reservation"
+                                        value="' . htmlspecialchars($customer->id) . '"
                                         data-bs-toggle="modal"
-                                        data-bs-target="#updateReservationModal">
-                                            <i class="bi bi-pencil"></i>
+                                        data-bs-target="#updateReservationModal"><i class="bi bi-pencil"></i>
                                     </button>
-                                    <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#updateReservationModal"><i class="bi bi-trash-fill"></i></button>
+                                    <button
+                                        type="button"
+                                        class="btn btn-sm btn-danger btn-delete-reservation"
+                                        value="' . htmlspecialchars($customer->id) . '"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#updateReservationModal"><i class="bi bi-trash-fill"></i>
+                                    </button>
                                 </div>
                             </td>';
                     $html .= '</tr>';
@@ -52,11 +56,12 @@ class CalendarB5Controller extends Controllers{
         }
     }
 
-    public function customer($id) {
-        if (isset($id)){
+    public function customer() {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = $_POST['id'] ?? '';
             $data["id"] = $id;
             
-            $customer = $this->model->getCustomer($data);
+            $customer = $this->model->getCustomer(['id' => $id]);
             // Preparar la respuesta como un array
             $response = [];
 
