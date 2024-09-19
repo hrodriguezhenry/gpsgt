@@ -6,7 +6,7 @@ class CalendarB5Model{
         $this->db = new Database;
     }
 
-    public function getCustomers($data){
+    public function getReservations($data){
         $this->db->query(
             "SELECT r.id,
                 CONCAT(r.first_name, ' ', r.last_name) AS customer_name,
@@ -14,6 +14,7 @@ class CalendarB5Model{
                 r.phone_number,
                 r.address,
                 p.`name` AS product,
+                r.product_quantity AS quantity,
                 rh.`name` AS reservation_hour,
                 r.reservation_date
             FROM reservation AS r

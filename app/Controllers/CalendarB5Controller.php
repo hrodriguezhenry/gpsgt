@@ -14,7 +14,7 @@ class CalendarB5Controller extends Controllers{
             $startDate = $_POST['startDate'] ?? '';
             $endDate = $_POST['endDate'] ?? '';
             
-            $customers = $this->model->getCustomers(['start_date' => $startDate, 'end_date' => $endDate]);
+            $customers = $this->model->getReservations(['start_date' => $startDate, 'end_date' => $endDate]);
 
             $html = '';
 
@@ -26,6 +26,7 @@ class CalendarB5Controller extends Controllers{
                     $html .= '<td>' . htmlspecialchars($customer->phone_number) . '</td>';
                     $html .= '<td>' . htmlspecialchars($customer->address) . '</td>';
                     $html .= '<td>' . htmlspecialchars($customer->product) . '</td>';
+                    $html .= '<td>' . htmlspecialchars($customer->quantity) . '</td>';
                     $html .= '<td>' . htmlspecialchars($customer->reservation_hour) . '</td>';
                     $html .= '<td>' . htmlspecialchars($customer->reservation_date) . '</td>';
                     $html .= '<td>

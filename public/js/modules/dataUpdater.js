@@ -12,10 +12,18 @@ const updateReservationModal = (urlBase, id) => {
         if (!response.ok) {
             throw new Error(`Error: ${response.statusText}`);
         }
-        return response.text(); // Obtener el HTML como texto
+        return response.json();
     })
     .then(data => {
-        dataTableBody.innerHTML = data; // Actualizar la tabla con el HTML recibido
+        document.querySelector('#upModFirstName').value = data[0].first_name || '';
+        document.querySelector('#upModLastName').value = data[0].last_name || '';
+        document.querySelector('#upModEmail').value = data[0].email || '';
+        document.querySelector('#upModPhoneNumber').value = data[0].phone_number || '';
+        document.querySelector('#upModAddress').value = data[0].address || '';
+        document.querySelector('#upModProduct').value = data[0].product || '';
+        document.querySelector('#upModProductQuantity').value = data[0].product_quantity || '';
+        document.querySelector('#upModDate').value = data[0].date || '';
+        
     })
     .catch(error => {
         console.error('Error en la solicitud:', error);
@@ -46,7 +54,6 @@ export const updateReservationTable = (urlBase, startDate, endDate, dataTableBod
         document.querySelectorAll('.btn-update-reservation').forEach(button => {
             button.addEventListener('click', function() {
                 updateReservationModal(urlBase, this.value);
-                // console.log("ID del cliente: " + this.value);
             });
         });
 
