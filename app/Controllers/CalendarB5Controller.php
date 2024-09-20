@@ -60,10 +60,7 @@ class CalendarB5Controller extends Controllers{
     public function customer() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $id = $_POST['id'] ?? '';
-            $data["id"] = $id;
-            
             $customer = $this->model->getCustomer(['id' => $id]);
-            // Preparar la respuesta como un array
             $response = [];
 
             $response[] = [
@@ -85,23 +82,30 @@ class CalendarB5Controller extends Controllers{
         }
     }
 
-    public function hours($date){
-        if (isset($date)){
-            $data["date"] = $date;
-            $data["hours"] = $this->model->getAvailableHour($data);
-            // Preparar la respuesta como un array
-            $response = [];
-    
-            if ($data["hours"]) {
-                // Agregar cada hora disponible al array
-                foreach ($data["hours"] as $hour) {
-                    $response[] = htmlspecialchars($hour->reservation_hour);
+    public function hours(){
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $date = $_POST['date'] ?? '';
+            $hour = $_POST['hour'] ?? '';
+            $availableHours = $this->model->getAvailableHour(['date' => $date, 'hour' => $hour]);
+            $html = '';
+
+            if ($availableHours) {
+                foreach ($availableHours as $availableHour) {
+                    if ($availableHour->reservation_hour == $hour) {
+                        $html .= '<option selected value="' . htmlspecialchars($availableHour->id) . '">
+                                ' . htmlspecialchars($availableHour->reservation_hour) . '
+                            </option>';
+                    } else {
+                        $html .= '<option value="' . htmlspecialchars($availableHour->id) . '">
+                        ' . htmlspecialchars($availableHour->reservation_hour) . '
+                        </option>';
+                    }
                 }
             }
-    
-            // Devolver la respuesta como un JSON
-            header('Content-Type: application/json');
-            echo json_encode($response);
+
+            // Enviar el HTML como respuesta
+            header('Content-Type: text/html');
+            echo $html;
         }
     }
 
@@ -135,6 +139,7 @@ class CalendarB5Controller extends Controllers{
             }
         }
     }
+    
     public function delete($id){
         if($_SERVER["REQUEST_METHOD"] == "POST"){
             $data["delete_id"] = trim($_POST["delete_id"]);

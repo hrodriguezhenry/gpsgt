@@ -68,7 +68,8 @@ class CalendarB5Model{
     
     public function getAvailableHour($data){
         $this->db->query(
-            "SELECT rh.`name` AS reservation_hour
+            "SELECT rh.id,
+                rh.`name` AS reservation_hour
             FROM reservation_hour AS rh
             WHERE rh.`active` = 1
             AND rh.deleted_at IS NULL
@@ -78,10 +79,12 @@ class CalendarB5Model{
                 WHERE r.reservation_hour_id = rh.id
                 AND r.deleted_at IS NULL
                 AND r.reservation_date = :date
+                AND rh.`name` != :hour
             );"
         );
 
         $this->db->bind(":date", $data["date"]);
+        $this->db->bind(":hour", $data["hour"]);
         $row = $this->db->records();
         return $row;
     }

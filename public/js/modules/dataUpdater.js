@@ -1,4 +1,35 @@
-const updateReservationModal = (urlBase, id) => {
+const updateReservationHourModal = (date, dateChange, hour) => {
+    if (date != dateChange) {
+        hour = '';
+    }
+
+    fetch(`${urlBase}/calendariob5/horas`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: new URLSearchParams({
+            date: date,
+            hour: hour
+        }),
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`Error: ${response.statusText}`);
+        }
+        return response.text();
+    })
+    .then(data => {
+        console.log(data)
+        document.getElementById('upModHour').innerHTML = data;
+    })
+    .catch(error => {
+        console.error('Error en la solicitud:', error);
+    });
+};
+
+
+const updateReservationModal = (id) => {
     fetch(`${urlBase}/calendariob5/cliente`, {
         method: 'POST',
         headers: {
@@ -23,6 +54,12 @@ const updateReservationModal = (urlBase, id) => {
         document.querySelector('#upModProduct').value = data[0].product || '';
         document.querySelector('#upModProductQuantity').value = data[0].product_quantity || '';
         document.querySelector('#upModDate').value = data[0].date || '';
+
+        updateReservationHourModal(data[0].date || '', data[0].date || '', data[0].hour || '');
+
+        document.getElementById('upModDate').addEventListener('change', function() {
+            updateReservationHourModal(this.value, data[0].date || '', data[0].hour || '');
+        });
         
     })
     .catch(error => {
@@ -39,7 +76,7 @@ export const updateReservationTable = (urlBase, startDate, endDate, dataTableBod
         },
         body: new URLSearchParams({
             startDate: startDate,
-            endDate: endDate,
+            endDate: endDate
         }),
     })
     .then(response => {
@@ -53,7 +90,7 @@ export const updateReservationTable = (urlBase, startDate, endDate, dataTableBod
 
         document.querySelectorAll('.btn-update-reservation').forEach(button => {
             button.addEventListener('click', function() {
-                updateReservationModal(urlBase, this.value);
+                updateReservationModal(this.value);
             });
         });
 

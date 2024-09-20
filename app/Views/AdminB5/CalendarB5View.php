@@ -43,8 +43,11 @@
                                         <input type="date" class="form-control" id="upModDate">
                                     </div>
                                     <div class="mb-2 mb-sm-3 col-6">
-                                        <label for="exampleInputPassword1" class="form-label mb-0 mb-sm-1">Hora</label>
-                                        <input type="text" class="form-control" id="exampleInputPassword1">
+                                        <label for="upModHour" class="form-label mb-0 mb-sm-1">Hora</label>
+                                        <select name="update_hour" class="form-control" id="upModHour" required>
+                                            <!-- <option hidden value="">Seleccione</option> -->
+                                            <!-- <option selected disabled>Selecciona una opción</option> -->
+                                        </select>
                                     </div>
                                 </div>
                             </form>
