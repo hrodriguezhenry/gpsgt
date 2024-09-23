@@ -1,59 +1,67 @@
 <?php require_once APP_ROUTE."/Views/Template/HeaderB5Admin.php"; ?>
             <!-- Modal de Actualizar Reservaciòn -->
             <div class="modal fade" id="updateReservationModal" tabindex="-1" aria-labelledby="updateReservationModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered ">
-                    <div class="modal-content" >
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title w-100 text-center" id="updateReservationModalLabel">Actualizar Cita</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <form>
+                            <form id="updateReservationForm">
+                                <input type="hidden" id="upModReservationId">
+                                <input type="hidden" id="userId" name="userId" value="<?= $_SESSION['user_id']; ?>">
+
                                 <div class="row">
                                     <div class="mb-1 mb-sm-3 col-6">
                                         <label for="upModFirstName" class="form-label mb-0 mb-sm-1">Nombre</label>
-                                        <input type="text" class="form-control" id="upModFirstName">
+                                        <input type="text" class="form-control" id="upModFirstName" maxlength="50" required>
                                     </div>
                                     <div class="mb-1 mb-sm-3 col-6">
-                                        <label for="exampleInputPassword1" class="form-label mb-0 mb-sm-1">Apellido</label>
-                                        <input type="text" class="form-control" id="upModLastName">
+                                        <label for="upModLastName" class="form-label mb-0 mb-sm-1">Apellido</label>
+                                        <input type="text" class="form-control" id="upModLastName" maxlength="50" required>
                                     </div>
                                     <div class="mb-1 mb-sm-3 col-6">
                                         <label for="upModEmail" class="form-label mb-0 mb-sm-1">Correo</label>
-                                        <input type="email" class="form-control" id="upModEmail">
+                                        <input type="email" class="form-control" id="upModEmail" maxlength="100" required>
                                     </div>
                                     <div class="mb-1 mb-sm-3 col-6">
                                         <label for="upModPhoneNumber" class="form-label mb-0 mb-sm-1">Teléfono</label>
-                                        <input type="number" class="form-control" id="upModPhoneNumber">
+                                        <input type="tel" class="form-control" id="upModPhoneNumber" pattern="[0-9]{8}" required>
                                     </div>
                                     <div class="mb-2 mb-sm-3 col-6">
                                         <label for="upModProduct" class="form-label mb-0 mb-sm-1">Dispositivo</label>
-                                        <input type="text" class="form-control" id="upModProduct">
+                                        <select name="upModProduct" class="form-control" id="upModProduct" required>
+                                        </select>
                                     </div>
                                     <div class="mb-2 mb-sm-3 col-6">
                                         <label for="upModProductQuantity" class="form-label mb-0 mb-sm-1">Cantidad</label>
-                                        <input type="number" class="form-control" id="upModProductQuantity">
+                                        <select name="upModProductQuantity" class="form-control" id="upModProductQuantity" required>
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                        </select>
                                     </div>
                                     <div class="mb-2 mb-sm-3 col-12">
                                         <label for="upModAddress" class="form-label mb-0 mb-sm-1">Dirección</label>
-                                        <input type="text" class="form-control" id="upModAddress">
+                                        <input type="text" class="form-control" id="upModAddress" maxlength="100" required>
                                     </div>
                                     <div class="mb-2 mb-sm-3 col-6">
                                         <label for="upModDate" class="form-label mb-0 mb-sm-1">Fecha</label>
-                                        <input type="date" class="form-control" id="upModDate">
+                                        <input type="date" class="form-control" id="upModDate" required>
                                     </div>
                                     <div class="mb-2 mb-sm-3 col-6">
                                         <label for="upModHour" class="form-label mb-0 mb-sm-1">Hora</label>
                                         <select name="update_hour" class="form-control" id="upModHour" required>
-                                            <!-- <option hidden value="">Seleccione</option> -->
-                                            <!-- <option selected disabled>Selecciona una opción</option> -->
                                         </select>
                                     </div>
                                 </div>
                             </form>
                         </div>
-                        <div class="modal-footer d-flex justify-content-center">
-                            <button type="button" class="btn btn-primary">Guardar</button>
+                        <div class="modal-footer justify-content-center">
+                            <button type="submit" class="btn btn-primary" form="updateReservationForm">Guardar</button>
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                         </div>
                     </div>

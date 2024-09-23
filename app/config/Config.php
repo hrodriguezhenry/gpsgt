@@ -40,13 +40,14 @@ const ROUTE_METHOD_MAP = [
     "ingresar" => "login",
     "registrar" => "register",
     "agendar" => "reservation",
-    "horas" => "hours",
     //Admin
     "reservacion" => "reservation",
     "cliente" => "customer",
+    "hora" => "hour",
+    "producto" => "product",
     "usuarios" => "users",
     "usuario" => "user",
-    "editar" => "update",
+    "actualizar" => "update",
     "borrar" => "delete"
 ];
 ?>

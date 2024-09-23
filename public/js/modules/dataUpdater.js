@@ -1,5 +1,41 @@
+// Agrega este código para manejar el envío del formulario
+document.getElementById('updateReservationForm').addEventListener('submit', async function(event) {
+    event.preventDefault(); // Evita el envío por defecto del formulario
+    
+    // Captura los datos del formulario
+    const body = {
+        id: document.getElementById('upModReservationId').value,
+        first_name: document.getElementById('upModFirstName').value,
+        last_name: document.getElementById('upModLastName').value,
+        email: document.getElementById('upModEmail').value,
+        phone_number: document.getElementById('upModPhoneNumber').value,
+        address: document.getElementById('upModAddress').value,
+        product_id: document.getElementById('upModProduct').value,
+        product_quantity: document.getElementById('upModProductQuantity').value,
+        date: document.getElementById('upModDate').value,
+        hour_id: document.getElementById('upModHour').value,
+    };
+    
+    try {
+        await fetchJsonData(`${urlBase}/calendariob5/actualizar`, 'POST', body);
+
+        // Cierra el modal
+        const modal = bootstrap.Modal.getInstance(document.getElementById('updateReservationModal'));
+        modal.hide();
+
+        const startDate = document.getElementById('startDate').value;
+        const endDate = document.getElementById('endDate').value;
+        const dataTableBody = document.getElementById('dataTable').getElementsByTagName('tbody')[0];
+        await updateReservationTable(urlBase, startDate, endDate, dataTableBody);
+    } catch (error) {
+        console.error('Error al actualizar la reservación:', error);
+    }
+});
+
+
 // Función genérica para hacer solicitudes y manejar errores
 const fetchJsonData = async (url, method = 'POST', body = {}) => {
+    console.log(body)
     try {
         const response = await fetch(url, {
             method,
@@ -37,14 +73,24 @@ const fetchTextData = async (url, body = {}) => {
 };
 
 // Función para actualizar la lista de horas en el modal
+const updateReservationProductModal = async (product) => {
+    try {
+        const data = await fetchTextData(`${urlBase}/calendariob5/producto`, { product });
+        document.getElementById('upModProduct').innerHTML = data;
+    } catch (error) {
+        console.error('Error:', error);
+    }
+};
+
+// Función para actualizar la lista de horas en el modal
 const updateReservationHourModal = async (date, dateChange, hour) => {
     if (date !== dateChange) hour = '';
 
     try {
-        const data = await fetchTextData(`${urlBase}/calendariob5/horas`, { date, hour });
+        const data = await fetchTextData(`${urlBase}/calendariob5/hora`, { date, hour });
         document.getElementById('upModHour').innerHTML = data;
     } catch (error) {
-        console.error('Error al actualizar horas:', error);
+        console.error('Error:', error);
     }
 };
 
@@ -54,15 +100,16 @@ const updateReservationModal = async (id) => {
         const data = await fetchJsonData(`${urlBase}/calendariob5/cliente`, 'POST', { id });
 
         // Actualizar campos del modal
-        document.querySelector('#upModFirstName').value = data.first_name || '';
-        document.querySelector('#upModLastName').value = data.last_name || '';
-        document.querySelector('#upModEmail').value = data.email || '';
-        document.querySelector('#upModPhoneNumber').value = data.phone_number || '';
-        document.querySelector('#upModAddress').value = data.address || '';
-        document.querySelector('#upModProduct').value = data.product || '';
-        document.querySelector('#upModProductQuantity').value = data.product_quantity || '';
-        document.querySelector('#upModDate').value = data.date || '';
+        document.getElementById('upModReservationId').value = id;
+        document.getElementById('upModFirstName').value = data.first_name || '';
+        document.getElementById('upModLastName').value = data.last_name || '';
+        document.getElementById('upModEmail').value = data.email || '';
+        document.getElementById('upModPhoneNumber').value = data.phone_number || '';
+        document.getElementById('upModAddress').value = data.address || '';
+        document.getElementById('upModProductQuantity').value = data.product_quantity || '';
+        document.getElementById('upModDate').value = data.date || '';
 
+        await updateReservationProductModal(data.product || '');
         await updateReservationHourModal(data.date || '', data.date || '', data.hour || '');
 
         // Escuchar cambios en el campo de fecha
@@ -70,7 +117,7 @@ const updateReservationModal = async (id) => {
             updateReservationHourModal(this.value, data.date || '', data.hour || '');
         });
     } catch (error) {
-        console.error('Error al actualizar el modal:', error);
+        console.error('Error:', error);
     }
 };
 
@@ -96,6 +143,6 @@ export const updateReservationTable = async (urlBase, startDate, endDate, dataTa
 
         assignEventListeners(); // Asignar eventos a los botones
     } catch (error) {
-        console.error('Error al actualizar la tabla de reservaciones:', error);
+        console.error('Error:', error);
     }
 };

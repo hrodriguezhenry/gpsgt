@@ -66,7 +66,7 @@ class CalendarB5Model{
         return $row;
     }
     
-    public function getAvailableHour($data){
+    public function getAvailableHours($data){
         $this->db->query(
             "SELECT rh.id,
                 rh.`name` AS reservation_hour
@@ -85,6 +85,19 @@ class CalendarB5Model{
 
         $this->db->bind(":date", $data["date"]);
         $this->db->bind(":hour", $data["hour"]);
+        $row = $this->db->records();
+        return $row;
+    }
+
+    public function getProducts(){
+        $this->db->query(
+            "SELECT p.id,
+                p.name AS product
+            FROM product AS p
+            WHERE p.`active` = 1
+            AND p.deleted_at IS NULL;"
+        );
+
         $row = $this->db->records();
         return $row;
     }
@@ -136,15 +149,15 @@ class CalendarB5Model{
             WHERE id = :id;"
         );
 
-        $this->db->bind(":id", $data["update_id"]);
-        $this->db->bind(":first_name", $data["update_first_name"]);
-        $this->db->bind(":last_name", $data["update_last_name"]);
-        $this->db->bind(":email", $data["update_email"]);
-        $this->db->bind(":phone_number", $data["update_phone_number"]);
+        $this->db->bind(":id", $data["id"]);
+        $this->db->bind(":first_name", $data["first_name"]);
+        $this->db->bind(":last_name", $data["last_name"]);
+        $this->db->bind(":email", $data["email"]);
+        $this->db->bind(":phone_number", $data["phone_number"]);
         $this->db->bind(":product_id", $data["product_id"]);
-        $this->db->bind(":product_quantity", $data["update_product_quantity"]);
-        $this->db->bind(":address", $data["update_address"]);
-        $this->db->bind(":date", $data["update_date"]);
+        $this->db->bind(":product_quantity", $data["product_quantity"]);
+        $this->db->bind(":address", $data["address"]);
+        $this->db->bind(":date", $data["date"]);
         $this->db->bind(":hour_id", $data["hour_id"]);
         $this->db->bind(":user_id", $data["user_id"]);
         if($this->db->execute()){
