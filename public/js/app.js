@@ -1,10 +1,9 @@
 import { getCurrentDate, validateDates } from './modules/dateHelper.js';
-import { updateReservationTable } from './modules/dataUpdater.js';
+import { refreshReservationTable } from './modules/reservationTable.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     const startDateInput = document.getElementById('startDate');
     const endDateInput = document.getElementById('endDate');
-    const dataTableBody = document.getElementById('dataTable').getElementsByTagName('tbody')[0];
 
     // Función para establecer fechas iniciales por defecto
     const setDefaultDates = () => {
@@ -19,13 +18,13 @@ document.addEventListener('DOMContentLoaded', () => {
         if (validDate) {
             endDateInput.value = validDate;
         }
-        updateReservationTable(urlBase, startDateInput.value, endDateInput.value, dataTableBody);
+        refreshReservationTable();
     };
 
     // Inicializar el formulario con fechas por defecto y cargar datos
     const init = () => {
         setDefaultDates();
-        updateReservationTable(urlBase, startDateInput.value, endDateInput.value, dataTableBody);
+        refreshReservationTable();
     };
 
     // Asignar eventos para cambios en las fechas
@@ -34,10 +33,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Iniciar el proceso
     init();
+});
 
-    window.addEventListener("pageshow", () => {
-        const startDateInput = document.getElementById('startDate');
-        const endDateInput = document.getElementById('endDate');
-        handleDateChange()
-    });
+// Actualizar la tabla cuando la página se muestra (por ejemplo, al regresar con el botón atrás)
+window.addEventListener('pageshow', () => {
+    const startDateInput = document.getElementById('startDate');
+    const endDateInput = document.getElementById('endDate');
+    const validDate = validateDates(startDateInput.value, endDateInput.value);
+    if (validDate) {
+        endDateInput.value = validDate;
+    }
+    refreshReservationTable();
 });

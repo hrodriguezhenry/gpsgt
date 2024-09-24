@@ -1,3 +1,5 @@
+import { apiService } from './apiService.js';
+
 // Agrega este código para manejar el envío del formulario
 document.getElementById('updateReservationForm').addEventListener('submit', async function(event) {
     event.preventDefault(); // Evita el envío por defecto del formulario
@@ -143,7 +145,8 @@ const assignEventListeners = () => {
 // Función para actualizar la tabla de reservaciones
 export const updateReservationTable = async (urlBase, startDate, endDate, dataTableBody) => {
     try {
-        const data = await fetchTextData(`${urlBase}/calendariob5/reservacion`, { startDate, endDate });
+        const url = `${urlBase}/calendariob5/reservacion`;
+        const data = await apiService.fetchData(url, 'POST', { startDate, endDate }, 'text');
         dataTableBody.innerHTML = data;
         
         assignEventListeners(); // Asignar eventos a los botones
