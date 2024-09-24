@@ -57,7 +57,7 @@ document.querySelectorAll('.nav_link').forEach(anchor => {
 
 date.addEventListener('change', async (event) => {
     let selectedDate = event.target.value;
-    const response = await fetch(urlBase+'/calendario/horas/' + selectedDate)
+    const response = await fetch(urlBase+'/inicio/hora/' + selectedDate)
     const data = await response.json();
 
     console.log(data)

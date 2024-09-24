@@ -28,14 +28,13 @@ document.getElementById('updateReservationForm').addEventListener('submit', asyn
         const dataTableBody = document.getElementById('dataTable').getElementsByTagName('tbody')[0];
         await updateReservationTable(urlBase, startDate, endDate, dataTableBody);
     } catch (error) {
-        console.error('Error al actualizar la reservación:', error);
+        console.error('Error', error);
     }
 });
 
 
 // Función genérica para hacer solicitudes y manejar errores
 const fetchJsonData = async (url, method = 'POST', body = {}) => {
-    console.log(body)
     try {
         const response = await fetch(url, {
             method,
@@ -53,6 +52,7 @@ const fetchJsonData = async (url, method = 'POST', body = {}) => {
         throw error;
     }
 };
+
 
 // Función para hacer solicitudes y obtener datos en formato de texto
 const fetchTextData = async (url, body = {}) => {
@@ -72,6 +72,7 @@ const fetchTextData = async (url, body = {}) => {
     }
 };
 
+
 // Función para actualizar la lista de horas en el modal
 const updateReservationProductModal = async (product) => {
     try {
@@ -81,6 +82,7 @@ const updateReservationProductModal = async (product) => {
         console.error('Error:', error);
     }
 };
+
 
 // Función para actualizar la lista de horas en el modal
 const updateReservationHourModal = async (date, dateChange, hour) => {
@@ -93,6 +95,7 @@ const updateReservationHourModal = async (date, dateChange, hour) => {
         console.error('Error:', error);
     }
 };
+
 
 // Función para actualizar el modal con los datos de la reservación
 const updateReservationModal = async (id) => {
@@ -121,6 +124,7 @@ const updateReservationModal = async (id) => {
     }
 };
 
+
 // Función para asignar eventos a botones de actualización y eliminación
 const assignEventListeners = () => {
     document.querySelectorAll('.btn-update-reservation').forEach(button => {
@@ -135,12 +139,13 @@ const assignEventListeners = () => {
     });
 };
 
+
 // Función para actualizar la tabla de reservaciones
 export const updateReservationTable = async (urlBase, startDate, endDate, dataTableBody) => {
     try {
         const data = await fetchTextData(`${urlBase}/calendariob5/reservacion`, { startDate, endDate });
         dataTableBody.innerHTML = data;
-
+        
         assignEventListeners(); // Asignar eventos a los botones
     } catch (error) {
         console.error('Error:', error);

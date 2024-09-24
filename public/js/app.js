@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Inicializar el formulario con fechas por defecto y cargar datos
     const init = () => {
         setDefaultDates();
-        handleDateChange(); // Cargar datos cuando la página se carga por primera vez
+        updateReservationTable(urlBase, startDateInput.value, endDateInput.value, dataTableBody);
     };
 
     // Asignar eventos para cambios en las fechas
@@ -34,4 +34,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Iniciar el proceso
     init();
+
+    window.addEventListener("pageshow", () => {
+        const startDateInput = document.getElementById('startDate');
+        const endDateInput = document.getElementById('endDate');
+        handleDateChange()
+    });
 });

@@ -124,7 +124,7 @@ class HomeController extends Controllers{
         }
     }
 
-    public function hours($date){
+    public function hour($date){
         if (isset($date)){
             $data["date"] = $date;
             $data["hours"] = $this->model->getAvailableHour($data);
