@@ -100,7 +100,7 @@ const updateReservationHourModal = async (date, dateChange, hour) => {
 
 
 // Función para actualizar el modal con los datos de la reservación
-const updateReservationModal = async (id) => {
+export const updateReservationModal = async (id) => {
     try {
         const data = await fetchJsonData(`${urlBase}/calendariob5/cliente`, 'POST', { id });
 
@@ -121,35 +121,6 @@ const updateReservationModal = async (id) => {
         document.getElementById('upModDate').addEventListener('change', function () {
             updateReservationHourModal(this.value, data.date || '', data.hour || '');
         });
-    } catch (error) {
-        console.error('Error:', error);
-    }
-};
-
-
-// Función para asignar eventos a botones de actualización y eliminación
-const assignEventListeners = () => {
-    document.querySelectorAll('.btn-update-reservation').forEach(button => {
-        button.addEventListener('click', () => updateReservationModal(button.value));
-    });
-
-    document.querySelectorAll('.btn-delete-reservation').forEach(button => {
-        button.addEventListener('click', () => {
-            console.log('ID del cliente:', button.value);
-            // Añadir lógica para eliminar la reservación
-        });
-    });
-};
-
-
-// Función para actualizar la tabla de reservaciones
-export const updateReservationTable = async (urlBase, startDate, endDate, dataTableBody) => {
-    try {
-        const url = `${urlBase}/calendariob5/reservacion`;
-        const data = await apiService.fetchData(url, 'POST', { startDate, endDate }, 'text');
-        dataTableBody.innerHTML = data;
-        
-        assignEventListeners(); // Asignar eventos a los botones
     } catch (error) {
         console.error('Error:', error);
     }

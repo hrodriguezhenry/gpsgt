@@ -48,6 +48,6 @@ const ROUTE_METHOD_MAP = [
     "usuarios" => "users",
     "usuario" => "user",
     "actualizar" => "update",
-    "borrar" => "delete"
+    "eliminar" => "delete"
 ];
 ?>

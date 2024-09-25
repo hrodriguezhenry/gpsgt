@@ -175,7 +175,7 @@ class CalendarB5Model{
             WHERE id = :id;"
         );
 
-        $this->db->bind(":id", $data["delete_id"]);
+        $this->db->bind(":id", $data["id"]);
         $this->db->bind(":user_id", $data["user_id"]);
 
         if($this->db->execute()){

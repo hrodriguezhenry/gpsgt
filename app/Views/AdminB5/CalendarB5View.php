@@ -10,7 +10,6 @@
                         <div class="modal-body">
                             <form id="updateReservationForm">
                                 <input type="hidden" id="upModReservationId">
-                                <input type="hidden" id="userId" name="userId" value="<?= $_SESSION['user_id']; ?>">
 
                                 <div class="row">
                                     <div class="mb-1 mb-sm-3 col-6">
@@ -62,6 +61,56 @@
                         </div>
                         <div class="modal-footer justify-content-center">
                             <button type="submit" class="btn btn-primary" form="updateReservationForm">Guardar</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal de Eliminar Reservaciòn -->
+            <div class="modal fade" id="deleteReservationModal" tabindex="-1" aria-labelledby="deleteReservationModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-sm">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title w-100 text-center" id="deleteReservationModalLabel">Eliminar Cita</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="deleteReservationForm">
+                                <input type="hidden" id="delModReservationId">
+                                <div class="row">
+                                    <div class="mb-0 mb-sm-2 col-12">
+                                        <span>Nombre: </span><span id="delModFirstName"></span><br>
+                                    </div>
+                                    <div class="mb-0 mb-sm-1 col-12">
+                                        <span>Apellido: </span><span id="delModLastName"></span>
+                                    </div>
+                                    <div class="mb-0 mb-sm-1 col-12">
+                                        <span>Correo: </span><span id="delModEmail"></span>
+                                    </div>
+                                    <div class="mb-0 mb-sm-1 col-12">
+                                        <span>Teléfono: </span><span id="delModPhoneNumber"></span>
+                                    </div>
+                                    <div class="mb-0 mb-sm-1 col-12">
+                                        <span>Dirección: </span><span id="delModAddress"></span>
+                                    </div>
+                                    <div class="mb-0 mb-sm-1 col-12">
+                                        <span>Dispositivo: </span><span id="delModProduct"></span>
+                                    </div>
+                                    <div class="mb-0 mb-sm-1 col-12">
+                                        <span>Cantidad: </span><span id="delModProductQuantity"></span>
+                                    </div>
+                                    <div class="mb-0 mb-sm-1 col-12">
+                                        <span>Hora: </span><span id="delModHour"></span>
+                                    </div>
+                                    <div class="mb-0 mb-sm-1 col-12">
+                                        <span>Fecha: </span><span id="delModDate"></span>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer justify-content-center">
+                            <button type="submit" class="btn btn-danger" form="deleteReservationForm">Eliminar</button>
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                         </div>
                     </div>

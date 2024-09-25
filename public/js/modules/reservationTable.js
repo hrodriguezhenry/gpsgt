@@ -1,4 +1,5 @@
 import { apiService } from './apiService.js';
+import { updateReservationModal, deleteReservationModal } from './reservationModal.js';
 
 // Función para asignar eventos a los botones de la tabla
 const assignEventListeners = () => {
@@ -7,10 +8,7 @@ const assignEventListeners = () => {
     });
 
     document.querySelectorAll('.btn-delete-reservation').forEach(button => {
-        button.addEventListener('click', () => {
-            console.log('ID del cliente:', button.value);
-            // Lógica para eliminar la reservación
-        });
+        button.addEventListener('click', () => deleteReservationModal(button.value));
     });
 };
 
@@ -19,9 +17,9 @@ export const refreshReservationTable = async () => {
     const startDate = document.getElementById('startDate').value;
     const endDate = document.getElementById('endDate').value;
     const dataTableBody = document.getElementById('dataTable').getElementsByTagName('tbody')[0];
+    const url = `${urlBase}/calendariob5/reservacion`;
 
     try {
-        const url = `${urlBase}/calendariob5/reservacion`;
         const data = await apiService.fetchData(url, 'POST', { startDate, endDate }, 'text');
         dataTableBody.innerHTML = data;
         assignEventListeners();

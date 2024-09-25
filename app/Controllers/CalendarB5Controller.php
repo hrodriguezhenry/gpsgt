@@ -54,7 +54,7 @@ class CalendarB5Controller extends Controllers {
                                         class="btn btn-sm btn-danger btn-delete-reservation"
                                         value="' . htmlspecialchars($customer->id) . '"
                                         data-bs-toggle="modal"
-                                        data-bs-target="#updateReservationModal">
+                                        data-bs-target="#deleteReservationModal">
                                         <i class="bi bi-trash-fill"></i>
                                     </button>
                                 </div>
@@ -104,6 +104,8 @@ class CalendarB5Controller extends Controllers {
                                 ' . htmlspecialchars($availableHour->reservation_hour) . '
                             </option>';
                 }
+            } else {
+                $html .= '<option selected value="">Horario no disponible</option>';
             }
 
             $this->htmlResponse($html);
@@ -157,15 +159,20 @@ class CalendarB5Controller extends Controllers {
         }
     }
 
-    public function delete($id) {
+    public function delete() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $data["delete_id"] = filter_input(INPUT_POST, 'delete_id', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-            $data["user_id"] = $id;
+            session_start();
+            $user_id = $_SESSION['user_id'] ?? 1;
+
+            $data = [
+                "id" => filter_input(INPUT_POST, 'id', FILTER_SANITIZE_FULL_SPECIAL_CHARS),
+                "user_id" => $user_id
+            ];
 
             if ($this->model->deleteReservation($data)) {
-                redirect("/calendarioB5");
+                $this->jsonResponse(["success" => true]);
             } else {
-                die("Algo salió mal");
+                $this->jsonResponse(["success" => false]);
             }
         }
     }
