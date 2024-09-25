@@ -42,6 +42,16 @@ class HomeController extends Controllers{
             $user = $this->model->getLoginUser($data);
 
             if($user){
+                $data = [
+                    "user_id" => $user->user_id,
+                    "token" => bin2hex(random_bytes(32)),
+                    "expires_at" =>  date('Y-m-d H:i:s', strtotime('+1 hour')),
+                    "ip_address" => $_SERVER['REMOTE_ADDR'],
+                    "user_agent" => $_SERVER['HTTP_USER_AGENT']
+                ];
+
+                $this->model->storeSessionToken($data);
+
                 $_SESSION['loggedin'] = true;
                 $_SESSION['user_id'] = $user->user_id;
                 $_SESSION['user_name'] = $user->user_name;

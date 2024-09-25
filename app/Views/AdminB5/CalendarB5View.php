@@ -79,8 +79,8 @@
                             <form id="deleteReservationForm">
                                 <input type="hidden" id="delModReservationId">
                                 <div class="row">
-                                    <div class="mb-0 mb-sm-2 col-12">
-                                        <span>Nombre: </span><span id="delModFirstName"></span><br>
+                                    <div class="mb-0 mb-sm-1 col-12">
+                                        <span>Nombre: </span><span id="delModFirstName"></span>
                                     </div>
                                     <div class="mb-0 mb-sm-1 col-12">
                                         <span>Apellido: </span><span id="delModLastName"></span>

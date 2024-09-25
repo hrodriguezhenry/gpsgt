@@ -27,6 +27,21 @@ class HomeModel{
         return $row;
     }
 
+    public function storeSessionToken($data){
+        $this->db->query(
+            "INSERT INTO session_tokens (user_id, token, expires_at, ip_address, user_agent, created_by, updated_by)
+                VALUES (:user_id, :token, :expires_at, :ip_address, :user_agent, :user_id, :user_id);"
+        );
+
+        $this->db->bind(":user_id", $data["user_id"]);
+        $this->db->bind(":token", $data["token"]);
+        $this->db->bind(":expires_at", $data["expires_at"]);
+        $this->db->bind(":ip_address", $data["ip_address"]);
+        $this->db->bind(":user_agent", $data["user_agent"]);
+        $row = $this->db->record();
+        return $row;
+    }
+
     public function getLoginView($data){
         $this->db->query(
             "SELECT v.`name` AS view
