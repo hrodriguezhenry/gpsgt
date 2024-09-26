@@ -51,6 +51,7 @@ class HomeController extends Controllers{
                 ];
 
                 $this->model->storeSessionToken($data);
+                setcookie('session_token', $data['token'], time() + 3600, '/', '', true, true);
 
                 $_SESSION['loggedin'] = true;
                 $_SESSION['user_id'] = $user->user_id;

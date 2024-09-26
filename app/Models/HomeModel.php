@@ -30,7 +30,7 @@ class HomeModel{
     public function storeSessionToken($data){
         $this->db->query(
             "INSERT INTO session_tokens (user_id, token, expires_at, ip_address, user_agent, created_by, updated_by)
-                VALUES (:user_id, :token, :expires_at, :ip_address, :user_agent, :user_id, :user_id);"
+            VALUES (:user_id, :token, :expires_at, :ip_address, :user_agent, :user_id, :user_id);"
         );
 
         $this->db->bind(":user_id", $data["user_id"]);
