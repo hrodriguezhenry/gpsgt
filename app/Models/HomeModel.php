@@ -42,6 +42,17 @@ class HomeModel{
         return $row;
     }
 
+    public function deleteSessionToken($data){
+        $this->db->query(
+            "UPDATE session_tokens SET deleted_at = CURDATE(), deleted_by = :user_id
+            WHERE user_id = :user_id AND deleted_at IS NULL;"
+        );
+
+        $this->db->bind(":user_id", $data["user_id"]);
+        $row = $this->db->record();
+        return $row;
+    }
+
     public function getLoginView($data){
         $this->db->query(
             "SELECT v.`name` AS view

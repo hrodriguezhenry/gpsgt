@@ -42,23 +42,31 @@ class HomeController extends Controllers{
             $user = $this->model->getLoginUser($data);
 
             if($user){
-                $data = [
+                $tokenData = [
                     "user_id" => $user->user_id,
                     "token" => bin2hex(random_bytes(32)),
-                    "expires_at" =>  date('Y-m-d H:i:s', strtotime('+1 hour')),
+                    "expires_at" => date('Y-m-d H:i:s', strtotime('+1 hour')),
                     "ip_address" => $_SERVER['REMOTE_ADDR'],
                     "user_agent" => $_SERVER['HTTP_USER_AGENT']
                 ];
 
-                $this->model->storeSessionToken($data);
-                setcookie('session_token', $data['token'], time() + 3600, '/', '', true, true);
-
+                $this->model->deleteSessionToken($tokenData);
+                $this->model->storeSessionToken($tokenData);
+                
                 $_SESSION['loggedin'] = true;
                 $_SESSION['user_id'] = $user->user_id;
                 $_SESSION['user_name'] = $user->user_name;
                 $_SESSION['role_name'] = $user->role_name;
                 $view = $this->model->getLoginView($data);
-                redirect("/".$view->view);
+                $redirectUrl = URL_ROUTE . "/" . $view->view;
+
+                echo "
+                <script>
+                    localStorage.setItem('session_token', '{$tokenData['token']}');
+                    window.location.href = '{$redirectUrl}';
+                </script>";
+                exit();
+
             } else{
                 $_SESSION['loggedin_error'] = true;
                 $_SESSION['form_data'] = $data;

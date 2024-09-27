@@ -1,14 +1,11 @@
 function getToken() {
-    const value = `; ${document.cookie}`;
-    const parts = value.split(`; session_token=`);
-    if (parts.length === 2) return parts.pop().split(';').shift();
+    return localStorage.getItem('session_token');
 }
 
 export const apiService = {
     async fetchData(url, method, body = {}, responseType) {
         try {
             const token = getToken(); // Llama a la función para obtener el token
-            console.log(token)
             const response = await fetch(url, {
                 method,
                 headers: {
